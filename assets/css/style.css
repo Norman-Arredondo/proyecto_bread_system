@@ -1,0 +1,29 @@
+.sidebar li .submenu{ 
+	list-style: none; 
+	margin: 0; 
+	padding: 0; 
+	padding-left: 1rem; 
+	padding-right: 1rem;
+}
+
+/* Imagen de index - ritt*/
+.ritt-container {
+	position: relative;
+	max-width: 800px;
+	margin: 0 auto;
+}
+  
+.ritt-container img {
+	vertical-align: middle;
+}
+  
+.ritt-container .ritt-content {
+	position: absolute;
+	bottom: 0;
+	background: rgb(143, 84, 130);
+	background: rgba(196, 100, 199, 0.5);
+	color: #f1f1f1;
+	width: 100%;
+	padding: 20px;
+}
+  
