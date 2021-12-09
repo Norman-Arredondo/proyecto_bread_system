@@ -33,7 +33,9 @@ BEGIN
 	END
 	ELSE
 	BEGIN
-		SELECT * FROM puntos_venta ORDER BY estatus ASC;
+		SELECT cve_pto, pto_vta, calle, colonia, no_interior, no_exterior, alcaldia, codigo_postal, estatus 
+			FROM puntos_venta
+			ORDER BY estatus ASC;
 	END
 END	
 EXEC sp_Consulta_ptovta 2

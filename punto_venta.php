@@ -84,7 +84,6 @@
                                         $pto_vta = new pto_vta();
                                         $pto_vta->recuperar();
                                     ?>
-                                    
                                 </tbody>
                                 <tfoot>
                                     <tr>
