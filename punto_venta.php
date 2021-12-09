@@ -63,6 +63,19 @@
                     <p class="text-primary m-0 fw-bold">Puntos de venta registrados</p>
                 </div>
                 <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 text-nowrap">
+                            <form  id="select_punto_venta" action="" method="POST">
+                            <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label class="form-label">Mostrar&nbsp;
+                                <select class="d-inline-block form-select form-select-sm" id="opc" name="opc">
+                                    <option value="2" selected="">Todos</option>
+                                    <option value="1">Vigente</option>
+                                    <option value="0">No vigente</option>
+                                </select>&nbsp;</label>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
                     
                     <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                             <table class="table my-0" id="table_pto_vta">
@@ -109,4 +122,5 @@
 ?>
 
 <script src="js/insert_punto_venta.js"></script>
+<script src="js/estatus_punto_venta.js"></script>
 
