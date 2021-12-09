@@ -16,10 +16,6 @@ BEGIN
 	INSERT INTO puntos_venta VALUES(@cve_pto, @pto_vta, @calle, @colonia, @no_interior, @no_exterior, @alcaldia, @codigo_postal, 1);
 END	
 
---TRUNCATE TABLE PUNTOS_VENTA;
---select * from puntos_venta;
-
-
 -- Consultar
 CREATE PROCEDURE sp_Consulta_ptovta @estatus INT
 AS
@@ -40,6 +36,14 @@ BEGIN
 END	
 EXEC sp_Consulta_ptovta 2
 
+-- Cambiar estatus
+CREATE PROCEDURE sp_CamEst_ptovta @cve_pto VARCHAR(10), @estatus INT
+AS
+BEGIN
+	UPDATE puntos_venta SET estatus = @estatus 
+		WHERE cve_pto = @cve_pto;
+END	
+EXEC sp_CamEst_ptovta 'PTO-00001', 1
 
 -- <<<<<<<<<<<<<<<<<<<< TIPO EMPLEADO <<<<<<<<<<<<<<<<<<<< 
 -- Registrar
