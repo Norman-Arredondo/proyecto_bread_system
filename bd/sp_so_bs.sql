@@ -24,16 +24,16 @@ END
 CREATE PROCEDURE sp_Consulta_ptovta @estatus INT
 AS
 BEGIN
-	IF @estatus = 1 or @estatus = 2
+	IF @estatus = 0 or @estatus = 1
 	BEGIN
 		SELECT cve_pto, pto_vta, calle, colonia, no_interior, no_exterior, alcaldia, codigo_postal, estatus
 			FROM puntos_venta
 			WHERE estatus = @estatus
-			ORDER BY cve_pto ASC;
+			ORDER BY estatus ASC;
 	END
 	ELSE
 	BEGIN
-		SELECT * FROM puntos_venta ORDER BY cve_pto ASC;
+		SELECT * FROM puntos_venta ORDER BY estatus ASC;
 	END
 END	
 EXEC sp_Consulta_ptovta 2
