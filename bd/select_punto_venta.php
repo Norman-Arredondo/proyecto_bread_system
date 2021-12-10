@@ -14,10 +14,10 @@
                     echo "<td align='center'>";
                         echo "<a href='#'><i class='far fa-edit' style='color: darkslateblue;'></i></a>"; 
                         if($dato["estatus"] == "1"){
-                            echo "<a href='#'><i class='fas fa-trash' style='color: darkslateblue;'></i></a>"; 
+                            echo "<a href='javascript:void(0)' class='vigente'><i class='fas fa-trash' style='color: darkslateblue;'></i></a>"; 
                         } 
                         if($dato["estatus"] == "0"){
-                            echo "<a href='#'><i class='fas fa-check' style='color: darkslateblue;'></i></a>";
+                            echo "<a href='javascript:void(0)' class='no_vigente'><i class='fas fa-check' style='color: darkslateblue;'></i></a>";
                         }      
                     echo "</td>";
                     echo "<td>" . $dato["cve_pto"] . "</td>";
@@ -28,6 +28,12 @@
                     echo "<td>" . $dato["no_interior"] . "</td>";
                     echo "<td>" . $dato["alcaldia"] . "</td>";
                     echo "<td>" . $dato["codigo_postal"] . "</td>";
+                    if($dato["estatus"] == "1"){
+                        echo "<td align='center'>Vigente</td>"; 
+                    }
+                    if($dato["estatus"] == "0"){
+                        echo "<td align='center'>No vigente</td>"; 
+                    }
                     echo "</tr>";
             }
             } catch(Exception $error) {
