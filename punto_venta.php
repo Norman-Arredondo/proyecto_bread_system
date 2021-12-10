@@ -90,6 +90,7 @@
                                         <th>No Interior</th>
                                         <th>Alcandia/Municipio</th>
                                         <th>Código Postal</th>
+                                        <th>Estatus</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -109,6 +110,7 @@
                                         <td><strong>No Interior</strong></td>
                                         <td><strong>Alcandia/Municipio</strong></td>
                                         <td><strong>Código Postal</strong></td>
+                                        <td><strong>Estatus</strong></td>
                                     </tr>
                                 </tfoot>
                             </table>
