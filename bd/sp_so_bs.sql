@@ -25,13 +25,13 @@ BEGIN
 		SELECT cve_pto, pto_vta, calle, colonia, no_interior, no_exterior, alcaldia, codigo_postal, estatus
 			FROM puntos_venta
 			WHERE estatus = @estatus
-			ORDER BY estatus ASC;
+			ORDER BY estatus DESC;
 	END
 	ELSE
 	BEGIN
 		SELECT cve_pto, pto_vta, calle, colonia, no_interior, no_exterior, alcaldia, codigo_postal, estatus 
 			FROM puntos_venta
-			ORDER BY estatus ASC;
+			ORDER BY estatus DESC;
 	END
 END	
 EXEC sp_Consulta_ptovta 2
