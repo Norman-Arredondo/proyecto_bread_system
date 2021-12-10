@@ -12,12 +12,12 @@
                 foreach($resultado as $dato){
                     echo "<tr>";
                     echo "<td align='center'>";
-                        echo "<a href='#'><i class='far fa-edit' style='color: darkslateblue;'></i></a>"; 
+                        echo "<a href='javascript:void(0)' id='editar' name='editar'><i class='far fa-edit' style='color: darkslateblue;'></i></a>"; 
                         if($dato["estatus"] == "1"){
-                            echo "<a href='javascript:void(0)' class='vigente'><i class='fas fa-trash' style='color: darkslateblue;'></i></a>"; 
+                            echo "<a href='javascript:void(0)' id='inhabilitar' name='inhabilitar'><i class='fas fa-trash' style='color: darkslateblue;'></i></a>"; 
                         } 
                         if($dato["estatus"] == "0"){
-                            echo "<a href='javascript:void(0)' class='no_vigente'><i class='fas fa-check' style='color: darkslateblue;'></i></a>";
+                            echo "<a href='javascript:void(0)' id='habilitar' name='habilitar'><i class='fas fa-check' style='color: darkslateblue;'></i></a>";
                         }      
                     echo "</td>";
                     echo "<td>" . $dato["cve_pto"] . "</td>";
