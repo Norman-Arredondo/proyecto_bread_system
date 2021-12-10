@@ -59,5 +59,4 @@ CREATE TABLE hechos_ventas(
 	CONSTRAINT hv_dpv_fk FOREIGN KEY (cve_pto) REFERENCES dim_pto_vta(cve_pto),
 	CONSTRAINT hv_de_fk FOREIGN KEY (rfc_empleado) REFERENCES dim_empleado(rfc_empleado),
 	CONSTRAINT hv_dp_fk FOREIGN KEY (id_produccion,fecha) REFERENCES dim_productos(id_produccion, fecha),
-
 );
