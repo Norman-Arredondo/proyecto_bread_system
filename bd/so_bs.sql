@@ -69,7 +69,6 @@ CREATE TABLE catalogo(
 	CONSTRAINT so_catalogo_pk PRIMARY KEY (pan)
 );
 
-
 CREATE TABLE recetario(
 	pan VARCHAR(50),
 	nombre_mp VARCHAR(50),
@@ -80,6 +79,7 @@ CREATE TABLE recetario(
 	CONSTRAINT so_recetario_catalogo_fk FOREIGN KEY (pan) REFERENCES catalogo(pan),
 	CONSTRAINT so_recetario_materia_prima_fk FOREIGN KEY (nombre_mp) REFERENCES materia_prima(nombre_mp)
 );
+
 
 -- >>>>> MODULO PRODUCCIÓN <<<<<
 CREATE TABLE insumo(
@@ -113,7 +113,7 @@ CREATE TABLE mp_produccion(
 	id_produccion VARCHAR(10), /*Ejemplo: PRD-00001*/
 	id_mp_produccion VARCHAR(10), /*Ejemplo: MPP-00001*/
 	nombre_mp VARCHAR(50),
-	catidad FLOAT,
+	cantidad FLOAT,
 	unidad VARCHAR(10), 
 	costo_proporcional FLOAT,
 	estatus BIT NOT NULL,
@@ -159,7 +159,7 @@ CREATE TABLE detalle_venta(
 	piezas_entregadas INT,
 	piezas_devueltas INT,
 	estatus BIT NOT NULL,
-	CONSTRAINT so_detalle_venta_pk PRIMARY KEY (cve_vta, cve_pto),
+	CONSTRAINT so_detalle_venta_pk PRIMARY KEY (cve_vta, cve_pto, id_produccion),
 	CONSTRAINT so_detalle_venta_venta_fk FOREIGN KEY (cve_vta, cve_pto) REFERENCES venta(cve_vta, cve_pto),
 	CONSTRAINT so_detalle_venta_producto_terminado_fk FOREIGN KEY (id_produccion) REFERENCES produccion(id_produccion)
 );
