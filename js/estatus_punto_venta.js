@@ -16,8 +16,6 @@ $('#table_pto_vta tr').on('click', function(event){
             }
         });
     });
-    
-    
 });
 
 

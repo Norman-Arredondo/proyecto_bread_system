@@ -5,8 +5,6 @@
         if($_POST){
             $estatus = $_POST['estatus'];
             $cve_pto = $_POST['cve_pto'];
-
-            //echo "Datos recibidos: Clave: ". $cve_pto ."\nEstatus:" . $estatus;
             
             try{
                 $query = "EXEC sp_CamEst_ptovta '".$cve_pto."', ".$estatus.";";
