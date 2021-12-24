@@ -20,14 +20,14 @@
                             echo "<a href='javascript:void(0)' id='habilitar' name='habilitar'><i class='fas fa-check' style='color: darkslateblue;'></i></a>";
                         }      
                     echo "</td>";
-                    echo "<td>" . $dato["cve_pto"] . "</td>";
-                    echo "<td>" . $dato["pto_vta"] . "</td>";
-                    echo "<td>" . $dato["calle"] . "</td>";
-                    echo "<td>" . $dato["colonia"] . "</td>";
-                    echo "<td>" . $dato["no_exterior"] . "</td>";
-                    echo "<td>" . $dato["no_interior"] . "</td>";
-                    echo "<td>" . $dato["alcaldia"] . "</td>";
-                    echo "<td>" . $dato["codigo_postal"] . "</td>";
+                    echo "<td align='center'>" . $dato["cve_pto"] . "</td>";
+                    echo "<td align='center'>" . $dato["pto_vta"] . "</td>";
+                    echo "<td align='center'>" . $dato["calle"] . "</td>";
+                    echo "<td align='center'>" . $dato["colonia"] . "</td>";
+                    echo "<td align='center'>" . $dato["no_exterior"] . "</td>";
+                    echo "<td align='center'>" . $dato["no_interior"] . "</td>";
+                    echo "<td align='center'>" . $dato["alcaldia"] . "</td>";
+                    echo "<td align='center'>" . $dato["codigo_postal"] . "</td>";
                     if($dato["estatus"] == "1"){
                         echo "<td align='center'>Vigente</td>"; 
                     }

@@ -80,7 +80,7 @@
                     <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                             <table class="table my-0" id="table_pto_vta">
                                 <thead>
-                                    <tr>
+                                    <tr style="text-align: center;">
                                         <th>Acciones</th>
                                         <th>Clave</th>
                                         <th>Punto Venta</th>
@@ -100,7 +100,7 @@
                                     ?>
                                 </tbody>
                                 <tfoot>
-                                    <tr>
+                                    <tr style="text-align: center;">
                                         <td><strong>Acciones</strong></td>
                                         <td><strong>Clave</strong></td>
                                         <td><strong>Punto Venta</strong></td>
