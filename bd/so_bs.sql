@@ -6,7 +6,7 @@ USE so_bs;
 CREATE TABLE Tipo_Empleado(
 	id_tipo_empleado VARCHAR(10), /*Ejemplo: ITE-00001*/
 	puesto VARCHAR(30),
-	dias_trabajo VARCHAR(20),
+	dias_trabajo VARCHAR(25),
 	sueldo_quincenal FLOAT,
 	estatus BIT NOT NULL,
 	CONSTRAINT so_tipo_empleado_pk PRIMARY KEY (id_tipo_empleado)

@@ -28,7 +28,7 @@ CREATE TABLE dim_empleado(
 	telefono INT,
 	edad INT,
 	sexo CHAR(1),
-	dias_trabajo VARCHAR(20),
+	dias_trabajo VARCHAR(25),
 	sueldo FLOAT,
 	CONSTRAINT dim_empleado_pk PRIMARY KEY (rfc_empleado)
 );
