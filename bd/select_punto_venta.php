@@ -12,7 +12,7 @@
                 foreach($resultado as $dato){
                     echo "<tr>";
                     echo "<td align='center'>";
-                        echo "<a href='javascript:void(0)' id='editar' name='editar'><i class='far fa-edit' style='color: darkslateblue;'></i></a>"; 
+                        echo "<a href='javascript:void(0)' id='editar' name='editar' data-toggle='modal' data-target='#editar_punto'><i class='far fa-edit' style='color: darkslateblue;'></i></a>"; 
                         if($dato["estatus"] == "1"){
                             echo "<a href='javascript:void(0)' id='inhabilitar' name='inhabilitar'><i class='fas fa-trash' style='color: darkslateblue;'></i></a>"; 
                         } 
