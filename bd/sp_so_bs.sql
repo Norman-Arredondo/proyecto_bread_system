@@ -45,3 +45,26 @@ BEGIN
 END	
 EXEC sp_CamEst_ptovta 'PTO-00001', 1
 
+-- Modificar
+CREATE PROCEDURE sp_Modificar_ptovta
+	@cve_pto VARCHAR(10), 
+	@pto_vta VARCHAR(30), 
+	@calle VARCHAR(50),
+	@colonia VARCHAR(50), 
+	@no_interior VARCHAR(15),
+	@no_exterior VARCHAR(15), 
+	@alcaldia VARCHAR(50), 
+	@codigo_postal INT
+AS
+BEGIN
+	UPDATE puntos_venta SET
+		pto_vta = @pto_vta,
+		calle = @calle,
+		colonia = @colonia,
+		no_interior = @no_interior,
+		no_exterior = @no_exterior,
+		alcaldia = @alcaldia,
+		codigo_postal = @codigo_postal
+		WHERE cve_pto = @cve_pto;
+END
+
