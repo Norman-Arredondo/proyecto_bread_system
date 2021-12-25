@@ -2,6 +2,7 @@
     include("templates/menu.php");
     include("bd/select_puesto.php");
     include("bd/select_tipo_empleado.php");
+    include("bd/select_empleado.php");
 	error_reporting(E_ALL ^ E_NOTICE);
 ?>
 
@@ -137,13 +138,13 @@
                             <div class="row">
                                 <div class="col mt-2 mb-2">
                                     <div class="mb-3"><label class="form-label" for="rfc_empleado"><strong>RFC del trabajador</strong></label>
-                                        <input class="form-control" type="text" id="rfc_empleado" placeholder="RFC" name="rfc_empleado">
+                                        <input class="form-control" type="text" id="rfc_empleado" name="rfc_empleado" maxlength="13">
                                     </div>
                                 </div>
                                 <div class="col mt-2 mb-2">
-                                    <div class="mb-3"><label class="form-label" for="descripcion"><strong>Puesto</strong></label>
+                                    <div class="mb-3"><label class="form-label" for="e_puesto"><strong>Puesto</strong></label>
                                         <select class="form-select" id="e_puesto" name="e_puesto">
-                                            <option select>Puesto</option>
+                                            <option value="Puesto "select>Puesto</option>
                                             <?php
                                                 $tipo_empleado = new tipo_empleado();
                                                 $tipo_empleado->recuperar_puestos();
@@ -156,48 +157,44 @@
                                         <input class="form-control" type="password" id="contrasenia" name="contrasenia">
                                     </div>
                                 </div>
-
                                 <div class="col mt-2 mb-2">
                                     <div class="mb-3"><label class="form-label" for=""><strong>Hora de entrada</strong></label>
-                                        <input class="form-control" type="time" id="hora_entrada" name="">
+                                        <input class="form-control" type="time" id="hora_entrada" name="hora_entrada">
                                     </div>
                                 </div>
-
                                 <div class="col mt-2 mb-2">
                                     <div class="mb-3"><label class="form-label" for=""><strong>Hora de salida</strong></label>
-                                        <input class="form-control" type="time" id="hora_salida" name="">
+                                        <input class="form-control" type="time" id="hora_salida" name="hora_salida">
                                     </div>
                                 </div>
                             </div>
-
                             <div class="col col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 mt-2 mb-2">
                                 <div class="mb-3"><label class="form-label" for="nombre"><strong>Nombre</strong></label>
-                                    <input class="form-control" type="text" id="nombre" placeholder="Nombre" name="nombre">
+                                    <input class="form-control" type="text" id="nombre" name="nombre">
                                 </div>
                             </div>
                             <div class="col col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 mt-2 mb-2">
                                 <div class="mb-3"><label class="form-label" for="apellido_p"><strong>Apellido paterno</strong></label>
-                                    <input class="form-control" type="text" id="apellido_p" placeholder="Apellido paterno" name="apellido_p">
+                                    <input class="form-control" type="text" id="apellido_p" name="apellido_p">
                                 </div>
                             </div>
                             <div class="col col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 mt-2 mb-2">
                                 <div class="mb-3"><label class="form-label" for="apellido_m"><strong>Apellido materno</strong></label>
-                                    <input class="form-control" type="text" id="apellido_m" placeholder="Apellido materno" name="apellido_m">
+                                    <input class="form-control" type="text" id="apellido_m" name="apellido_m">
                                 </div>
                             </div>
 
                             <div class="col col col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 mt-2 mb-2">
                                 <div class="mb-3"><label class="form-label" for="telefono"><strong>Teléfono</strong></label>
-                                    <input class="form-control" type="number" id="telefono" placeholder="Teléfono" name="telefono">
+                                    <input class="form-control" type="number" id="telefono" name="telefono" maxlength="10">
                                 </div>
                             </div>
 
                             <div class="col col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 mt-2 mb-2">
                                 <div class="mb-3"><label class="form-label" for="edad"><strong>Edad</strong></label>
-                                    <input class="form-control" type="number" id="edad" placeholder="Edad" name="edad">
+                                    <input class="form-control" type="number" id="edad" name="edad">
                                 </div>
                             </div>
-
                             <div class="col col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 mt-2 mb-2">
                                 <div class="mb-3"><label class="form-label" for="sexo"><strong>Sexo</strong></label>
                                     <select class="form-select" id="sexo" name="sexo">
@@ -207,43 +204,41 @@
                                     </select>
                                 </div>
                             </div>
-
                             <div class="col col col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 mt-2 mb-2">
                                 <div class="mb-3"><label class="form-label" for="calle"><strong>Calle</strong></label>
-                                    <input class="form-control" type="text" id="calle" placeholder="Calle" name="calle">
+                                    <input class="form-control" type="text" id="calle" name="calle">
                                 </div>
                             </div>
                             <div class="col col col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 mt-2 mb-2">
                                 <div class="mb-3"><label class="form-label" for="colonia"><strong>Colonia</strong></label>
-                                    <input class="form-control" type="text" id="colonia" placeholder="Colonia" name="colonia">
+                                    <input class="form-control" type="text" id="colonia" name="colonia">
                                 </div>
                             </div>
 
                             <div class="col col col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 mt-2 mb-2">
                                 <div class="mb-3"><label class="form-label" for="alcaldia"><strong>Alcaldia/Municipio</strong></label>
-                                    <input class="form-control" type="text" id="alcaldia" placeholder="Alcaldia/Municipio" name="alcaldia">
+                                    <input class="form-control" type="text" id="alcaldia" name="alcaldia">
                                 </div>
                             </div>
 
                             <div class="col col col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 mt-2 mb-2">
                                 <div class="mb-3"><label class="form-label" for="no_interior"><strong>No interior</strong></label>
-                                    <input class="form-control" type="text" id="no_interior" placeholder="No interior" name="no_interior">
+                                    <input class="form-control" type="text" id="no_interior" name="no_interior">
                                 </div>
                             </div>
                             <div class="col col col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 mt-2 mb-2">
                                 <div class="mb-3"><label class="form-label" for="no_exterior"><strong>No exterior</strong></label>
-                                    <input class="form-control" type="text" id="no_exterior" placeholder="No exterior" name="no_exterior">
+                                    <input class="form-control" type="text" id="no_exterior" name="no_exterior">
                                 </div>
                             </div>
 
                             <div class="col col col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 mt-2 mb-2">
                                 <div class="mb-3"><label class="form-label" for="codigo_postal"><strong>Codigo postal</strong></label>
-                                    <input class="form-control" type="number" id="codigo_postal" placeholder="Codigo postal" name="codigo_postal">
+                                    <input class="form-control" type="number" id="codigo_postal" name="codigo_postal" maxlength="5">
                                 </div>
                             </div>
 
                         </div>
-                        <!--boton-->
                         <div class="mb-3"><button class="btn btn-dark btn-sm" type="submit" style="float: right" id="btn_guardar_empleado" name="btn_guardar_empleado">Guardar</button></div>
                         <br>
                     </form>
@@ -268,58 +263,35 @@
 
                     </div>
                     <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
-                        <table class="table my-0" id="dataTable" style="text-align: center;">
+                        <table class="table my-0" id="table_empleado" style="text-align: center;">
                             <thead>
-                                <tr class="">
+                                <tr style="text-align: center;">
                                     <th>Acciones</th>
                                     <th>RFC</th>
                                     <th>Puesto</th>
                                     <th>Contraseña</th>
+                                    <th>Hora entrada</th>
+                                    <th>Hora salida</th>
                                     <th>Nombre</th>
                                     <th>Apellido paterno</th>
                                     <th>Apellido materno</th>
-                                    <th>Calle</th>
-                                    <th>Colonia</th>
-                                    <th>No interrior</th>
-                                    <th>No. exterior</th>
-                                    <th>Alcaldia/Municipio</th>
-                                    <th>Codigo postal</th>
                                     <th>Telefono</th>
                                     <th>Edad</th>
                                     <th>Sexo</th>
-                                    <th>Hora entrada</th>
-                                    <th>Hora salida</th>
+                                    <th>Calle</th>
+                                    <th>Colonia</th>
+                                    <th>Alcaldia/Municipio</th>
+                                    <th>No interior</th>
+                                    <th>No. exterior</th>
+                                    <th>Codigo postal</th>
+                                    <th>Estatus</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                /*
-                                $empleado = new empleado();
-                                $empleado->recuperar();
-                                */
+                                    $empleado = new empleado();
+                                    $empleado->recuperar_empleado();
                                 ?>
-
-                                <td>
-                                    <a href="#"><i class="far fa-edit" style="color: darkslateblue;"></i></a>
-                                    <a href="#"><i class="fas fa-trash" style="color: darkslateblue;"></i></a>
-                                </td>
-                                <td><strong>AEMN99O225HMC</strong></td>
-                                <td><strong>Vendedor</strong></td>
-                                <td><strong></strong></td>
-                                <td><strong>Norman</strong></td>
-                                <td><strong>Arredondo</strong></td>
-                                <td><strong>Martínez</strong></td>
-                                <td><strong>Av. Vicente</strong></td>
-                                <td><strong>El sol</strong></td>
-                                <td><strong></strong></td>
-                                <td><strong>311</strong></td>
-                                <td><strong>Nezahualcóyotl</strong></td>
-                                <td><strong>57200</strong></td>
-                                <td><strong>5618457650</strong></td>
-                                <td><strong>22</strong></td>
-                                <td><strong>H</strong></td>
-                                <td><strong>07:30</strong></td>
-                                <td><strong>01:00</strong></td>
                             </tbody>
                             <tfoot>
                                 <tr style="text-align: center;">
@@ -327,37 +299,24 @@
                                     <th>RFC</th>
                                     <th>Puesto</th>
                                     <th>Contraseña</th>
+                                    <th>Hora entrada</th>
+                                    <th>Hora salida</th>
                                     <th>Nombre</th>
                                     <th>Apellido paterno</th>
                                     <th>Apellido materno</th>
-                                    <th>Calle</th>
-                                    <th>Colonia</th>
-                                    <th>No interrior</th>
-                                    <th>No. exterior</th>
-                                    <th>Alcaldia/Municipio</th>
-                                    <th>Codigo postal</th>
                                     <th>Telefono</th>
                                     <th>Edad</th>
                                     <th>Sexo</th>
-                                    <th>Hora entrada</th>
-                                    <th>Hora salida</th>
+                                    <th>Calle</th>
+                                    <th>Colonia</th>
+                                    <th>Alcaldia/Municipio</th>
+                                    <th>No interior</th>
+                                    <th>No. exterior</th>
+                                    <th>Codigo postal</th>
+                                    <th>Estatus</th>
                                 </tr>
                             </tfoot>
                         </table>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
-                                <ul class="pagination">
-                                    <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                                </ul>
-                            </nav>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -375,21 +334,31 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="close">&times;</button>
                     </div>
                     <div class="modal-body" style="overflow-y: auto;">
-                        <label class="form-label" for="m_id_tipo_empleado"><strong>ID puesto:</strong></label><input class="form-control" type="text" id="m_id_tipo_empleado" name="m_id_tipo_empleado" readonly="readonly">
-                        <label class="form-label" for="m_te_puesto"><strong>Puesto:</strong></label><input class="form-control" type="text" id="m_te_puesto" name="m_te_puesto">
-                        <label class="form-label" for="m_dias_laborales"><strong>Días de trabajo:</strong></label>
-                        <div class="row">
-                            <div class="col">
-                                <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" name="m_dl_Lu" id="m_dl_Lu"> Lunes </input></div>
-                                <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" name="m_dl_Ma" id="m_dl_Ma"> Martes </input></div>
-                                <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" name="m_dl_Mi" id="m_dl_Mi"> Miercoles </input></div>
-                                <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" name="m_dl_Ju" id="m_dl_Ju"> Jueves </input></div>
-                                <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" name="m_dl_Vi" id="m_dl_Vi"> Viernes </input></div>
-                                <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" name="m_dl_Sa" id="m_dl_Sa"> Sábado </input></div>
-                                <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" name="m_dl_Do" id="m_dl_Do"> Domingo </input></div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <label class="form-label" for="m_id_tipo_empleado"><strong>ID puesto:</strong></label><input class="form-control" type="text" id="m_id_tipo_empleado" name="m_id_tipo_empleado" readonly="readonly">
+                                </div>
+                                <div class="col">
+                                    <label class="form-label" for="m_te_puesto"><strong>Puesto:</strong></label><input class="form-control" type="text" id="m_te_puesto" name="m_te_puesto">
+                                </div>
+                                <div class="col">
+                                    <label class="form-label" for="m_sueldo_quincenal"><strong>Sueldo quincenal:</strong></label><input class="form-control" type="number" id="m_sueldo_quincenal" name="m_sueldo_quincenal">
+                                </div>
+                                <div class="row">
+                                    <label class="form-label" for="m_dias_laborales"><strong>Días de trabajo:</strong></label>
+                                    <div class="col">
+                                        <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" name="m_dl_Lu" id="m_dl_Lu"> Lunes </input></div>
+                                        <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" name="m_dl_Ma" id="m_dl_Ma"> Martes </input></div>
+                                        <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" name="m_dl_Mi" id="m_dl_Mi"> Miercoles </input></div>
+                                        <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" name="m_dl_Ju" id="m_dl_Ju"> Jueves </input></div>
+                                        <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" name="m_dl_Vi" id="m_dl_Vi"> Viernes </input></div>
+                                        <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" name="m_dl_Sa" id="m_dl_Sa"> Sábado </input></div>
+                                        <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" name="m_dl_Do" id="m_dl_Do"> Domingo </input></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <label class="form-label" for="m_sueldo_quincenal"><strong>Sueldo quincenal:</strong></label><input class="form-control" type="number" id="m_sueldo_quincenal" name="m_sueldo_quincenal">
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-dark btn-sm" type="submit" style="float: right" id="btn_modificar_puesto" name="btn_modificar_puesto">Modificar</button>
@@ -407,3 +376,5 @@
     <script src="js/insert_puesto.js"></script>
     <script src="js/estatus_puesto.js"></script>
     <script src="js/update_puesto.js"></script>
+    <script src="js/insert_empleado.js"></script>
+    <script src="js/estatus_empleado.js"></script>

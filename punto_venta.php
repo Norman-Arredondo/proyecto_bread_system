@@ -131,38 +131,38 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="close">&times;</button>
                     </div>
                     <div class="modal-body" style="overflow-y: auto;">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col">
-                                <label class="form-label" for="m_cve_pto"><strong>Clave:</strong></label><input class="form-control" type="text" id="m_cve_pto" name="m_cve_pto" readonly="readonly">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <label class="form-label" for="m_cve_pto"><strong>Clave:</strong></label><input class="form-control" type="text" id="m_cve_pto" name="m_cve_pto" readonly="readonly">
+                                </div>
+                                <div class="col">
+                                    <label class="form-label" for="m_pto_vta"><strong>Punto de venta:</strong></label><input class="form-control" type="text" id="m_pto_vta" name="m_pto_vta">
+                                </div>
                             </div>
-                            <div class="col">
-                                <label class="form-label" for="m_pto_vta"><strong>Punto de venta:</strong></label><input class="form-control" type="text" id="m_pto_vta" name="m_pto_vta">
+                            <div class="row">
+                                <div class="col">
+                                    <label class="form-label" for="m_calle"><strong>Calle:</strong></label><input class="form-control" type="text" id="m_calle" name="m_calle">
+                                </div>
+                                <div class="col">
+                                    <label class="form-label" for="m_alcaldia"><strong>Alcaldía:</strong></label><input class="form-control" type="text" id="m_alcaldia" name="m_alcaldia">
+                                </div>
+                                <div class="col">
+                                    <label class="form-label" for="m_colonia"><strong>Colonia:</strong></label><input class="form-control" type="text" id="m_colonia" name="m_colonia">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label class="form-label" for="m_no_exterior"><strong>No. exterior:</strong></label><input class="form-control" type="text" id="m_no_exterior" name="m_no_exterior">
+                                </div>
+                                <div class="col">
+                                    <label class="form-label" for="m_no_interior"><strong>No. interior:</strong></label><input class="form-control" type="text" id="m_no_interior" name="m_no_interior">
+                                </div>
+                                <div class="col">
+                                    <label class="form-label" for="m_codigo_postal"><strong>Código postal:</strong></label><input class="form-control" type="number" id="m_codigo_postal" name="m_codigo_postal" maxlength="5">
+                                </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col">
-                                <label class="form-label" for="m_calle"><strong>Calle:</strong></label><input class="form-control" type="text" id="m_calle" name="m_calle">
-                            </div>
-                            <div class="col">
-                                <label class="form-label" for="m_alcaldia"><strong>Alcaldía:</strong></label><input class="form-control" type="text" id="m_alcaldia" name="m_alcaldia">
-                            </div>
-                            <div class="col">
-                                <label class="form-label" for="m_colonia"><strong>Colonia:</strong></label><input class="form-control" type="text" id="m_colonia" name="m_colonia">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <label class="form-label" for="m_no_exterior"><strong>No. exterior:</strong></label><input class="form-control" type="text" id="m_no_exterior" name="m_no_exterior">
-                            </div>
-                            <div class="col">
-                                <label class="form-label" for="m_no_interior"><strong>No. interior:</strong></label><input class="form-control" type="text" id="m_no_interior" name="m_no_interior">
-                            </div>
-                            <div class="col">
-                                <label class="form-label" for="m_codigo_postal"><strong>Código postal:</strong></label><input class="form-control" type="number" id="m_codigo_postal" name="m_codigo_postal" maxlength="5">
-                            </div>
-                        </div>
-                    </div>
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-dark btn-sm" type="submit" style="float: right" id="btn_modificar" name="btn_modificar">Modificar</button>
