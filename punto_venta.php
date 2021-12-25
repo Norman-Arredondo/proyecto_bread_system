@@ -49,7 +49,7 @@
                                 <div class="mb-3"><label class="form-label" for="no_interior"><strong>No Interior</strong></label><input class="form-control" type="text" id="no_interior" name="no_interior"></div>
                             </div>
                             <div class="col">
-                                <div class="mb-3"><label class="form-label" for="codigo_postal"><strong>Código Postal</strong></label><input class="form-control" type="number" id="codigo_postal" name="codigo_postal"></div>
+                                <div class="mb-3"><label class="form-label" for="codigo_postal"><strong>Código Postal</strong></label><input class="form-control" type="tel" id="codigo_postal" name="codigo_postal" maxlength="5"></div>
                             </div>   
                         </div>            
                         <div class="mb-3"><button class="btn btn-dark btn-sm" type="submit" style="float: right" id="btn_guardar" name="btn_guardar">Guardar</button></div>
@@ -138,7 +138,7 @@
                         <label class="form-label" for="m_colonia"><strong>Colonia:</strong></label><input class="form-control" type="text" id="m_colonia" name="m_colonia">
                         <label class="form-label" for="m_no_exterior"><strong>No. exterior:</strong></label><input class="form-control" type="text" id="m_no_exterior" name="m_no_exterior">
                         <label class="form-label" for="m_no_interior"><strong>No. interior:</strong></label><input class="form-control" type="text" id="m_no_interior" name="m_no_interior">
-                        <label class="form-label" for="m_codigo_postal"><strong>Código postal:</strong></label><input class="form-control" type="number" id="m_codigo_postal" name="m_codigo_postal">
+                        <label class="form-label" for="m_codigo_postal"><strong>Código postal:</strong></label><input class="form-control" type="tel" id="m_codigo_postal" name="m_codigo_postal" maxlength="5">
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-dark btn-sm" type="submit" style="float: right" id="btn_modificar" name="btn_modificar">Modificar</button>
