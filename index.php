@@ -1,3 +1,6 @@
+<?php
+	error_reporting(E_ALL ^ E_NOTICE);
+?>
 <!DOCTYPE html>
 <html>
 
@@ -16,6 +19,8 @@
     <link rel="stylesheet" href="assets/css/sidebar.css">
     <link rel="stylesheet" href="assets/css/THANOS_fullscreen_image_with_text.css">
     <link rel="stylesheet" href="assets/css/Transparent-Overlay-On-Image-On-Hover.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="js/jquery-3.6.0.js"></script>
 </head>
 
 <body class="bg-gradient-primary">
@@ -33,11 +38,10 @@
                                     <div class="text-center">
                                         <h4 class="text-dark mb-4">Bienvenido!</h4>
                                     </div>
-                                    <form class="user">
-                                        <div class="mb-3"><input class="form-control form-control-user" type="" id="txtLog" placeholder="Usuario" name=""></div>
-                                        <div class="mb-3"><input class="form-control form-control-user" type="password" id="txtPass" placeholder="Contraseña" name=""></div>
-
-                                        <button class="btn btn-dark btn-user w-100" type="button" onClick="btnEnviar_click()">Ingresar</button>
+                                    <form class="user" id="index" action="" method="POST">
+                                        <div class="mb-3"><input class="form-control form-control-user" type="" id="rfc_empleado" placeholder="RFC empleado" name="rfc_empleado" maxlength="13"></div>
+                                        <div class="mb-3"><input class="form-control form-control-user" type="password" id="contrasenia" placeholder="Contraseña" name="contrasenia"></div>
+                                        <button class="btn btn-dark btn-user w-100" type="submit" id="btn_ingresar" name="btn_ingresar">Ingresar</button>
                                     </form>
                                 </div>
                             </div>
@@ -53,22 +57,7 @@
     <script src="assets/js/theme.js"></script>
     <script src="assets/js/script.js"></script>
 </body>
-<script>
-    function btnEnviar_click() {
-        var textLogin = document.getElementById("txtLog");
-        var textPass = document.getElementById("txtPass");
-        var principal;
 
-        if (textLogin.value == "" || textPass == "") {
-            alert("Llene todos los campos")
-        } else if (textLogin.value == "JessicaM" && textPass.value == "1234") {
-            //rutina de envio
-            var principal = window.location.href = "principal.php";
-        } else {
-            alert("Usuario o contraseña incorrectos");
-        }
-
-    }
-</script>
+<script src="js/select_index.js"></script>
 
 </html>
