@@ -20,15 +20,15 @@
                             echo "<a href='javascript:void(0)' id='habilitar_te' name='habilitar_te'><i class='fas fa-check' style='color: darkslateblue;'></i></a>";
                         }      
                     echo "</td>";
-                    echo "<td align='center'>" . $dato["id_tipo_empleado"] . "</td>";
-                    echo "<td align='center'>" . $dato["puesto"] . "</td>";
-                    echo "<td align='center'>" . $dato["dias_trabajo"] . "</td>";
-                    echo "<td align='center'>" . $dato["sueldo_quincenal"] . "</td>";
+                    echo "<td align='center' NOWRAP>" . $dato["id_tipo_empleado"] . "</td>";
+                    echo "<td align='center' NOWRAP>" . $dato["puesto"] . "</td>";
+                    echo "<td align='center' NOWRAP>" . $dato["dias_trabajo"] . "</td>";
+                    echo "<td align='center' NOWRAP>" . $dato["sueldo_quincenal"] . "</td>";
                     if($dato["estatus"] == "1"){
-                        echo "<td align='center'>Vigente</td>"; 
+                        echo "<td align='center' NOWRAP>Vigente</td>"; 
                     }
                     if($dato["estatus"] == "0"){
-                        echo "<td align='center'>No vigente</td>"; 
+                        echo "<td align='center' NOWRAP>No vigente</td>"; 
                     }
                     echo "</tr>";
                 }

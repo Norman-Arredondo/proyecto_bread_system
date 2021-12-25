@@ -20,19 +20,19 @@
                             echo "<a href='javascript:void(0)' id='habilitar' name='habilitar'><i class='fas fa-check' style='color: darkslateblue;'></i></a>";
                         }      
                     echo "</td>";
-                    echo "<td align='center'>" . $dato["cve_pto"] . "</td>";
-                    echo "<td align='center'>" . $dato["pto_vta"] . "</td>";
-                    echo "<td align='center'>" . $dato["calle"] . "</td>";
-                    echo "<td align='center'>" . $dato["colonia"] . "</td>";
-                    echo "<td align='center'>" . $dato["no_exterior"] . "</td>";
-                    echo "<td align='center'>" . $dato["no_interior"] . "</td>";
-                    echo "<td align='center'>" . $dato["alcaldia"] . "</td>";
+                    echo "<td align='center' NOWRAP>" . $dato["cve_pto"] . "</td>";
+                    echo "<td align='center' NOWRAP>" . $dato["pto_vta"] . "</td>";
+                    echo "<td align='center' NOWRAP>" . $dato["calle"] . "</td>";
+                    echo "<td align='center' NOWRAP>" . $dato["colonia"] . "</td>";
+                    echo "<td align='center' NOWRAP>" . $dato["no_exterior"] . "</td>";
+                    echo "<td align='center' NOWRAP>" . $dato["no_interior"] . "</td>";
+                    echo "<td align='center' NOWRAP>" . $dato["alcaldia"] . "</td>";
                     echo "<td align='center'>" . $dato["codigo_postal"] . "</td>";
                     if($dato["estatus"] == "1"){
-                        echo "<td align='center'>Vigente</td>"; 
+                        echo "<td align='center' NOWRAP>Vigente</td>"; 
                     }
                     if($dato["estatus"] == "0"){
-                        echo "<td align='center'>No vigente</td>"; 
+                        echo "<td align='center' NOWRAP>No vigente</td>"; 
                     }
                     echo "</tr>";
             }
