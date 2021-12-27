@@ -22,7 +22,11 @@
                     echo "</td>";
                     echo "<td align='center' NOWRAP>" . $dato["rfc_empleado"] . "</td>";
                     echo "<td align='center' NOWRAP>" . $dato["puesto"] . "</td>";
-                    echo "<td align='center' NOWRAP style='-webkit-text-security: disc; '>" . $dato["contrasenia"] . "</td>";
+                        if($dato["contrasenia"] != "null"){
+                            echo "<td align='center' NOWRAP style='-webkit-text-security: disc; '>" . $dato["contrasenia"] ."</td>";
+                        } else {
+                            echo "<td align='center' NOWRAP> N/A </td>";
+                        }   
                     echo "<td align='center' NOWRAP>" . $dato["hora_entrada"] . "</td>";
                     echo "<td align='center' NOWRAP>" . $dato["hora_salida"] . "</td>";
                     echo "<td align='center' NOWRAP>" . $dato["nombre"] . "</td>";

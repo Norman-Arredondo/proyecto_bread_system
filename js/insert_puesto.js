@@ -1,11 +1,11 @@
 $(document).ready(function () {
         $("#puesto").submit(function (event) {
             event.preventDefault(); //almacena los datos sin refrescar el sitio
-            registrar();
+            registrar_puesto();
         });
     });
 
-    function registrar(){
+    function registrar_puesto(){
         var id_tipo_empleado = document.getElementById("id_tipo_empleado").value;
         var puesto = document.getElementById("te_puesto").value;
         var sueldo_quincenal = document.getElementById("sueldo_quincenal").value;

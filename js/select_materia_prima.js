@@ -1,11 +1,11 @@
 $(document).ready(function () {
     $("#almacen").submit(function (event) {
         event.preventDefault(); //almacena los datos sin refrescar el sitio
-        consultar();
+        consultar_mp();
     });
 });
 
-function consultar(){
+function consultar_mp(){
     var nombre_mp = document.getElementById("nombre_mp").value;
     let errores = [""];
     let datos = "";
