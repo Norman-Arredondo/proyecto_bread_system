@@ -3,8 +3,8 @@
 
     try{
         if($_POST){
-            $estatus = $_POST['estatus'];
             $id_tipo_empleado = $_POST['id_tipo_empleado'];
+            $estatus = $_POST['estatus'];
             
             try{
                 $query = "EXEC sp_CamEst_Tipo_Empleado '".$id_tipo_empleado."', ".$estatus.";";

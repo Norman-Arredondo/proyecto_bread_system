@@ -10,7 +10,7 @@
                 $resultado = $stm->fetchAll(PDO::FETCH_ASSOC);
 
                 foreach($resultado as $dato){
-                    echo "<option value=". $dato['id_tipo_empleado'] .">" . $dato['puesto']. "</option>";
+                    echo "<option value='". $dato['id_tipo_empleado'] ."'>" . $dato['puesto']. "</option>";
                 }
             } catch(Exception $error) {
                 

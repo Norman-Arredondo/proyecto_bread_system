@@ -20,27 +20,27 @@ $('#table_puesto tr').on('click', function(event){
 
 
 function cambiar(id_tipo_empleado, estatus){
-    let Datos_pto_vta;
+    let Datos_tipo_empleado;
 
     if(estatus == "Vigente"){
-        Datos_pto_vta = {
+        Datos_tipo_empleado = {
             id_tipo_empleado: id_tipo_empleado,
             estatus: 0
         };
     }
     if(estatus == "No vigente"){
-        Datos_pto_vta = {
+        Datos_tipo_empleado = {
             id_tipo_empleado: id_tipo_empleado,
             estatus: 1
         };
     }
 
-    console.log(Datos_pto_vta);
+    console.log(Datos_tipo_empleado);
 
     $.ajax({
         url: 'bd/estatus_puesto.php',
         type: 'POST',
-        data: Datos_pto_vta,//lo que se va a pasar 
+        data: Datos_tipo_empleado,//lo que se va a pasar 
     }).done(function(data) {
         console.log(data);
 
