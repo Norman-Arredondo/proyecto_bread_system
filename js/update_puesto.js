@@ -104,7 +104,7 @@ function modificar_info_puesto(){
             id_tipo_empleado: $('#m_id_tipo_empleado').val(),
             te_puesto: $('#m_te_puesto').val(),
             sueldo_quincenal: $('#m_sueldo_quincenal').val(),
-            dias_trabajo: dl,
+            dias_trabajo: dl
         };
 
         var dato = $("#modificar_puesto").serialize();
