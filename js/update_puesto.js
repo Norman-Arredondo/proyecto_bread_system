@@ -33,12 +33,12 @@ $('#table_puesto tr').on('click', function(event){
     $(document).ready(function () {
         $("#modificar_puesto").submit(function (event) {
             event.preventDefault(); //almacena los datos sin refrescar el sitio
-            modificar_info();
+            modificar_info_puesto();
         });
     });
 });
 
-function modificar_info(){
+function modificar_info_puesto(){
     var m_puesto = document.getElementById("m_te_puesto").value;
     var m_sueldo_quincenal = document.getElementById("m_sueldo_quincenal").value;
     var m_dl_do = document.getElementById("m_dl_Do").checked;
