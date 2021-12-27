@@ -253,14 +253,12 @@
                     <div class="row">
                         <div class="col-md-6 text-nowrap">
                             <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label class="form-label">Mostrar&nbsp;<select class="d-inline-block form-select form-select-sm">
-                                        <option value="10" selected="">Mostrar...</option>
-                                        <option value="25">Todos</option>
-                                        <option value="50">Vigentes</option>
-                                        <option value="50">No vigentes</option>
+                                    <option value="2" selected="">Todos</option>
+                                    <option value="1">Vigente</option>
+                                    <option value="0">No vigente</option>
                                     </select>&nbsp;</label>
                             </div>
                         </div>
-
                     </div>
                     <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                         <table class="table my-0" id="table_empleado" style="text-align: center;">
@@ -368,13 +366,115 @@
         </div>
     </div>
 
+    
+    <!-- Modal empleado-->
+    <div class="modal fade" id="editar_empleado" name="editar_empleado" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <!-- Modal content-->
+            <form id="modificar_empleado" action="" method="POST">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Editar empleado</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="close">&times;</button>
+                    </div>
+                    <div class="modal-body" style="overflow-y: auto;">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <label class="form-label" for="m_rfc_empleado"><strong>RFC:</strong></label><input class="form-control" type="text" id="m_rfc_empleado" name="m_rfc_empleado" readonly="readonly">
+                                </div>
+                                <div class="col">
+                                    <label class="form-label" for="m_e_puesto"><strong>Puesto:</strong></label>
+                                    <select class="form-select" id="m_e_puesto" name="m_e_puesto">
+                                        <option select>Puesto</option>
+                                        <?php
+                                            $tipo_empleado = new tipo_empleado();
+                                            $tipo_empleado->recuperar_puestos();
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <label class="form-label" for="m_contrasenia"><strong>Contraseña:</strong></label><input class="form-control" type="password" id="m_contrasenia" name="m_contrasenia">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label class="form-label" for="m_hora_entrada"><strong>Hora entrada:</strong></label><input class="form-control" type="time" id="m_hora_entrada" name="m_hora_entrada">
+                                </div>
+                                <div class="col">
+                                    <label class="form-label" for="m_hora_salida"><strong>Hora salida:</strong></label><input class="form-control" type="time" id="m_hora_salida" name="m_hora_salida">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label class="form-label" for="m_nombre"><strong>Nombre:</strong></label><input class="form-control" type="text" id="m_nombre" name="m_nombre">
+                                </div>
+                                <div class="col">
+                                    <label class="form-label" for="m_apellido_p"><strong>Apellido paterno:</strong></label><input class="form-control" type="text" id="m_apellido_p" name="m_apellido_p">
+                                </div>
+                                <div class="col">
+                                    <label class="form-label" for="m_apellido_m"><strong>Apellido materno:</strong></label><input class="form-control" type="text" id="m_apellido_m" name="m_apellido_m">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label class="form-label" for="m_telefono"><strong>Telefono:</strong></label><input class="form-control" type="number" id="m_telefono" name="m_telefono">
+                                </div>
+                                <div class="col">
+                                    <label class="form-label" for="m_edad"><strong>Edad:</strong></label><input class="form-control" type="number" id="m_edad" name="m_edad">
+                                </div>
+                                <div class="col">
+                                    <label class="form-label" for="m_sexo"><strong>Sexo:</strong></label>
+                                    <select class="form-select" id="m_sexo" name="m_sexo">
+                                        <option select>Sexo</option>
+                                        <option value="H">Hombre</option>
+                                        <option value="M">Mujer</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label class="form-label" for="m_calle"><strong>Calle:</strong></label><input class="form-control" type="text" id="m_calle" name="m_calle">
+                                </div>
+                                <div class="col">
+                                    <label class="form-label" for="m_colonia"><strong>Colonia:</strong></label><input class="form-control" type="text" id="m_colonia" name="m_colonia">
+                                </div>
+                                <div class="col">
+                                    <label class="form-label" for="m_alcaldia"><strong>Alcaldía:</strong></label><input class="form-control" type="text" id="m_alcaldia" name="m_alcaldia">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label class="form-label" for="m_no_interior"><strong>No. interior:</strong></label><input class="form-control" type="text" id="m_no_interior" name="m_no_interior">
+                                </div>
+                                <div class="col">
+                                    <label class="form-label" for="m_no_exterior"><strong>No. exterior:</strong></label><input class="form-control" type="text" id="m_no_exterior" name="m_no_exterior">
+                                </div>
+                                <div class="col">
+                                    <label class="form-label" for="m_codigo_postal"><strong>Código postal:</strong></label><input class="form-control" type="number" id="m_codigo_postal" name="m_codigo_postal">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-dark btn-sm" type="submit" style="float: right" id="btn_modificar_empleado" name="btn_modificar_empleado">Modificar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
 
     <?php
     include("templates/footer.php");
     ?>
 
+    <!-- Tipo empleado-->
     <script src="js/insert_puesto.js"></script>
     <script src="js/estatus_puesto.js"></script>
     <script src="js/update_puesto.js"></script>
+
+    <!-- Empleado-->
     <script src="js/insert_empleado.js"></script>
     <script src="js/estatus_empleado.js"></script>
+    <script src="js/update_empleado.js"></script>

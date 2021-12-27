@@ -125,3 +125,117 @@ BEGIN
 		sueldo_quincenal = @sueldo_quincenal
 		WHERE id_tipo_empleado = @id_tipo_empleado;
 END
+
+
+
+-- <<<<<<<<<<<<<<<<<<<< EMPLEADO <<<<<<<<<<<<<<<<<<<< 
+-- Registrar
+CREATE PROCEDURE sp_Registro_Empleado 
+	@rfc_empleado VARCHAR(13),
+	@id_tipo_empleado VARCHAR(10),
+	@contrasenia VARCHAR(60),
+	@hora_entrada TIME,
+	@hora_salida TIME,
+	@nombre VARCHAR(50),
+	@apellido_p VARCHAR(50),
+	@apellido_m VARCHAR(50),
+	@telefono VARCHAR(10),
+	@edad INT,
+	@sexo CHAR(1),
+	@calle VARCHAR(50),
+	@colonia VARCHAR(50),
+	@no_interior VARCHAR(15), /*Mz-int*/
+	@no_exterior VARCHAR(15), /*Lt-ext*/
+	@alcaldia VARCHAR(50),
+	@codigo_postal INT
+AS
+BEGIN
+	INSERT INTO Empleado VALUES(@rfc_empleado, @id_tipo_empleado, @contrasenia, @hora_entrada, @hora_salida, @nombre, 
+	@apellido_p, @apellido_m, @telefono, @edad, @sexo, @calle, @colonia, @no_interior, @no_exterior, @alcaldia, @codigo_postal, 1);
+END	
+
+-- Consultar
+CREATE PROCEDURE sp_Consulta_Empleado @estatus INT
+AS
+BEGIN
+	IF @estatus = 0 or @estatus = 1
+	BEGIN
+		SELECT  rfc_empleado, te.puesto, contrasenia, FORMAT(cast(hora_entrada as time), N'hh.mm') hora_entrada, FORMAT(cast(hora_salida as time), N'hh.mm') hora_salida,
+				nombre, apellido_p, apellido_m, telefono, edad, sexo,
+				calle, colonia, no_interior, no_exterior, alcaldia, codigo_postal, e.estatus
+			FROM Empleado e JOIN Tipo_Empleado te ON te.id_tipo_empleado = e.id_tipo_empleado
+			WHERE e.estatus = @estatus
+			ORDER BY rfc_empleado ASC;
+	END
+	ELSE
+	BEGIN
+		SELECT  rfc_empleado, te.puesto, contrasenia, FORMAT(cast(hora_entrada as time), N'hh\:mm') hora_entrada, FORMAT(cast(hora_salida as time), N'hh\:mm') hora_salida,
+				nombre, apellido_p, apellido_m, telefono, edad, sexo,
+				calle, colonia, no_interior, no_exterior, alcaldia, codigo_postal, e.estatus
+			FROM Empleado e JOIN Tipo_Empleado te ON te.id_tipo_empleado = e.id_tipo_empleado
+			ORDER BY rfc_empleado ASC;
+	END
+END	
+EXEC sp_Consulta_Empleado 2
+
+-- Cambiar estatus
+CREATE PROCEDURE sp_CamEst_Empleado @rfc_empleado VARCHAR(13), @estatus INT
+AS
+BEGIN
+	UPDATE Empleado SET estatus = @estatus 
+		WHERE rfc_empleado = @rfc_empleado;
+END	
+
+-- Modificar 
+CREATE PROCEDURE sp_Modificar_Empleado 
+	@rfc_empleado VARCHAR(13),
+	@id_tipo_empleado VARCHAR(10),
+	@contrasenia VARCHAR(60),
+	@hora_entrada TIME,
+	@hora_salida TIME,
+	@nombre VARCHAR(50),
+	@apellido_p VARCHAR(50),
+	@apellido_m VARCHAR(50),
+	@telefono VARCHAR(10),
+	@edad INT,
+	@sexo CHAR(1),
+	@calle VARCHAR(50),
+	@colonia VARCHAR(50),
+	@no_interior VARCHAR(15), /*Mz-int*/
+	@no_exterior VARCHAR(15), /*Lt-ext*/
+	@alcaldia VARCHAR(50),
+	@codigo_postal INT
+AS
+BEGIN
+	UPDATE Empleado set  
+		id_tipo_empleado = @id_tipo_empleado, 
+		@contrasenia = @contrasenia, 
+		hora_entrada = @hora_entrada, 
+		hora_salida = @hora_salida,
+		nombre = @nombre, 
+		apellido_p = @apellido_p, 
+		apellido_m = @apellido_m, 
+		telefono = @telefono, 
+		edad = @edad, 
+		sexo = @sexo, 
+		calle = @calle, 
+		colonia = @colonia, 
+		no_interior = @no_interior, 
+		no_exterior = @no_exterior, 
+		alcaldia = @alcaldia, 
+		codigo_postal = @codigo_postal
+		where rfc_empleado = @rfc_empleado;
+END	
+
+
+
+-- <<<<<<<<<<<<<<<<<<<< INDEX <<<<<<<<<<<<<<<<<<<< 
+-- Consultar
+CREATE PROCEDURE sp_Consulta_Contrasenia @rfc_empleado VARCHAR(13), @Contrasenia VARCHAR(60)
+AS
+BEGIN
+	SELECT  contrasenia, estatus
+			FROM Empleado
+			WHERE rfc_empleado = @rfc_empleado
+END	
+
