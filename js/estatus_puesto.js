@@ -12,14 +12,14 @@ $('#table_puesto tr').on('click', function(event){
             console.log(accion);
 
             if(accion == "habilitar_te" || accion == "inhabilitar_te"){
-                cambiar(id_tipo_empleado, estatus);
-            }
+                cambiar_puesto(id_tipo_empleado, estatus);
+            } 
         });
     });
 });
 
 
-function cambiar(id_tipo_empleado, estatus){
+function cambiar_puesto(id_tipo_empleado, estatus){
     let Datos_tipo_empleado;
 
     if(estatus == "Vigente"){
@@ -34,8 +34,6 @@ function cambiar(id_tipo_empleado, estatus){
             estatus: 1
         };
     }
-
-    console.log(Datos_tipo_empleado);
 
     $.ajax({
         url: 'bd/estatus_puesto.php',
