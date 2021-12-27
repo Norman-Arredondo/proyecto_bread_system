@@ -21,7 +21,7 @@
                         <form id="puesto" action="" method="POST">
                             <div class="row">
                                 <div class="col">
-                                    <div class="mb-3"><label class="form-label"><strong>ID Puesto</strong></label>
+                                    <div class="mb-3"><label class="form-label"><strong>ID Puesto (ITE-#####)</strong></label>
                                         <input class="form-control" type="text" id="id_tipo_empleado" name="id_tipo_empleado">
                                     </div>
                                 </div>
@@ -335,7 +335,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <label class="form-label" for="m_id_tipo_empleado"><strong>ID puesto:</strong></label><input class="form-control" type="text" id="m_id_tipo_empleado" name="m_id_tipo_empleado" readonly="readonly">
+                                    <label class="form-label" for="m_id_tipo_empleado"><strong>ID puesto (ITE-#####):</strong></label><input class="form-control" type="text" id="m_id_tipo_empleado" name="m_id_tipo_empleado" readonly="readonly">
                                 </div>
                                 <div class="col">
                                     <label class="form-label" for="m_te_puesto"><strong>Puesto:</strong></label><input class="form-control" type="text" id="m_te_puesto" name="m_te_puesto">

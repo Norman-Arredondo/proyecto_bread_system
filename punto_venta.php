@@ -17,7 +17,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <div class="mb-3"><label class="form-label" for="cve_pto"><strong>Clave</strong></label><input class="form-control" type="text" id="cve_pto" name="cve_pto"></div>
+                                <div class="mb-3"><label class="form-label" for="cve_pto"><strong>Clave (PTO-#####)</strong></label><input class="form-control" type="text" id="cve_pto" name="cve_pto"></div>
                             </div>
                             <div class="col">
                                 <div class="mb-3"><label class="form-label" for="pto_vta"><strong>Punto de venta</strong></label><input class="form-control" type="text" id="pto_vta" name="pto_vta"></div>
@@ -134,7 +134,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <label class="form-label" for="m_cve_pto"><strong>Clave:</strong></label><input class="form-control" type="text" id="m_cve_pto" name="m_cve_pto" readonly="readonly">
+                                    <label class="form-label" for="m_cve_pto"><strong>Clave (PTO-#####):</strong></label><input class="form-control" type="text" id="m_cve_pto" name="m_cve_pto" readonly="readonly">
                                 </div>
                                 <div class="col">
                                     <label class="form-label" for="m_pto_vta"><strong>Punto de venta:</strong></label><input class="form-control" type="text" id="m_pto_vta" name="m_pto_vta">
