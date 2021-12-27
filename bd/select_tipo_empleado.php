@@ -2,7 +2,7 @@
     class tipo_empleado{
         function recuperar_puestos(){ 
             include ("conexion_so.php");
-            $query = "select id_tipo_empleado, puesto from tipo_empleado";
+            $query = "EXEC sp_Combo_Empleado";
 
             try{
                 $stm = $conn_sis->prepare($query);
