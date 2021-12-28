@@ -12,7 +12,7 @@
                 foreach ($resultado_mp as $dato) {
                     echo "<tr>";
                         echo "<td align='center'>";
-                            echo "<a href='javascript:void(0)' id='editar_mp' name='editar_mp' data-toggle='modal' data-target='#editar_mp'><i class='far fa-edit' style='color: darkslateblue;'></i></a>"; 
+                            echo "<a href='javascript:void(0)' id='editar_mp' name='editar_mp' data-toggle='modal' data-target='#editar_materia'><i class='far fa-edit' style='color: darkslateblue;'></i></a>"; 
                             if($dato["estatus"] == "1"){
                                 echo "<a href='javascript:void(0)' id='inhabilitar_mp' name='inhabilitar_mp'><i class='fas fa-trash' style='color: darkslateblue;'></i></a>"; 
                             } 
@@ -32,7 +32,6 @@
                         }
                     echo "</tr>";
                 }
-                echo "\nEncontrado";
             } catch(Exception $error) {
                 echo "Error: " . $error;
             }
