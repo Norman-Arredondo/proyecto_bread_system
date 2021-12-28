@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="localhost.dwh_bs"
+  DTS:DTSID="{DA9E25C3-9557-4152-9F72-8A5D9F4458F3}"
+  DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=localhost;Initial Catalog=dwh_bs;Integrated Security=True;Application Name=SSIS-ETL Panaderia-{DA9E25C3-9557-4152-9F72-8A5D9F4458F3}localhost.dwh_bs;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
