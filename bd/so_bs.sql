@@ -48,7 +48,7 @@ CREATE TABLE materia_prima(
 
 CREATE TABLE compras_mp(
 	nombre_mp VARCHAR(50),
-	fecha_compra DATE,
+	fecha_compra DATE NOT NULL,
 	cantidad FLOAT,
 	unidad VARCHAR(10), 
 	contenido_neto FLOAT,
@@ -71,14 +71,15 @@ CREATE TABLE catalogo(
 
 CREATE TABLE recetario(
 	pan VARCHAR(50),
-	nombre_mp VARCHAR(50),
+	nombre_mp VARCHAR(50) NOT NULL,
 	cantidad FLOAT,
 	unidad VARCHAR(10),
 	estatus BIT NOT NULL,
-	CONSTRAINT so_recetario_pk PRIMARY KEY (pan),
+	CONSTRAINT so_recetario_pk PRIMARY KEY (pan, nombre_mp),
 	CONSTRAINT so_recetario_catalogo_fk FOREIGN KEY (pan) REFERENCES catalogo(pan),
 	CONSTRAINT so_recetario_materia_prima_fk FOREIGN KEY (nombre_mp) REFERENCES materia_prima(nombre_mp)
 );
+
 
 
 -- >>>>> MODULO PRODUCCIÓN <<<<<
