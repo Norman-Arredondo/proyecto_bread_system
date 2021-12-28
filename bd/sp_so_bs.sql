@@ -316,3 +316,19 @@ BEGIN
 			FROM materia_prima;
 END
 EXEC sp_Consulta_MP
+
+-- Cambiar estatus materia prima
+CREATE PROCEDURE sp_CamEst_MP @nombre_mp VARCHAR(50), @estatus INT
+AS
+BEGIN
+	UPDATE materia_prima SET estatus = @estatus 
+		WHERE nombre_mp = @nombre_mp;
+END	
+
+-- Cambiar estatus compras
+CREATE PROCEDURE sp_CamEst_CMP @nombre_mp VARCHAR(50),@fecha_compra DATE, @estatus INT
+AS
+BEGIN
+	UPDATE compras_mp SET estatus = @estatus 
+		WHERE nombre_mp = @nombre_mp AND fecha_compra = @fecha_compra;
+END	
