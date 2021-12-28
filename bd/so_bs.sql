@@ -55,7 +55,7 @@ CREATE TABLE compras_mp(
 	precio_unitario FLOAT,
 	precio_total FLOAT,
 	estatus BIT NOT NULL,
-	CONSTRAINT so_compras_mp_pk PRIMARY KEY (nombre_mp),
+	CONSTRAINT so_compras_mp_pk PRIMARY KEY (nombre_mp, fecha_compra),
 	CONSTRAINT so_mp_compras_mp_fk FOREIGN KEY (nombre_mp) REFERENCES materia_prima(nombre_mp)
 );
 
