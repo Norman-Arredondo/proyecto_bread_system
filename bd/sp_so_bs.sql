@@ -209,7 +209,7 @@ AS
 BEGIN
 	UPDATE Empleado set  
 		id_tipo_empleado = @id_tipo_empleado, 
-		@contrasenia = @contrasenia, 
+		contrasenia = @contrasenia, 
 		hora_entrada = @hora_entrada, 
 		hora_salida = @hora_salida,
 		nombre = @nombre, 
@@ -227,6 +227,13 @@ BEGIN
 		where rfc_empleado = @rfc_empleado;
 END	
 
+-- Combo Empleado
+CREATE PROCEDURE sp_Combo_Empleado
+AS
+BEGIN
+	SELECT id_tipo_empleado, puesto FROM tipo_empleado;
+END
+
 
 
 -- <<<<<<<<<<<<<<<<<<<< INDEX <<<<<<<<<<<<<<<<<<<< 
@@ -239,3 +246,73 @@ BEGIN
 			WHERE rfc_empleado = @rfc_empleado
 END	
 
+
+
+-- <<<<<<<<<<<<<<<<<<<< MATERIA PRIMA <<<<<<<<<<<<<<<<<<<< 
+-- Registrar
+CREATE PROCEDURE sp_Registro_MateriaPrima 
+	@nombre_mp VARCHAR(50),
+	@existencia INT, 
+	@stock_minimo INT,
+	@stock_maximo INT,
+	@fecha_compra DATE,
+	@cantidad FLOAT,
+	@unidad VARCHAR(10), 
+	@contenido_neto FLOAT,
+	@precio_unitario FLOAT,
+	@precio_total FLOAT
+AS
+BEGIN
+	IF EXISTS (SELECT existencia FROM materia_prima WHERE nombre_mp = @nombre_mp)
+	BEGIN
+		INSERT INTO compras_mp VALUES(@nombre_mp, @fecha_compra, @cantidad, @unidad, @contenido_neto, @precio_unitario, @precio_total, 1);
+		SET @existencia = (SELECT SUM(cantidad) FROM compras_mp WHERE nombre_mp = @nombre_mp);
+		UPDATE materia_prima SET existencia = @existencia WHERE nombre_mp = @nombre_mp;
+	END
+	ELSE
+	BEGIN
+		INSERT INTO materia_prima VALUES(@nombre_mp, @existencia, @stock_minimo, @stock_maximo, 1);
+		INSERT INTO compras_mp VALUES(@nombre_mp, @fecha_compra, @cantidad, @unidad, @contenido_neto, @precio_unitario, @precio_total, 1);
+	END
+END	
+
+-- Consultar Materia Prima
+CREATE PROCEDURE sp_Consulta_Materia_Prima @nombre_mp VARCHAR(50)
+AS
+BEGIN
+	IF EXISTS (SELECT existencia FROM materia_prima WHERE nombre_mp = @nombre_mp)
+	BEGIN
+		SELECT existencia, stock_minimo, stock_maximo, estatus
+			FROM materia_prima WHERE nombre_mp = @nombre_mp;
+	END
+	ELSE
+	BEGIN
+		PRINT 'Información no encontrada';
+	END
+END	
+EXEC sp_Consulta_Materia_Prima 'Aceite';
+
+-- Consultar Compras
+CREATE PROCEDURE sp_Consulta_Compras_MP @nombre_mp VARCHAR(50)
+AS
+BEGIN
+	IF EXISTS (SELECT existencia FROM materia_prima WHERE nombre_mp = @nombre_mp)
+	BEGIN
+		SELECT fecha_compra, cantidad, unidad, contenido_neto, precio_unitario, precio_total, estatus
+			FROM compras_mp WHERE nombre_mp = @nombre_mp;
+	END
+	ELSE
+	BEGIN
+		PRINT 'Información no encontrada';
+	END
+END	
+EXEC sp_Consulta_Compras_MP 'Aceite Bidon Bunge'
+
+-- Cosultar materia prima
+CREATE PROCEDURE sp_Consulta_MP
+AS
+BEGIN
+	SELECT nombre_mp, existencia, stock_minimo, stock_maximo, estatus
+			FROM materia_prima;
+END
+EXEC sp_Consulta_MP
