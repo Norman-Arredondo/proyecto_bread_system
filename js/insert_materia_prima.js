@@ -51,11 +51,10 @@ function registrar_materia_prima(){
             unidad: $('#unidad').val(),
             contenido_neto: $('#contenido_neto').val(),
             precio_unitario: $('#precio_unitario').val(),
-            precio_total: $('#precio_total').html()
+            precio_total: $('#precio_total').html() 
         };
-        
-        var dato = $("#materia_prima").serialize(); //serialize toma los datos que introdusca el usuario y los convierte en un arreglo
-        console.log(dato);
+
+        var dato = $("#materia_prima").serialize();
 
         $.ajax({
             url: 'bd/insert_materia_prima.php',
