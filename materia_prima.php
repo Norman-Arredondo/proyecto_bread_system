@@ -130,7 +130,7 @@ include("templates/menu.php");
         </div>
     </div>
 </div>
-</div>
+
 
 
 <?php
