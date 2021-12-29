@@ -25,7 +25,7 @@
         foreach ($resultado_compras as $compra) {
             echo "<tr>";
             echo "<td align='center'>";
-                echo "<a href='javascript:void(0)' id='editar_compras' name='editar_compras' data-toggle='modal' data-target='#editar_compras'><i class='far fa-edit' style='color: darkslateblue;'></i></a>"; 
+                echo "<a href='javascript:void(0)' id='editar_cmp' name='editar_cmp' data-toggle='modal' data-target='#editar_compra'><i class='far fa-edit' style='color: darkslateblue;'></i></a>"; 
                 if($compra["estatus"] == "1"){
                     echo "<a href='javascript:void(0)' id='inhabilitar_cmp' name='inhabilitar_cmp'><i class='fas fa-trash' style='color: darkslateblue;'></i></a>"; 
                 } 

@@ -100,14 +100,14 @@
         </div>
 
     <!-- Modal materia prima-->
-    <div class="modal fade" id="editar_materia" name="editar_materia" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal" id="editar_materia" name="editar_materia" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <!-- Modal content-->
             <form id="modificar_materia" action="" method="POST">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Editar Materia Prima</h4>
-                        <button type="button" class="close" data-dismiss="modal" id="cerrar" name="cerrar" aria-label="close">&times;</button>
+                        <h4 class="modal-title">Editar materia prima</h4>
+                        <button type="button" class="close" data-dismiss="modal" id="cerrar_mp" name="cerrar_mp" aria-label="close">&times;</button>
                     </div>
                     <div class="modal-body" style="overflow-y: auto;">
                         <div class="card-body">
@@ -174,6 +174,53 @@
         </div>
     </div>
 
+     <!-- Modal compras-->
+     <div class="modal" id="editar_compra" name="editar_compra" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <!-- Modal content-->
+            <form id="modificar_compra" action="" method="POST">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Editar compra</h4>
+                        <button type="button" class="close" data-dismiss="modal" id="cerrar_compra" name="cerrar_compra" aria-label="close">&times;</button>
+                    </div>
+                    <div class="modal-body" style="overflow-y: auto;">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <label class="form-label nom_mp" for="nombre_mp"><strong>Nombre del producto:</strong></label><input class="form-control" type="text" id="mc_nombre_mp" name="mc_nombre_mp" readonly="readonly">
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3"><label class="form-label" for="fecha_compra"><strong>Fecha compra:</strong></label><input class="form-control" type="date" id="mc_fecha_compra" name="mc_fecha_compra" readonly="readonly"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3"><label class="form-label" for="mc_cantidad"><strong>Cantidad:</strong></label><input class="form-control mc_monto" step="any" type="number" id="mc_cantidad" name="mc_cantidad" onkeyup="modificar_total();" min="1"></div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3"><label class="form-label" for="mc_unidad"><strong>Unidad:</strong></label><input class="form-control" type="text" id="mc_unidad" name="mc_unidad"></div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3"><label class="form-label" for="mc_contenido_neto"><strong>Contenido neto:</strong></label><input class="form-control" step="any" type="number" id="mc_contenido_neto" name="mc_contenido_neto" min="1"></div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3"><label class="form-label" for="mc_precio_unitario"><strong>Precio unitario:</strong></label><input class="form-control mc_monto" step="any" type="number" id="mc_precio_unitario" name="mc_precio_unitario" onkeyup="modificar_total();" min="1"></div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3"><label class="form-label" for="mc_precio_total"><strong>Precio total:</strong></label><label class="form-control" id="mc_precio_total" name="mc_precio_total" readonly="readonly"/></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-dark btn-sm" type="submit" style="float: right" id="btn_modificar_compra" name="btn_modificar_compra">Modificar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
 <?php
 include("templates/footer.php");
 ?>
@@ -191,6 +238,20 @@ include("templates/footer.php");
 	    });
         total = (change) ? total : 0;
     	document.getElementById('precio_total').innerHTML = total;
+    }
+
+    function modificar_total(){
+        var total = 1;
+        var change = false;
+
+		$(".mc_monto").each(function(){
+			if (!isNaN(parseFloat($(this).val()))){
+                change = true;
+				total *= parseFloat($(this).val());
+			}
+	    });
+        total = (change) ? total : 0;
+    	document.getElementById('mc_precio_total').innerHTML = total;
     }
 </script>
 

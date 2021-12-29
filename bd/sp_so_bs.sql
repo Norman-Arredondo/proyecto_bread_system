@@ -345,3 +345,26 @@ BEGIN
 		stock_maximo = @stock_maximo
 		WHERE nombre_mp = @nombre_mp;
 END	
+
+-- Modificar compra
+CREATE PROCEDURE sp_Modificar_CompraMP
+	@nombre_mp VARCHAR(50),
+	@fecha_compra DATE,
+	@cantidad FLOAT,
+	@unidad VARCHAR(10), 
+	@contenido_neto FLOAT,
+	@precio_unitario FLOAT,
+	@precio_total FLOAT
+AS
+BEGIN
+	UPDATE compras_mp SET  
+		cantidad = @cantidad,
+		unidad = @unidad,
+		contenido_neto = @contenido_neto,
+		precio_unitario = @precio_unitario,
+		precio_total = @precio_total
+		WHERE nombre_mp = @nombre_mp AND fecha_compra = @fecha_compra;
+	
+	UPDATE materia_prima SET existencia = (SELECT SUM(cantidad) FROM compras_mp WHERE nombre_mp = @nombre_mp)
+		WHERE nombre_mp = @nombre_mp;
+END	

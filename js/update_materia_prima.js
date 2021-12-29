@@ -21,9 +21,8 @@ $('#table_materia_prima tr').on('click', function(event){
             event.preventDefault();
             new consultar_compras();
         });
-        $('#cerrar').click(function() {
+        $('#cerrar_mp').click(function() {
             window.location.reload();
-            //$("#resultado_compras").empty();
         });
     });
 });
@@ -102,7 +101,12 @@ function acciones_cmp(){
         event.preventDefault();
         event.stopImmediatePropagation();
         c_nombre_mp = $('#m_nombre_mp').val();
-        fecha_compra = $(this).find('td:nth-child(2)').html();
+        c_fecha_compra = $(this).find('td:nth-child(2)').html();
+        c_cantidad = $(this).find('td:nth-child(3)').html();
+        c_unidad = $(this).find('td:nth-child(4)').html();
+        c_contenido_neto = $(this).find('td:nth-child(5)').html();
+        c_precio_unitario = $(this).find('td:nth-child(6)').html();
+        c_precio_total = $(this).find('td:nth-child(7)').html();
         c_estatus = $(this).find('td:nth-child(8)').html();
 
         $('#table_compras_mp a').on('click',function(){
@@ -111,9 +115,14 @@ function acciones_cmp(){
 
             if(accion == "habilitar_cmp" || accion == "inhabilitar_cmp"){
                 $("#resultado_compras").empty();
-                new estatus_cmp(c_nombre_mp, fecha_compra, c_estatus);
-            } else if(accion == "editar_compras"){
-
+                new estatus_cmp(c_nombre_mp, c_fecha_compra, c_estatus);
+            } else if(accion == "editar_cmp"){
+                console.clear();
+                $("#editar_materia").modal("toggle");
+                $('#editar_materia').modal("hide");
+                $("#editar_compra").modal("toggle");
+                $('#editar_compra').modal("show");
+                new ver_info_cmp(c_nombre_mp, c_fecha_compra, c_cantidad, c_unidad, c_contenido_neto, c_precio_unitario, c_precio_total);
             }
         });
     });
@@ -157,4 +166,102 @@ function estatus_cmp(e_nombre_mp, e_fecha_compra, e_estatus){
      }).fail(function() {
         console.log("Error al enviar");
     });
+}
+
+function ver_info_cmp(c_nombre_mp, c_fecha_compra, c_cantidad, c_unidad, c_contenido_neto, c_precio_unitario, c_precio_total){
+    var icm_nombre_mp = c_nombre_mp;
+    var icm_fecha_compra = c_fecha_compra;
+    var icm_cantidad = c_cantidad;
+    var icm_unidad = c_unidad;
+    var icm_contenido_neto = c_contenido_neto;
+    var icm_precio_unitario = c_precio_unitario;
+    var icm_precio_total = c_precio_total;
+    
+    $('#mc_nombre_mp').val(icm_nombre_mp);
+    $('#mc_fecha_compra').val(icm_fecha_compra);
+    $('#mc_cantidad').val(icm_cantidad);
+    $('#mc_unidad').val(icm_unidad);
+    $('#mc_contenido_neto').val(icm_contenido_neto);
+    $('#mc_precio_unitario').val(icm_precio_unitario);
+    $('#mc_precio_total').html(icm_precio_total);
+
+    $(document).ready(function () {
+        $("#btn_modificar_compra").on('click', function(event){
+            console.log('Ha hecho click sobre el boton modificar compra'); 
+            event.preventDefault();
+            new modificar_info_cmp();
+        });
+        $('#cerrar_compra').click(function() {
+            console.log('Ha hecho click sobre el boton cerrar modal compra'); 
+            $("#editar_compra").modal("toggle");
+            $('#editar_compra').modal("hide");
+            $("#editar_materia").modal("toggle");
+            $('#editar_materia').modal("show");
+            new consultar_compras();
+        });
+    });
+}
+
+function modificar_info_cmp(){
+    var icm_nombre_mp = document.getElementById("mc_nombre_mp").value;
+    var icm_fecha_compra = document.getElementById("mc_fecha_compra").value;
+    var icm_cantidad = document.getElementById("mc_cantidad").value;
+    var icm_unidad = document.getElementById("mc_unidad").value;
+    var icm_contenido_neto = document.getElementById("mc_contenido_neto").value;
+    var icm_precio_unitario = document.getElementById("mc_precio_unitario").value;
+    var icm_precio_total = document.getElementById("mc_precio_total").value;
+    
+    let errores = [""];
+    let datos = "";
+
+    if(icm_cantidad == ""){ 
+        errores.push('◾ Cantidad ');
+    }  
+    if(icm_unidad == ""){ 
+        errores.push('◾ Unidad ');
+    } 
+    if(icm_contenido_neto == ""){ 
+        errores.push('◾ Contenido neto ');
+    } 
+    if(icm_precio_unitario == ""){ 
+        errores.push('◾ Precio unitario ');
+    } 
+
+    if(errores.length>1){
+        errores.forEach(
+            function(elemento, indice, array) {
+                datos += errores[indice] + "\n";
+            }
+        );
+        alert("Ingrese los datos faltantes: " + datos);
+    } else{
+        const Datos_compra = {
+            nombre_mp: $('#mc_nombre_mp').val(),
+            fecha_compra: $('#mc_fecha_compra').val(),
+            cantidad: $('#mc_cantidad').val(),
+            unidad: $('#mc_unidad').val(),
+            contenido_neto: $('#mc_contenido_neto').val(),
+            precio_unitario: $('#mc_precio_unitario').val(),
+            precio_total: $('#mc_precio_total').html()
+        };
+
+        var dato = $("#materia_prima").serialize();
+
+        $.ajax({
+            url: 'bd/update_compra.php',
+            type: 'POST',
+            data: Datos_compra, //lo que se va a pasar    
+        }).done(function(data) {
+            console.log(data);
+
+            if(data === "Compra guardada"){
+                alert("Compra modificada con éxito :D");
+            }
+            if(data.indexOf("Error") > -1){
+                alert(data);
+            }
+         }).fail(function() {
+            console.log("Error al enviar");
+        });
+    }
 }
