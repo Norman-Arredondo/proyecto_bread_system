@@ -119,10 +119,8 @@ $(document).ready(function () {
                 console.log(data);
 
                 if(data === "Guardado"){
-                    $(document).ajaxSuccess(function(){
-                        alert("Empleado registrado con éxito :D");
-                        window.location.reload();
-                    });
+                    alert("Empleado registrado con éxito :D");
+                    window.location.reload();
                 }
                 if(data.indexOf("Error") > -1){
                     alert(data);

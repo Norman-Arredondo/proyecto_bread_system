@@ -156,15 +156,12 @@ function modificar_info_empleado(){
             console.log(data);
 
             if(data === "Modificado"){
-                $(document).ajaxSuccess(function(){
-                    alert("Empleado modificado con éxito :D");
-                    window.location.reload();
-                });
+                alert("Empleado modificado con éxito :D");
+                window.location.reload();
             }
             if(data.indexOf("Error") > -1){
                 alert(data);
             }
-
          }).fail(function() {
             console.log("Error al enviar");
         });

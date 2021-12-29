@@ -64,10 +64,8 @@ function registrar_materia_prima(){
             console.log(data);
 
             if(data === "Guardado"){
-                $(document).ajaxSuccess(function(){
-                    alert("Materia Prima registrada con éxito :D");
-                    window.location.reload();
-                });
+                alert("Materia Prima registrada con éxito :D");
+                window.location.reload();
             }
             if(data.indexOf("Error") > -1){
                 alert(data);

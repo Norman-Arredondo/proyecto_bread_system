@@ -90,10 +90,8 @@ function modificar_info(){
             console.log(data);
 
             if(data === "Modificado"){
-                $(document).ajaxSuccess(function(){
-                    alert("Punto de venta modificado con éxito :D");
-                    window.location.reload();
-                });
+                alert("Punto de venta modificado con éxito :D");
+                window.location.reload();
             }
             if(data.indexOf("Error") > -1){
                 alert(data);

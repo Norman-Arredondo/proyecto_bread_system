@@ -45,16 +45,12 @@ function cambiar(cve_pto, estatus){
         console.log(data);
 
         if(data === "Vigente"){
-            $(document).ajaxSuccess(function(){
-                alert("Punto de venta habilitado :D");
-                window.location.reload();
-            });
+            alert("Punto de venta habilitado :D");
+            window.location.reload();
         }
         if(data === "No vigente"){
-            $(document).ajaxSuccess(function(){
-                alert("Punto de venta inhabilitado :D");
-                window.location.reload();
-            });
+            alert("Punto de venta inhabilitado :D");
+            window.location.reload();
         }
 
      }).fail(function() {

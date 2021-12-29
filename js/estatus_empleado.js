@@ -44,16 +44,12 @@ function cambiar_empleado(rfc_empleado, estatus){
         console.log(data);
 
         if(data === "Vigente"){
-            $(document).ajaxSuccess(function(){
-                alert("Empleado habilitado :D");
-                window.location.reload();
-            });
+            alert("Empleado habilitado :D");
+            window.location.reload();
         }
         if(data === "No vigente"){
-            $(document).ajaxSuccess(function(){
-                alert("Empleado inhabilitado :D");
-                window.location.reload();
-            });
+            alert("Empleado inhabilitado :D");
+            window.location.reload();
         }
 
      }).fail(function() {

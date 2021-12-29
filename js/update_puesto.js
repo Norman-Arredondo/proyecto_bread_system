@@ -118,10 +118,8 @@ function modificar_info_puesto(){
             console.log(data);
 
             if(data === "Modificado"){
-                $(document).ajaxSuccess(function(){
-                    alert("Puesto modificado con éxito :D");
-                    window.location.reload();
-                });
+                alert("Puesto modificado con éxito :D");
+                window.location.reload();
             }
             if(data.indexOf("Error") > -1){
                 alert(data);

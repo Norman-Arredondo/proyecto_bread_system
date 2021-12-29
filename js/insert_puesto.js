@@ -91,10 +91,8 @@ $(document).ready(function () {
                 console.log(data);
 
                 if(data === "Guardado"){
-                    $(document).ajaxSuccess(function(){
-                        alert("Puesto registrado con éxito :D");
-                        window.location.reload();
-                    });
+                    alert("Puesto registrado con éxito :D");
+                    window.location.reload();
                 }
                 if(data.indexOf("Error") > -1){
                     alert(data);

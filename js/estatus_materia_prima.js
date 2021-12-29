@@ -43,16 +43,12 @@ function cambiar_mp(nombre_mp, estatus){
         console.log(data);
 
         if(data === "MP Vigente"){
-            $(document).ajaxSuccess(function(){
-                alert("Materia prima habilitada :D");
-                window.location.reload();
-            });
+            alert("Materia prima habilitada :D");
+            window.location.reload();
         }
         if(data === "MP No vigente"){
-            $(document).ajaxSuccess(function(){
-                alert("Materia prima inhabilitada :D");
-                window.location.reload();
-            });
+            alert("Materia prima inhabilitada :D");
+            window.location.reload();
         }
 
      }).fail(function() {

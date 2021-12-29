@@ -47,18 +47,13 @@ function consultar(){
                 });
             }
             if(data === "Acceso denegado"){
-                $(document).ajaxSuccess(function(){
-                    alert("Error al ingresar, verifique sus datos.");
-                    window.location.reload();
-                });
+                alert("Error al ingresar, verifique sus datos.");
+                window.location.reload();
             }
             if(data === "Usuario inhabilitado"){
-                $(document).ajaxSuccess(function(){
-                    alert("Usuario inhabilitado.");
-                    window.location.reload();
-                });
+                alert("Usuario inhabilitado.");
+                window.location.reload();
             }
-
          }).fail(function() {
             console.log("Error al enviar");
         });

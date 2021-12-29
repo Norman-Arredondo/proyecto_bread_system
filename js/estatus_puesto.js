@@ -43,16 +43,12 @@ function cambiar_puesto(id_tipo_empleado, estatus){
         console.log(data);
 
         if(data === "Vigente"){
-            $(document).ajaxSuccess(function(){
-                alert("Puesto habilitado :D");
-                window.location.reload();
-            });
+            alert("Puesto habilitado :D");
+            window.location.reload();
         }
         if(data === "No vigente"){
-            $(document).ajaxSuccess(function(){
-                alert("Puesto inhabilitado :D");
-                window.location.reload();
-            });
+            alert("Puesto inhabilitado :D");
+            window.location.reload();
         }
 
      }).fail(function() {

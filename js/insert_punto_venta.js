@@ -60,7 +60,7 @@
                 alcaldia: $('#alcaldia').val(),
                 codigo_postal: $('#codigo_postal').val()
             };
-            //console.log(Datos_pto_vta);
+            
             var dato = $("#punto_venta").serialize(); //serialize toma los datos que introdusca el usuario y los convierte en u arreglo
             console.log(dato);
             $.ajax({
@@ -71,14 +71,10 @@
                 console.log(data);
 
                 if(data === "Guardado"){
-                    $(document).ajaxSuccess(function(){
-                        alert("Punto de venta registrado con éxito :D");
-                        //$('#punto_venta').trigger("reset");
-                        window.location.reload();
-                    });
+                    alert("Punto de venta registrado con éxito :D");
+                    window.location.reload();
                 }
                 if(data.indexOf("Error") > -1){
-                //if(data == "Error al guardar") {
                     alert(data);
                 }
 
