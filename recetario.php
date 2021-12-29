@@ -104,32 +104,6 @@ include("templates/menu.php");
                 </div>
                 <form id="" action="" method="POST">
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col mt-2 mb-2">
-                            </div>
-                            <div class="col mt-2 mb-2 text-center">
-                                <label class="form-label"><strong>Pan</strong></label>
-                                <input class="form-control" type="text" id="nombre_mp" placeholder="" name="nombre_mp">
-                            </div>
-                            <div class="col mt-2 mb-2">
-                                <div class="col mt-3 mb-2">
-                                    <button class="btn btn-dark btn-sm" type="submit" style="float: left">Buscar</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="mb-3"><label class="form-label"><strong>Piezas</strong></label><input disabled class="form-control" type="number" id="stock_minimo" placeholder="" name="stock_minimo" min="1"></div>
-                            </div>
-                            <div class="col">
-                                <div class="mb-3"><label class="form-label"><strong>Estatus</strong></label><input disabled class="form-control" type="number" id="stock_maximo" placeholder="" name="stock_maximo" min="1"></div>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <strong><label class="form-label">Descripción</label></strong>
-                            <textarea disabled class="form-control" id="descripcion" name="descripcion" rows=""></textarea>
-                        </div>
-
                         <div class="card-body">
                             <div class="row align-items-center">
                                 <div class="col-md-6 text-nowrap ">
@@ -149,11 +123,11 @@ include("templates/menu.php");
                                 <table class="table my-0" id="table_pto_vta">
                                     <thead>
                                         <tr style="text-align: center;">
-                                            <th>No</th>
-                                            <th>Materia prima</th>
-                                            <th>Cantidad</th>
-                                            <th>Unidad</th>
-
+                                            <th>Acciones</th>
+                                            <th>Pan</th>
+                                            <th>Descripción</th>
+                                            <th>Piezas</th>
+                                            <th>Estatus</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -166,21 +140,16 @@ include("templates/menu.php");
                                     </tbody>
                                     <tfoot>
                                         <tr style="text-align: center;">
-                                            <td><strong>No</strong></td>
-                                            <td><strong>Materia prima</strong></td>
-                                            <td><strong>Cantidad</strong></td>
-                                            <td><strong>Unidad</strong></td>
+                                            <td><strong>Acciones</strong></td>
+                                            <td><strong>Pan</strong></td>
+                                            <td><strong>Descripción</strong></td>
+                                            <td><strong>Piezas</strong></td>
+                                            <td><strong>Estatus</strong></td>
                                         </tr>
                                     </tfoot>
                                 </table>
                             </div>
                         </div>
-
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button class="btn btn-dark btn-sm" type="submit">Cambiar estatus</button>
-                            <button class="btn btn-dark btn-sm" type="submit">Modificar</button>
-                        </div>
-                        <br>
                     </div>
                 </form>
             </div>
