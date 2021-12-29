@@ -19,7 +19,7 @@ include("templates/menu.php");
                                 <div class="mb-3"><label class="form-label" for=""><strong>Pan</strong></label><input class="form-control" type="text" id="pan" name="pan"></div>
                             </div>
                             <div class="col">
-                                <div class="mb-3"><label class="form-label" for=""><strong>Piezas</strong></label><input class="form-control" type="number" id="piezas" name="piezas"></div>
+                                <div class="mb-3"><label class="form-label" for=""><strong>Piezas</strong></label><input class="form-control" type="number" id="piezas" name="piezas" min="1"></div>
                             </div>
                         </div>
                         <div class="mb-3">
@@ -38,10 +38,10 @@ include("templates/menu.php");
                                 <div class="mb-3"><label class="form-label" for=""><strong>Materia prima</strong></label><input class="form-control" type="text" id="nombre_mp" name="nombre_mp"></div>
                             </div>
                             <div class="col">
-                                <div class="mb-3"><label class="form-label" for=""><strong>Cantidad</strong></label><input class="form-control" type="number" id="cantidad" name="cantidad"></div>
+                                <div class="mb-3"><label class="form-label" for=""><strong>Cantidad</strong></label><input class="form-control" type="number" id="cantidad" name="cantidad" min="1"></div>
                             </div>
                             <div class="col">
-                                <div class="mb-3"><label class="form-label" for=""><strong>Piezas</strong></label><input class="form-control" type="number" id="piezas" name="piezas"></div>
+                                <div class="mb-3"><label class="form-label" for=""><strong>Piezas</strong></label><input class="form-control" type="number" id="piezas" name="piezas" min="1"></div>
                             </div>
                             <div class="col text-center">
                                 <div class="mb-3"><label class="form-label" for=""><strong>Agregar</strong></label><button class="btn btn-outline-info form-control" type="submit"><strong>+</strong></button></div>
@@ -119,10 +119,10 @@ include("templates/menu.php");
                         </div>
                         <div class="row">
                             <div class="col">
-                                <div class="mb-3"><label class="form-label"><strong>Piezas</strong></label><input disabled class="form-control" type="number" id="stock_minimo" placeholder="" name="stock_minimo"></div>
+                                <div class="mb-3"><label class="form-label"><strong>Piezas</strong></label><input disabled class="form-control" type="number" id="stock_minimo" placeholder="" name="stock_minimo" min="1"></div>
                             </div>
                             <div class="col">
-                                <div class="mb-3"><label class="form-label"><strong>Estatus</strong></label><input disabled class="form-control" type="number" id="stock_maximo" placeholder="" name="stock_maximo"></div>
+                                <div class="mb-3"><label class="form-label"><strong>Estatus</strong></label><input disabled class="form-control" type="number" id="stock_maximo" placeholder="" name="stock_maximo" min="1"></div>
                             </div>
                         </div>
                         <div class="mb-3">
