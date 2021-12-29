@@ -1,12 +1,13 @@
 <?php
     include("templates/menu.php");
     include("bd/select_materia_prima.php");
+    error_reporting(E_ALL ^ E_NOTICE);
 ?>
 
 <div class="d-flex flex-column" id="content-wrapper">
-    <div class="mb-3" id="content">
+    <div id="content">
+        <br>
         <div class="container-fluid">
-            <br>
             <h3 class="text-dark mb-4">Materia prima</h3>
             <form id="materia_prima" action="" method="POST">
                 <div class="card shadow mb-3">
@@ -44,14 +45,13 @@
                 </div>
             </form>
            
-
             <div class="card shadow mb-3">
                 <div class="card-header py-3">
                     <p class="text-primary m-0 fw-bold">Almacén</p>
                 </div>
                 
                 <div class="card-body">
-                    <div class="row align-items-center">
+                    <div class="row">
                         <div class="col-md-6 text-nowrap ">
                             <form id="select_materia_prima" action="" method="POST">
                                 <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label class="form-label">Mostrar&nbsp;
@@ -91,13 +91,88 @@
                                     <td><strong>Stock mínimo</strong></td>
                                     <td><strong>Stock máximo</strong></td>
                                     <td><strong>Estatus</strong></td>
-                                    </tr>
-                                </tfoot>
-                            </table>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>    
+        </div>
+
+    <!-- Modal materia prima-->
+    <div class="modal fade" id="editar_materia" name="editar_materia" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <!-- Modal content-->
+            <form id="modificar_materia" action="" method="POST">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Editar Materia Prima</h4>
+                        <button type="button" class="close" data-dismiss="modal" id="cerrar" name="cerrar" aria-label="close">&times;</button>
+                    </div>
+                    <div class="modal-body" style="overflow-y: auto;">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <label class="form-label nom_mp" for="m_nombre_mp"><strong>Nombre del producto:</strong></label><input class="form-control" type="text" id="m_nombre_mp" name="m_nombre_mp" readonly="readonly">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label class="form-label" for="m_existencia"><strong>Existencia:</strong></label><input class="form-control" type="number" id="m_existencia" name="m_existencia" readonly="readonly">
+                                </div>
+                                <div class="col">
+                                    <label class="form-label" for="m_stock_minimo"><strong>Stock mínimo:</strong></label><input class="form-control" type="number" id="m_stock_minimo" name="m_stock_minimo">
+                                </div>
+                                <div class="col">
+                                    <label class="form-label" for="m_stock_maximo"><strong>Stock máximo:</strong></label><input class="form-control" type="number" id="m_stock_maximo" name="m_stock_maximo">
+                                </div>
+                                <div class="col">
+                                    <br>
+                                    <button class="btn btn-dark btn-sm" type="submit" style="float: right" id="btn_ver_compras" name="btn_ver_compras">Ver compras</button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label class="form-label"><strong>Compras:</strong></label>
+                                    <table class="table my-0" id="table_compras_mp">
+                                        <thead>
+                                            <tr style="text-align: center;">
+                                                <th>Acciones</th>
+                                                <th>Fecha</th>
+                                                <th>Cantidad</th>
+                                                <th>Unidad</th>
+                                                <th>Contenido neto</th>
+                                                <th>Precio unitario</th>
+                                                <th>Total</th>
+                                                <th>Estatus</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr style="text-align: center;">
+                                                <td><strong>Acciones</strong></td>
+                                                <td><strong>Fecha</strong></td>
+                                                <td><strong>Cantidad</strong></td>
+                                                <td><strong>Unidad</strong></td>
+                                                <td><strong>Contenido neto</strong></td>
+                                                <td><strong>Precio unitario</strong></td>
+                                                <td><strong>Total</strong></td>
+                                                <td><strong>Estatus</strong></td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>    
-            </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-dark btn-sm" type="submit" style="float: right" id="btn_modificar_materia" name="btn_modificar_materia">Modificar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 
 <?php
 include("templates/footer.php");
@@ -120,3 +195,5 @@ include("templates/footer.php");
 </script>
 
 <script src="js/insert_materia_prima.js"></script>
+<script src="js/estatus_materia_prima.js"></script>
+<script src="js/update_materia_prima.js"></script>

@@ -13,9 +13,9 @@
                 $stmt = null;
 
                 if($estatus == 1){
-                    echo "Vigente";
+                    echo "MP Vigente";
                 } else if($estatus == 0){
-                    echo "No vigente";
+                    echo "MP No vigente";
                 } 
             } catch(Exception $errorsql){
                 echo "Error: " . $errorsql;

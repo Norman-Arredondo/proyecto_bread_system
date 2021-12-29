@@ -332,3 +332,16 @@ BEGIN
 	UPDATE compras_mp SET estatus = @estatus 
 		WHERE nombre_mp = @nombre_mp AND fecha_compra = @fecha_compra;
 END	
+
+-- Modificar 
+CREATE PROCEDURE sp_Modificar_Materia_Prima
+	@nombre_mp VARCHAR(50),
+	@stock_minimo INT,
+	@stock_maximo INT
+AS
+BEGIN
+	UPDATE materia_prima SET  
+		stock_minimo = @stock_minimo,
+		stock_maximo = @stock_maximo
+		WHERE nombre_mp = @nombre_mp;
+END	
