@@ -30,7 +30,7 @@ include("templates/menu.php");
                                 <div class="mb-3"><label class="form-label" for=""><strong>Pan</strong></label><input class="form-control" type="text" id="pan" name="pan"></div>
                             </div>
                             <div class="col">
-                                <div class="mb-3"><label class="form-label" for=""><strong>Piezas</strong></label><input class="form-control" type="number" id="no_piezas" name="no_piezas"></div>
+                                <div class="mb-3"><label class="form-label" for=""><strong>Piezas</strong></label><input class="form-control" type="number" id="no_piezas" name="no_piezas" min="1"></div>
                             </div>
                             <div class="col justify-content-md-end">
                                 <br>
@@ -95,13 +95,13 @@ include("templates/menu.php");
                                 <div class="mb-3"><label class="form-label" for=""><strong>ID insumo</strong></label><input class="form-control" type="text" id="id_insumo" name="id_insumo"></div>
                             </div>
                             <div class="col">
-                                <div class="mb-3"><label class="form-label" for=""><strong>Importe gas</strong></label><input class="form-control" type="number" id="importe_gas" name="importe_gas"></div>
+                                <div class="mb-3"><label class="form-label" for=""><strong>Importe gas</strong></label><input class="form-control" type="number" id="importe_gas" name="importe_gas" min="1"></div>
                             </div>
                             <div class="col">
-                                <div class="mb-3"><label class="form-label" for=""><strong>Importe luz</strong></label><input class="form-control" type="number" id="importe_luz" name="importe_luz"></div>
+                                <div class="mb-3"><label class="form-label" for=""><strong>Importe luz</strong></label><input class="form-control" type="number" id="importe_luz" name="importe_luz" min="1"></div>
                             </div>
                             <div class="col">
-                                <div class="mb-3"><label class="form-label" for=""><strong>Importe gasolina</strong></label><input class="form-control" type="number" id="importe_gasolina" name="importe_gasolina"></div>
+                                <div class="mb-3"><label class="form-label" for=""><strong>Importe gasolina</strong></label><input class="form-control" type="number" id="importe_gasolina" name="importe_gasolina" min="0"></div>
                             </div>
                         </div>
                         <div class="row">
@@ -112,10 +112,10 @@ include("templates/menu.php");
                                 <div class="mb-3"><label class="form-label" for=""><strong>Total materia prima</strong></label><input disabled class="form-control" type="text" id="" name=""></div>
                             </div>
                             <div class="col">
-                                <div class="mb-3"><label class="form-label" for=""><strong>% de ganancia</strong></label><input disabled class="form-control" type="text" id="" name=""></div>
+                                <div class="mb-3"><label class="form-label" for=""><strong>% de ganancia</strong></label><input disabled class="form-control" type="number" id="" name=""></div>
                             </div>
                             <div class="col">
-                                <div class="mb-3"><label class="form-label" for=""><strong>Precio de venta</strong></label><input disabled class="form-control" type="text" id="" name=""></div>
+                                <div class="mb-3"><label class="form-label" for=""><strong>Precio de venta</strong></label><input disabled class="form-control" type="number" id="" name=""></div>
                             </div>
                         </div>
 
@@ -158,7 +158,7 @@ include("templates/menu.php");
                                 <div class="mb-3"><label class="form-label"><strong>Pan</strong></label><input disabled class="form-control" type="text" id="pan" name="pan"></div>
                             </div>
                             <div class="col">
-                                <div class="mb-3"><label class="form-label"><strong>Piezas</strong></label><input disabled class="form-control" type="number" id="piezas" name="piezas"></div>
+                                <div class="mb-3"><label class="form-label"><strong>Piezas</strong></label><input disabled class="form-control" type="number" id="piezas" name="piezas" min="1"></div>
                             </div>
                         </div>
 
