@@ -1,11 +1,11 @@
 $(document).ready(function () {
     $("#materia_prima").submit(function (event) {
         event.preventDefault(); //almacena los datos sin refrescar el sitio
-        registrar();
+        registrar_materia_prima();
     });
 });
 
-function registrar(){
+function registrar_materia_prima(){
     var nombre_mp = document.getElementById("nombre_mp").value;
     var fecha_compra = document.getElementById("fecha_compra").value;
     var cantidad = document.getElementById("cantidad").value;
@@ -51,26 +51,25 @@ function registrar(){
             unidad: $('#unidad').val(),
             contenido_neto: $('#contenido_neto').val(),
             precio_unitario: $('#precio_unitario').val(),
+            precio_total: $('#precio_total').html() 
         };
-        //console.log(Datos_pto_vta);
-        var dato = $("#materia_prima").serialize(); //serialize toma los datos que introdusca el usuario y los convierte en un arreglo
-        console.log(dato);
+
+        var dato = $("#materia_prima").serialize();
+
         $.ajax({
             url: 'bd/insert_materia_prima.php',
             type: 'POST',
-            data: Datos_maeria_prima, //lo que se va a pasar    
+            data: Datos_materia_prima, //lo que se va a pasar    
         }).done(function(data) {
             console.log(data);
 
             if(data === "Guardado"){
                 $(document).ajaxSuccess(function(){
                     alert("Materia Prima registrada con éxito :D");
-                    //$('#punto_venta').trigger("reset");
                     window.location.reload();
                 });
             }
             if(data.indexOf("Error") > -1){
-            //if(data == "Error al guardar") {
                 alert(data);
             }
 

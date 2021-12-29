@@ -78,7 +78,7 @@ $(document).ready(function () {
                 id_tipo_empleado: $('#id_tipo_empleado').val(),
                 te_puesto: $('#te_puesto').val(),
                 sueldo_quincenal: $('#sueldo_quincenal').val(),
-                dias_trabajo: dl,
+                dias_trabajo: dl
             };
             console.log(Datos_puesto);
             var dato = $("#puesto").serialize();
