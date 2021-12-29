@@ -25,16 +25,16 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <div class="mb-3"><label class="form-label" for="cantidad"><strong>Cantidad</strong></label><input class="form-control monto" step="any" type="number" id="cantidad" name="cantidad" onkeyup="calcular_total();"></div>
+                                <div class="mb-3"><label class="form-label" for="cantidad"><strong>Cantidad</strong></label><input class="form-control monto" step="any" type="number" id="cantidad" name="cantidad" onkeyup="calcular_total();" min="1"></div>
                             </div>
                             <div class="col">
                                 <div class="mb-3"><label class="form-label" for="unidad"><strong>Unidad</strong></label><input class="form-control" type="text" id="unidad" name="unidad"></div>
                             </div>
                             <div class="col">
-                                <div class="mb-3"><label class="form-label" for="contenido_neto"><strong>Contenido neto</strong></label><input class="form-control" step="any" type="number" id="contenido_neto" name="contenido_neto"></div>
+                                <div class="mb-3"><label class="form-label" for="contenido_neto"><strong>Contenido neto</strong></label><input class="form-control" step="any" type="number" id="contenido_neto" name="contenido_neto" min="1"></div>
                             </div>
                             <div class="col">
-                                <div class="mb-3"><label class="form-label" for="precio_unitario"><strong>Precio unitario</strong></label><input class="form-control monto" step="any" type="number" id="precio_unitario" name="precio_unitario" onkeyup="calcular_total();"></div>
+                                <div class="mb-3"><label class="form-label" for="precio_unitario"><strong>Precio unitario</strong></label><input class="form-control monto" step="any" type="number" id="precio_unitario" name="precio_unitario" onkeyup="calcular_total();" min="1"></div>
                             </div>
                             <div class="col">
                                 <div class="mb-3"><label class="form-label" for="pt"><strong>Precio total</strong></label><label class="form-control" id="precio_total" name="precio_total" readonly="readonly"/></div>
@@ -118,13 +118,13 @@
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <label class="form-label" for="m_existencia"><strong>Existencia:</strong></label><input class="form-control" type="number" id="m_existencia" name="m_existencia" readonly="readonly">
+                                    <label class="form-label" for="m_existencia"><strong>Existencia:</strong></label><input class="form-control" type="number" id="m_existencia" name="m_existencia" readonly="readonly" min="1">
                                 </div>
                                 <div class="col">
-                                    <label class="form-label" for="m_stock_minimo"><strong>Stock mínimo:</strong></label><input class="form-control" type="number" id="m_stock_minimo" name="m_stock_minimo">
+                                    <label class="form-label" for="m_stock_minimo"><strong>Stock mínimo:</strong></label><input class="form-control" type="number" id="m_stock_minimo" name="m_stock_minimo" min="1">
                                 </div>
                                 <div class="col">
-                                    <label class="form-label" for="m_stock_maximo"><strong>Stock máximo:</strong></label><input class="form-control" type="number" id="m_stock_maximo" name="m_stock_maximo">
+                                    <label class="form-label" for="m_stock_maximo"><strong>Stock máximo:</strong></label><input class="form-control" type="number" id="m_stock_maximo" name="m_stock_maximo" min="1">
                                 </div>
                                 <div class="col">
                                     <br>
