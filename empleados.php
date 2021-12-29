@@ -34,11 +34,11 @@
 
                                 <div class="col">
                                     <div class="mb-3"><label class="form-label" for="sueldo_quincenal"><strong>Sueldo quincenal</strong></label>
-                                        <input class="form-control" type="number" id="sueldo_quincenal" name="sueldo_quincenal">
+                                        <input class="form-control" type="number" id="sueldo_quincenal" name="sueldo_quincenal" min="1">
                                     </div>
                                 </div>
                             </div>
-                            <br>
+                            
                             <div class="row">
                                 <div class="col">
                                     <div class="mb-3"><label class="form-label" for="dias_trabajo"><strong>Dias de trabajo</strong></label></div>
@@ -67,7 +67,6 @@
                             </div>
                             <div class="card-body">
                                 <div class="mb-3"><button class="btn btn-dark btn-sm" type="submit" style="float: right" id="btn_guardar_tipo" name="btn_guardar_tipo">Guardar</button></div>
-                                <br>
                             </div>
                         </form>
                     </div>
@@ -92,7 +91,6 @@
                             </div>
                             </form>
                         </div>
-
                     </div>
                     <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                         <table class="table my-0" id="table_puesto">
@@ -186,13 +184,13 @@
 
                             <div class="col col col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 mt-2 mb-2">
                                 <div class="mb-3"><label class="form-label" for="telefono"><strong>Teléfono</strong></label>
-                                    <input class="form-control" type="number" id="telefono" name="telefono" maxlength="10">
+                                    <input class="form-control" type="number" id="telefono" name="telefono" maxlength="10" min="1">
                                 </div>
                             </div>
 
                             <div class="col col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 mt-2 mb-2">
                                 <div class="mb-3"><label class="form-label" for="edad"><strong>Edad</strong></label>
-                                    <input class="form-control" type="number" id="edad" name="edad">
+                                    <input class="form-control" type="number" id="edad" name="edad" min="1" max="100" maxlength="3">
                                 </div>
                             </div>
                             <div class="col col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 mt-2 mb-2">
@@ -234,7 +232,7 @@
 
                             <div class="col col col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 mt-2 mb-2">
                                 <div class="mb-3"><label class="form-label" for="codigo_postal"><strong>Codigo postal</strong></label>
-                                    <input class="form-control" type="number" id="codigo_postal" name="codigo_postal" maxlength="5">
+                                    <input class="form-control" type="number" id="codigo_postal" name="codigo_postal" maxlength="5" min="1">
                                 </div>
                             </div>
 
@@ -341,7 +339,7 @@
                                     <label class="form-label" for="m_te_puesto"><strong>Puesto:</strong></label><input class="form-control" type="text" id="m_te_puesto" name="m_te_puesto">
                                 </div>
                                 <div class="col">
-                                    <label class="form-label" for="m_sueldo_quincenal"><strong>Sueldo quincenal:</strong></label><input class="form-control" type="number" id="m_sueldo_quincenal" name="m_sueldo_quincenal">
+                                    <label class="form-label" for="m_sueldo_quincenal"><strong>Sueldo quincenal:</strong></label><input class="form-control" type="number" id="m_sueldo_quincenal" name="m_sueldo_quincenal" min="1">
                                 </div>
                                 <div class="row">
                                     <label class="form-label" for="m_dias_laborales"><strong>Días de trabajo:</strong></label>
@@ -418,10 +416,10 @@
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <label class="form-label" for="m_telefono"><strong>Telefono:</strong></label><input class="form-control" type="number" id="m_telefono" name="m_telefono">
+                                    <label class="form-label" for="m_telefono"><strong>Telefono:</strong></label><input class="form-control" type="number" id="m_telefono" name="m_telefono" maxlength="10" min="1">
                                 </div>
                                 <div class="col">
-                                    <label class="form-label" for="m_edad"><strong>Edad:</strong></label><input class="form-control" type="number" id="m_edad" name="m_edad">
+                                    <label class="form-label" for="m_edad"><strong>Edad:</strong></label><input class="form-control" type="number" id="m_edad" name="m_edad" min="1" max="100" maxlength="3">
                                 </div>
                                 <div class="col">
                                     <label class="form-label" for="m_sexo"><strong>Sexo:</strong></label>
@@ -451,7 +449,7 @@
                                     <label class="form-label" for="m_no_exterior"><strong>No. exterior:</strong></label><input class="form-control" type="text" id="m_no_exterior" name="m_no_exterior">
                                 </div>
                                 <div class="col">
-                                    <label class="form-label" for="m_codigo_postal"><strong>Código postal:</strong></label><input class="form-control" type="number" id="m_codigo_postal" name="m_codigo_postal">
+                                    <label class="form-label" for="m_codigo_postal"><strong>Código postal:</strong></label><input class="form-control" type="number" id="m_codigo_postal" name="m_codigo_postal"  maxlength="5" min="1" max="100">
                                 </div>
                             </div>
                         </div>
