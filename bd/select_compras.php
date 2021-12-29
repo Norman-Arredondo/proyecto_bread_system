@@ -33,12 +33,12 @@
                     echo "<a href='javascript:void(0)' id='habilitar_cmp' name='habilitar_cmp'><i class='fas fa-check' style='color: darkslateblue;'></i></a>";
                 }      
             echo "</td>";
-            echo "<td align='center' NOWRAP>" . $compra["fecha_compra"] . "</td>";
-            echo "<td align='center' NOWRAP>" . $compra["cantidad"] . "</td>";
+            echo "<td align='center' NOWRAP> " . $compra["fecha_compra"] . "</td>";
+            echo "<td align='center' NOWRAP>" . round($compra["cantidad"], 2) . "</td>";
             echo "<td align='center' NOWRAP>" . $compra["unidad"] . "</td>";
-            echo "<td align='center' NOWRAP>" . $compra["contenido_neto"] . "</td>";
-            echo "<td align='center' NOWRAP>" . $compra["precio_unitario"] . "</td>";
-            echo "<td align='center' NOWRAP>" . $compra["precio_total"] . "</td>";
+            echo "<td align='center' NOWRAP>" . round($compra["contenido_neto"], 2) . "</td>";
+            echo "<td align='center' NOWRAP>" . round($compra["precio_unitario"], 2) . "</td>";
+            echo "<td align='center' NOWRAP>" . round($compra["precio_total"]) . "</td>";
                 if($compra["estatus"] == "1"){
                     echo "<td align='center' NOWRAP>Vigente</td>"; 
                 }
@@ -46,7 +46,7 @@
                     echo "<td align='center' NOWRAP>No vigente</td>"; 
                 }
                 echo "</tr>";
-        }
+        } 
         echo " </tbody>
             <tfoot>
                 <tr style='text-align: center;'>
