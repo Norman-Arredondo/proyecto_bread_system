@@ -11,14 +11,15 @@ $('#table_materia_prima tr').on('click', function(event){
     $('#m_stock_maximo').val(stock_maximo);
 
     $(document).ready(function () {
-        $("#btn_modificar_materia").click(function(event){
+        $("#btn_modificar_materia").on('click', function(event){
             console.log('Ha hecho click sobre el boton modificar'); 
             event.preventDefault();
-            modificar_info_mp();
+            new modificar_info_mp();
         });
-        $("#btn_ver_compras").click(function(event){
+        $("#btn_ver_compras").on('click', function(event){
             console.log('Ha hecho click sobre el boton ver compras'); 
             event.preventDefault();
+            new consultar_compras();
         });
         $('#cerrar').click(function() {
             window.location.reload();
@@ -26,7 +27,6 @@ $('#table_materia_prima tr').on('click', function(event){
         });
     });
 });
-
 
 function modificar_info_mp(){
     var m_nombre_mp = document.getElementById("m_nombre_mp").value;
@@ -69,16 +69,92 @@ function modificar_info_mp(){
             console.log(data);
 
             if(data === "MP Guardada"){
-                $(document).ajaxSuccess(function(){
-                    alert("Materia Prima modificada con éxito :D");
-                });
+                alert("Materia Prima modificada con éxito :D");
             }
             if(data.indexOf("Error") > -1){
                 alert(data);
             }
-
          }).fail(function() {
             console.log("Error al enviar");
         });
     }
+}
+
+function consultar_compras(){
+    var nombre_cmp = document.getElementById("m_nombre_mp").value;
+    const Datos_compra = {
+        nombre_mp: nombre_cmp
+    };
+    $.ajax({
+        url: 'bd/select_compras.php',
+        type: 'POST',
+        data: Datos_compra, //lo que se va a pasar    
+    }).done(function(data) {
+        $("#table_compras_mp").html(data);
+        new acciones_cmp();
+     }).fail(function() {
+        console.log("Error al enviar");
+    });
+}
+
+function acciones_cmp(){
+    $('#table_compras_mp tr').on('click', function(event){
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        c_nombre_mp = $('#m_nombre_mp').val();
+        fecha_compra = $(this).find('td:nth-child(2)').html();
+        c_estatus = $(this).find('td:nth-child(8)').html();
+
+        $('#table_compras_mp a').on('click',function(){
+            var accion = $(this).attr('id');
+            console.log(accion);
+
+            if(accion == "habilitar_cmp" || accion == "inhabilitar_cmp"){
+                $("#resultado_compras").empty();
+                new estatus_cmp(c_nombre_mp, fecha_compra, c_estatus);
+            } else if(accion == "editar_compras"){
+
+            }
+        });
+    });
+}
+
+function estatus_cmp(e_nombre_mp, e_fecha_compra, e_estatus){
+    var ecmp_nombre_mp = e_nombre_mp;
+    var ecmp_fecha_compra = e_fecha_compra;
+    var ecmp_estatus = e_estatus;
+    let Datos_compra;
+
+    if(ecmp_estatus == "Vigente"){
+        Datos_compra = {
+            nombre_mp: ecmp_nombre_mp,
+            fecha_compra: ecmp_fecha_compra,
+            estatus: 0
+        };
+    }
+    if(ecmp_estatus == "No vigente"){
+        Datos_compra = {
+            nombre_mp: ecmp_nombre_mp,
+            fecha_compra: ecmp_fecha_compra,
+            estatus: 1
+        };
+    }
+
+    $.ajax({
+        url: 'bd/estatus_compra.php',
+        type: 'POST',
+        data: Datos_compra,
+    }).done(function(data) {
+        if(data === "CMP Vigente"){
+            alert("Compra habilitada :D");
+            consultar_compras();
+        } else if(data === "CMP No vigente"){
+            alert("Compra inhabilitada :D");
+            consultar_compras();
+        } else {
+            data = null;
+        }
+     }).fail(function() {
+        console.log("Error al enviar");
+    });
 }
