@@ -8,7 +8,7 @@ include("templates/menu.php");
             <br>
 
             <!--Título-->
-            <h3 class="text-dark mb-4">Bienvenido.</h3>
+            <h3 class="text-dark mb-4">Bienvenido</h3>
 
             <!--Imagen con filosoía-->
             <div>
