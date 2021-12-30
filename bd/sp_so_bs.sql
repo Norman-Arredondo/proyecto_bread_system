@@ -385,7 +385,7 @@ END
 -- <<<<<<<<<<<<<<<<<<<< RECETARIO <<<<<<<<<<<<<<<<<<<< 
 -- Registrar pan
 CREATE PROCEDURE sp_Registro_pan
-	@pan VARCHAR(10),
+	@pan VARCHAR(50),
 	@descripcion VARCHAR(80),
 	@piezas INT
 AS
@@ -395,7 +395,7 @@ END
 
 -- Registrar receta
 CREATE PROCEDURE sp_Registro_receta
-	@pan VARCHAR(10),
+	@pan VARCHAR(50),
 	@nombre_mp VARCHAR(50),
 	@cantidad FLOAT,
 	@unidad VARCHAR(10)
@@ -420,4 +420,12 @@ BEGIN
 			FROM Catalogo
 			ORDER BY pan;
 	END
+END	
+
+-- Cambiar estatus catálogo
+CREATE PROCEDURE sp_CamEst_Catalogo @pan VARCHAR(50), @estatus INT
+AS
+BEGIN
+	UPDATE catalogo SET estatus = @estatus 
+		WHERE pan = @pan;
 END	
