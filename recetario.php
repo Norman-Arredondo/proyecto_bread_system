@@ -208,4 +208,4 @@
     </script>
 
     <script src="js/insert_recetario.js"></script>
-    <script src="js/estatus_receta.js"></script>
+    <script src="js/estatus_catalogo.js"></script>
