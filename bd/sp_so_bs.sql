@@ -34,7 +34,6 @@ BEGIN
 			ORDER BY cve_pto ASC;
 	END
 END	
-EXEC sp_Consulta_ptovta 2
 
 -- Cambiar estatus
 CREATE PROCEDURE sp_CamEst_ptovta @cve_pto VARCHAR(10), @estatus INT
@@ -43,7 +42,6 @@ BEGIN
 	UPDATE puntos_venta SET estatus = @estatus 
 		WHERE cve_pto = @cve_pto;
 END	
-EXEC sp_CamEst_ptovta 'PTO-00001', 1
 
 -- Modificar
 CREATE PROCEDURE sp_Modificar_ptovta
@@ -67,6 +65,8 @@ BEGIN
 		codigo_postal = @codigo_postal
 		WHERE cve_pto = @cve_pto;
 END
+
+
 
 
 
@@ -100,7 +100,6 @@ BEGIN
 			ORDER BY id_tipo_empleado ASC;
 	END
 END	
-EXEC sp_Consulta_Tipo_Empleado 2
 
 -- Cambiar estatus
 CREATE PROCEDURE sp_CamEst_Tipo_Empleado @id_tipo_empleado VARCHAR(10), @estatus INT
@@ -125,6 +124,8 @@ BEGIN
 		sueldo_quincenal = @sueldo_quincenal
 		WHERE id_tipo_empleado = @id_tipo_empleado;
 END
+
+
 
 
 
@@ -176,7 +177,6 @@ BEGIN
 			ORDER BY rfc_empleado ASC;
 	END
 END	
-EXEC sp_Consulta_Empleado 2
 
 -- Cambiar estatus
 CREATE PROCEDURE sp_CamEst_Empleado @rfc_empleado VARCHAR(13), @estatus INT
@@ -227,12 +227,14 @@ BEGIN
 		where rfc_empleado = @rfc_empleado;
 END	
 
--- Combo Empleado
+-- Combo TIPO EMPLEADO (Vista empleado)
 CREATE PROCEDURE sp_Combo_Empleado
 AS
 BEGIN
 	SELECT id_tipo_empleado, puesto FROM tipo_empleado;
 END
+
+
 
 
 
@@ -244,7 +246,9 @@ BEGIN
 	SELECT  contrasenia, estatus
 			FROM Empleado
 			WHERE rfc_empleado = @rfc_empleado
-END	
+END
+
+
 
 
 
@@ -276,7 +280,23 @@ BEGIN
 	END
 END	
 
--- Consultar Materia Prima
+-- Cosultar Materia Prima (tabla principal)
+CREATE PROCEDURE sp_Consulta_MP @estatus INT
+AS
+BEGIN
+	IF @estatus = 0 or @estatus = 1
+	BEGIN
+		SELECT nombre_mp, existencia, stock_minimo, stock_maximo, estatus
+				FROM materia_prima WHERE estatus = @estatus;
+	END
+	ELSE
+	BEGIN
+		SELECT nombre_mp, existencia, stock_minimo, stock_maximo, estatus
+				FROM materia_prima;
+	END
+END
+
+-- Consultar Materia Prima (modal editar materia prima)
 CREATE PROCEDURE sp_Consulta_Materia_Prima @nombre_mp VARCHAR(50)
 AS
 BEGIN
@@ -290,9 +310,8 @@ BEGIN
 		PRINT 'Información no encontrada';
 	END
 END	
-EXEC sp_Consulta_Materia_Prima 'Aceite';
 
--- Consultar Compras
+-- Consultar Compras (Modal)
 CREATE PROCEDURE sp_Consulta_Compras_MP @nombre_mp VARCHAR(50)
 AS
 BEGIN
@@ -306,16 +325,6 @@ BEGIN
 		PRINT 'Información no encontrada';
 	END
 END	
-EXEC sp_Consulta_Compras_MP 'Aceite Bidon Bunge'
-
--- Cosultar materia prima
-CREATE PROCEDURE sp_Consulta_MP
-AS
-BEGIN
-	SELECT nombre_mp, existencia, stock_minimo, stock_maximo, estatus
-			FROM materia_prima;
-END
-EXEC sp_Consulta_MP
 
 -- Cambiar estatus materia prima
 CREATE PROCEDURE sp_CamEst_MP @nombre_mp VARCHAR(50), @estatus INT
@@ -331,7 +340,7 @@ AS
 BEGIN
 	UPDATE compras_mp SET estatus = @estatus 
 		WHERE nombre_mp = @nombre_mp AND fecha_compra = @fecha_compra;
-END	
+END
 
 -- Modificar 
 CREATE PROCEDURE sp_Modificar_Materia_Prima
@@ -367,4 +376,48 @@ BEGIN
 	
 	UPDATE materia_prima SET existencia = (SELECT SUM(cantidad) FROM compras_mp WHERE nombre_mp = @nombre_mp)
 		WHERE nombre_mp = @nombre_mp;
+END	
+
+
+
+
+
+-- <<<<<<<<<<<<<<<<<<<< RECETARIO <<<<<<<<<<<<<<<<<<<< 
+-- Registrar pan
+CREATE PROCEDURE sp_Registro_pan
+	@pan VARCHAR(10),
+	@descripcion VARCHAR(80),
+	@piezas INT
+AS
+BEGIN
+	INSERT INTO catalogo VALUES(@pan, @descripcion, @piezas, 1);
+END	
+
+-- Registrar receta
+CREATE PROCEDURE sp_Registro_receta
+	@pan VARCHAR(10),
+	@nombre_mp VARCHAR(50),
+	@cantidad FLOAT,
+	@unidad VARCHAR(10)
+AS
+BEGIN
+	INSERT INTO recetario VALUES(@pan, @nombre_mp, @cantidad, @unidad, 1);
+END
+
+-- Consultar pan
+CREATE PROCEDURE sp_Consulta_pan @estatus INT
+AS
+BEGIN
+	IF @estatus = 0 or @estatus = 1
+	BEGIN
+		SELECT pan, descripcion, piezas, estatus
+			FROM Catalogo WHERE estatus = @estatus
+			ORDER BY pan;
+	END
+	ELSE
+	BEGIN
+		SELECT pan, descripcion, piezas, estatus
+			FROM Catalogo
+			ORDER BY pan;
+	END
 END	

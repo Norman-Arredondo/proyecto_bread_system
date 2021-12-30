@@ -2,7 +2,7 @@
     class materia_prima{
         function recuperar_materia_prima(){ 
             include ("conexion_so.php");           
-            $query_mp = "EXEC sp_Consulta_MP;";
+            $query_mp = "EXEC sp_Consulta_MP 2;";
 
             try{
                 $stm = $conn_sis->prepare($query_mp);
