@@ -449,7 +449,7 @@
                                     <label class="form-label" for="m_no_exterior"><strong>No. exterior:</strong></label><input class="form-control" type="text" id="m_no_exterior" name="m_no_exterior">
                                 </div>
                                 <div class="col">
-                                    <label class="form-label" for="m_codigo_postal"><strong>Código postal:</strong></label><input class="form-control" type="number" id="m_codigo_postal" name="m_codigo_postal"  maxlength="5" min="1" max="100">
+                                    <label class="form-label" for="m_codigo_postal"><strong>Código postal:</strong></label><input class="form-control" type="number" id="m_codigo_postal" name="m_codigo_postal"  maxlength="5" min="1">
                                 </div>
                             </div>
                         </div>
