@@ -47,8 +47,6 @@ select * from Empleado;
 
 
 -- >>> insert materia prima y compras <<<
--- nombre_mp, existencia, stock_minimo, stock_maximo, fecha_compra, 
--- cantidad, unidad, contenido_neto, precio_unitario, precio_total
 EXEC sp_Registro_MateriaPrima 'Azucar', 10, 5, 30, '2021-11-01', 10, 'Kg', 10, 27.04,  270.4;
 EXEC sp_Registro_MateriaPrima 'Azucar Glass', 10, 5, 15,'2021-11-01', 1, 'kg', 5, 24.40, 122;
 EXEC sp_Registro_MateriaPrima 'Anis', 5, 5, 10, '2021-11-01', 5, 'kg', 1, 101, 505;
@@ -96,3 +94,48 @@ EXEC sp_Registro_MateriaPrima 'Requeson', 5, 5, 10, '2021-11-01', 10, 'Kg', 1, 7
 EXEC sp_Registro_MateriaPrima 'Leche condensada', 5, 5, 10, '2021-11-01', 10, 'Kg', 1, 49, 490;
 EXEC sp_Registro_MateriaPrima 'Nutri Leche', 12, 12, 36, '2021-11-29', 10, 'Lt', 1, 14, 140;
 EXEC sp_Registro_MateriaPrima 'Carbonato', 2, 2, 5, '2021-11-01', 10, 'Kg', 1, 87, 870;
+
+
+-- >>> insert catalogo <<<
+EXEC sp_Registro_pan 'Bisquet', 'Pan dulce', 30;
+EXEC sp_Registro_pan 'Cocol', 'Pan sencillo', 72;
+EXEC sp_Registro_pan 'De manteca', 'Pan sencillo', 39;
+EXEC sp_Registro_pan 'Dona', 'Pan dulce', 40;
+EXEC sp_Registro_pan 'Polvoron amarillo', 'Pan sencillo', 36;
+EXEC sp_Registro_pan 'Multi', 'Pan dulce', 30;
+
+
+-- >>> insert recetario <<<
+EXEC sp_Registro_receta 'Bisquet', 'Harina Selecta', 1, 'kg';
+EXEC sp_Registro_receta 'Bisquet', 'Azucar', 200, 'g';
+EXEC sp_Registro_receta 'Bisquet', 'Levadura', 50, 'g';
+EXEC sp_Registro_receta 'Bisquet', 'Sal Fina', 20, 'g';
+EXEC sp_Registro_receta 'Bisquet', 'Bolsa Vites (ROYAL)', 20, 'g';
+EXEC sp_Registro_receta 'Bisquet', 'Manteca Tolteca (GRASA)', 150, 'g';
+EXEC sp_Registro_receta 'Bisquet', 'Mantequilla', 150, 'g';
+EXEC sp_Registro_receta 'Bisquet', 'Huevo', 4, 'Pieza';
+EXEC sp_Registro_receta 'Cocol', 'Harina Selecta', 1.5, 'kg';
+EXEC sp_Registro_receta 'Cocol', 'Azucar', 500, 'g';
+EXEC sp_Registro_receta 'Cocol', 'Granilla colores Granimex', 400, 'g';
+EXEC sp_Registro_receta 'Cocol', 'Anis', 100, 'g';
+EXEC sp_Registro_receta 'De manteca', 'Harina Selecta', 2, 'kg';
+EXEC sp_Registro_receta 'De manteca', 'Azucar', 500, 'g';
+EXEC sp_Registro_receta 'De manteca', 'Levadura', 50, 'g';
+EXEC sp_Registro_receta 'De manteca', 'Sal Fina', 30, 'g';
+EXEC sp_Registro_receta 'De manteca', 'Manteca Tolteca (GRASA)', 800, 'g';
+EXEC sp_Registro_receta 'De manteca', 'Aceite Bidon Bunge', 500, 'ml';
+EXEC sp_Registro_receta 'Dona', 'Harina Selecta', 2, 'kg';
+EXEC sp_Registro_receta 'Dona', 'Azucar', 300, 'g';
+EXEC sp_Registro_receta 'Dona', 'Levadura', 100, 'g';
+EXEC sp_Registro_receta 'Dona', 'Manteca Tolteca (GRASA)', 200, 'g';
+EXEC sp_Registro_receta 'Dona', 'Aceite Bidon Bunge', 1, 'lt';
+EXEC sp_Registro_receta 'Polvoron amarillo', 'Harina Selecta', 1.5, 'kg';
+EXEC sp_Registro_receta 'Polvoron amarillo', 'Azucar', 600, 'g';
+EXEC sp_Registro_receta 'Polvoron amarillo', 'Manteca Tolteca (GRASA)', 600, 'g';
+EXEC sp_Registro_receta 'Polvoron amarillo', 'Bolsa Vites (ROYAL)', 30, 'g';
+EXEC sp_Registro_receta 'Polvoron amarillo', 'Carbonato', 15, 'g';
+EXEC sp_Registro_receta 'Multi', 'Harina Selecta', 1, 'kg';
+EXEC sp_Registro_receta 'Multi', 'Azucar', 700, 'g';
+EXEC sp_Registro_receta 'Multi', 'Bolsa Vites (ROYAL)', 30, 'g';
+EXEC sp_Registro_receta 'Multi', 'Aceite Bidon Bunge', 600, 'ml';
+EXEC sp_Registro_receta 'Multi', 'Huevo', 600, 'ml';
