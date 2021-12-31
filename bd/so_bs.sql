@@ -39,9 +39,9 @@ CREATE TABLE Empleado(
 -- >>>>> MODULO MATERIA PRIMA <<<<<
 CREATE TABLE materia_prima(
 	nombre_mp VARCHAR(50),
-	existencia INT,
-	stock_minimo INT,
-	stock_maximo INT,
+	existencia FLOAT, /*en unidades minimas*/
+	stock_minimo FLOAT, /*de la existencia*/
+	stock_maximo FLOAT, /*de la existencia*/
 	estatus BIT NOT NULL,
 	CONSTRAINT so_materia_prima_pk PRIMARY KEY (nombre_mp)
 );
@@ -49,10 +49,8 @@ CREATE TABLE materia_prima(
 CREATE TABLE compras_mp(
 	nombre_mp VARCHAR(50),
 	fecha_compra DATE NOT NULL,
-	cantidad FLOAT,
-	unidad VARCHAR(10), 
-	contenido_neto FLOAT,
-	precio_unitario FLOAT,
+	cantidad FLOAT, /*Ejemplo: 950*/
+	unidad VARCHAR(10), /*Ejemplo: g*/
 	precio_total FLOAT,
 	estatus BIT NOT NULL,
 	CONSTRAINT so_compras_mp_pk PRIMARY KEY (nombre_mp, fecha_compra),
