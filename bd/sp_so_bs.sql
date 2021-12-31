@@ -479,3 +479,51 @@ BEGIN
 		INSERT INTO recetario VALUES (@pan, @nombre_mp, @cantidad, @unidad, 1);
 	END
 END	
+
+
+
+
+
+-- <<<<<<<<<<<<<<<<<<<< PRODUCCIÓN <<<<<<<<<<<<<<<<<<<< 
+-- Registrar
+-- Calcular porciones
+BEGIN TRANSACTION
+CREATE PROCEDURE sp_Calcular_Porciones @pan VARCHAR(50), @porciones INT
+AS
+BEGIN
+	DECLARE @ingrediente VARCHAR(50),
+			@cantidad INT,
+			@unidad VARCHAR(10),
+			-- variables auxilliares
+			@porciones_base INT,
+			@registros INT,
+			@cont_mp INT,
+			@cont_cant INT;
+			
+	SET @porciones_base = (SELECT piezas FROM catalogo WHERE pan = @pan);
+	SET @registros = (SELECT COUNT(nombre_mp)FROM recetario WHERE pan = @pan);
+	SET @cont_mp = 1;
+	SET @cont_cant = 1;
+
+	CREATE TABLE #TempTable(ingrediente VARCHAR(50), cantidad INT, unidad VARCHAR(10));
+
+	DECLARE micursor CURSOR FOR SELECT nombre_mp FROM recetario WHERE pan = @pan
+	OPEN micursor
+		FETCH NEXT FROM micursor INTO @ingrediente
+		WHILE @@FETCH_STATUS = 0
+		BEGIN
+			SET @cantidad = (((SELECT cantidad FROM recetario WHERE pan = @pan AND nombre_mp = @ingrediente) * @porciones) / @porciones_base);
+			SET @unidad = (SELECT unidad FROM recetario WHERE pan = @pan AND nombre_mp = @ingrediente);
+
+			INSERT INTO #TempTable VALUES (@ingrediente, @cantidad, @unidad);
+
+			FETCH NEXT FROM micursor INTO @ingrediente
+		END
+		CLOSE micursor
+	DEALLOCATE micursor
+
+	SELECT * FROM #TempTable;
+	DROP TABLE #TempTable;
+END
+
+EXEC sp_Calcular_Porciones 'Multi', 10;
