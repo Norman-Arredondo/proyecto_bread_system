@@ -487,14 +487,17 @@ END
 -- <<<<<<<<<<<<<<<<<<<< PRODUCCIÓN <<<<<<<<<<<<<<<<<<<< 
 -- Registrar
 -- Calcular porciones
-BEGIN TRANSACTION
+--BEGIN TRANSACTION
 CREATE PROCEDURE sp_Calcular_Porciones @pan VARCHAR(50), @porciones INT
 AS
 BEGIN
 	DECLARE @ingrediente VARCHAR(50),
-			@cantidad INT,
+			@cantidad FLOAT,
 			@unidad VARCHAR(10),
+			@costo FLOAT,
 			-- variables auxilliares
+			@existencia FLOAT,
+			@total_mp FLOAT,
 			@porciones_base INT,
 			@registros INT,
 			@cont_mp INT,
@@ -502,20 +505,23 @@ BEGIN
 			
 	SET @porciones_base = (SELECT piezas FROM catalogo WHERE pan = @pan);
 	SET @registros = (SELECT COUNT(nombre_mp)FROM recetario WHERE pan = @pan);
-	SET @cont_mp = 1;
-	SET @cont_cant = 1;
 
-	CREATE TABLE #TempTable(ingrediente VARCHAR(50), cantidad INT, unidad VARCHAR(10));
+	CREATE TABLE #TempTable(ingrediente VARCHAR(50), cantidad DECIMAL(10,2), unidad VARCHAR(10), costo DECIMAL(10,2));
 
 	DECLARE micursor CURSOR FOR SELECT nombre_mp FROM recetario WHERE pan = @pan
 	OPEN micursor
 		FETCH NEXT FROM micursor INTO @ingrediente
+
+		SET @existencia = (SELECT existencia FROM materia_prima WHERE nombre_mp = @ingrediente);
+		SET @total_mp = (SELECT SUM(precio_total)FROM compras_mp WHERE nombre_mp = @ingrediente and estatus = 1);
+
 		WHILE @@FETCH_STATUS = 0
 		BEGIN
 			SET @cantidad = (((SELECT cantidad FROM recetario WHERE pan = @pan AND nombre_mp = @ingrediente) * @porciones) / @porciones_base);
 			SET @unidad = (SELECT unidad FROM recetario WHERE pan = @pan AND nombre_mp = @ingrediente);
+			SET @costo = (((@cantidad/1000) * @total_mp) / @existencia);
 
-			INSERT INTO #TempTable VALUES (@ingrediente, @cantidad, @unidad);
+			INSERT INTO #TempTable VALUES (@ingrediente, @cantidad, @unidad, @costo);
 
 			FETCH NEXT FROM micursor INTO @ingrediente
 		END
@@ -525,5 +531,6 @@ BEGIN
 	SELECT * FROM #TempTable;
 	DROP TABLE #TempTable;
 END
-
-EXEC sp_Calcular_Porciones 'Multi', 10;
+--rollback
+--commit
+EXEC sp_Calcular_Porciones 'Multi', 37;

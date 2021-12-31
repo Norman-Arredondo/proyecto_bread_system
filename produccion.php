@@ -1,5 +1,5 @@
 <?php
-include("templates/menu.php");
+    include("templates/menu.php");
 ?>
 
 <div class="d-flex flex-column" id="content-wrapper">
@@ -16,7 +16,7 @@ include("templates/menu.php");
 
                         <div class="row">
                             <div class="col">
-                                <div class="mb-3"><label class="form-label" for=""><strong>ID Produccion</strong></label><input class="form-control" type="text" id="id_produccion" name="id_produccion"></div>
+                                <div class="mb-3"><label class="form-label" for=""><strong>ID (PRD-#####)</strong></label><input class="form-control" type="text" id="id_produccion" name="id_produccion"></div>
                             </div>
                             <div class="col">
                                 <div class="mb-3"><label class="form-label" for=""><strong>Fecha</strong></label><input class="form-control" type="date" id="fecha_produccion" name="fecha_produccion"></div>
@@ -24,41 +24,22 @@ include("templates/menu.php");
                             <div class="col">
                                 <div class="mb-3"><label class="form-label" for=""><strong>RFC Empleado</strong></label><input class="form-control" type="text" id="rfc_empleado" name="rfc_empleado"></div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col">
                                 <div class="mb-3"><label class="form-label" for=""><strong>Pan</strong></label><input class="form-control" type="text" id="pan" name="pan"></div>
                             </div>
                             <div class="col">
                                 <div class="mb-3"><label class="form-label" for=""><strong>Piezas</strong></label><input class="form-control" type="number" id="no_piezas" name="no_piezas" min="1"></div>
                             </div>
-                            <div class="col justify-content-md-end">
-                                <br>
-                                <div class="mt-2"> <button class="btn btn-dark form-control" type="button">Calcular porciones</button></div>
-
-                            </div>
+                        </div>
+                        <div class="mb- mt-4 d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button class="btn btn-dark btn-sm" type="submit">Calcular</button>
                         </div>
 
                         <div class="card-body">
-                            <div class="row align-items-center">
-                                <div class="col-md-6 text-nowrap ">
-                                    <form id="select_materia_prima" action="" method="POST">
-                                        <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label class="form-label">Mostrar&nbsp;
-                                                <select class="d-inline-block form-select form-select-sm" id="opc" name="opc">
-                                                    <option value="2" selected="">Todos</option>
-                                                    <option value="1">Vigente</option>
-                                                    <option value="0">No vigente</option>
-                                                </select>&nbsp;</label>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-
                             <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                                 <table class="table my-0" id="">
                                     <thead>
                                         <tr style="text-align: center;">
-                                            <th>ID</th>
                                             <th>Ingrediente</th>
                                             <th>Cantidad</th>
                                             <th>Unidad</th>
@@ -75,7 +56,6 @@ include("templates/menu.php");
                                     </tbody>
                                     <tfoot>
                                         <tr style="text-align: center;">
-                                            <td><strong>ID</strong></td>
                                             <td><strong>Ingrediente</strong></td>
                                             <td><strong>Cantidad</strong></td>
                                             <td><strong>Unidad</strong></td>
@@ -112,7 +92,7 @@ include("templates/menu.php");
                                 <div class="mb-3"><label class="form-label" for=""><strong>Total materia prima</strong></label><input disabled class="form-control" type="text" id="" name=""></div>
                             </div>
                             <div class="col">
-                                <div class="mb-3"><label class="form-label" for=""><strong>% de ganancia</strong></label><input disabled class="form-control" type="number" id="" name=""></div>
+                                <div class="mb-3"><label class="form-label" for=""><strong>% de ganancia</strong></label><input class="form-control" type="number" id="" name=""></div>
                             </div>
                             <div class="col">
                                 <div class="mb-3"><label class="form-label" for=""><strong>Precio de venta</strong></label><input disabled class="form-control" type="number" id="" name=""></div>
@@ -121,7 +101,7 @@ include("templates/menu.php");
 
                         <div class="mb- mt-4 d-grid gap-2 d-md-flex justify-content-md-end">
                             <button class="btn btn-dark btn-sm" type="submit">Guardar</button>
-                            <button class="btn btn-dark btn-sm" type="submit">Calcular precio de venta</button>
+                            <!--<button class="btn btn-dark btn-sm" type="submit">Calcular precio de venta</button>-->
                         </div>
                     </div>
                 </form>
