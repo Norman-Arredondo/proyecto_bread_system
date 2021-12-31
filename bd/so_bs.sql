@@ -21,7 +21,7 @@ CREATE TABLE Empleado(
 	nombre VARCHAR(50),
 	apellido_p VARCHAR(50),
 	apellido_m VARCHAR(50),
-	telefono INT,
+	telefono VARCHAR(10),
 	edad INT,
 	sexo CHAR(1),
 	calle VARCHAR(50),
@@ -34,6 +34,7 @@ CREATE TABLE Empleado(
 	CONSTRAINT so_empleado_pk PRIMARY KEY (rfc_empleado),
 	CONSTRAINT so_empleado_tipo_empleado_fk FOREIGN KEY (id_tipo_empleado) REFERENCES tipo_empleado(id_tipo_empleado)
 );
+
 
 
 -- >>>>> MODULO MATERIA PRIMA <<<<<
