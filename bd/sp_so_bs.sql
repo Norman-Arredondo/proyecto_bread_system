@@ -429,3 +429,53 @@ BEGIN
 	UPDATE catalogo SET estatus = @estatus 
 		WHERE pan = @pan;
 END	
+
+-- Modificar catalogo
+CREATE PROCEDURE sp_Modificar_Catalogo
+	@pan VARCHAR(50),
+	@descripcion VARCHAR(80),
+	@piezas INT
+AS
+BEGIN
+	UPDATE catalogo SET  
+		descripcion = @descripcion,
+		piezas = @piezas
+		WHERE pan = @pan;
+END	
+
+-- Consultar (modal editar catalogo)
+CREATE PROCEDURE sp_Consulta_Receta @pan VARCHAR(50)
+AS
+BEGIN
+	SELECT nombre_mp, cantidad, unidad, estatus
+		FROM recetario WHERE pan = @pan;
+END	
+
+-- Eliminar ingrediente
+CREATE PROCEDURE sp_Eliminar_Ingrediente @pan VARCHAR(50), @nombre_mp VARCHAR(50)
+AS
+BEGIN
+	DELETE FROM recetario
+		WHERE pan = @pan AND nombre_mp = @nombre_mp;
+END	
+
+-- Modificar recetario
+CREATE PROCEDURE sp_Modificar_Recetario
+	@pan VARCHAR(50),
+	@nombre_mp VARCHAR(50),
+	@cantidad FLOAT,
+	@unidad VARCHAR(10)
+AS
+BEGIN
+	IF EXISTS (SELECT cantidad FROM recetario WHERE pan = @pan AND nombre_mp = @nombre_mp)
+	BEGIN
+		UPDATE recetario SET  
+			cantidad = @cantidad,
+			unidad = @unidad
+			WHERE pan = @pan AND nombre_mp = @nombre_mp;
+	END
+	ELSE
+	BEGIN
+		INSERT INTO recetario VALUES (@pan, @nombre_mp, @cantidad, @unidad, 1);
+	END
+END	
