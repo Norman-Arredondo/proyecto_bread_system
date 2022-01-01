@@ -8,7 +8,7 @@
             <br>
             <h3 class="text-dark mb-4">Producción</h3>
             <div class="card shadow mb-3">
-                <form>
+                <form id="produccion" action="" method="POST">
                     <div class="card-header py-3">
                         <p class="text-primary m-0 fw-bold">Orden de producción</p>
                     </div>
@@ -37,7 +37,7 @@
 
                         <div class="card-body">
                             <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
-                                <table class="table my-0" id="">
+                                <table class="table my-0" id="table_porciones_calculadas">
                                     <thead>
                                         <tr style="text-align: center;">
                                             <th>Ingrediente</th>
@@ -47,12 +47,6 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php
-                                        /*
-                                            $pto_vta = new pto_vta();
-                                            $pto_vta->recuperar();
-                                            */
-                                        ?>
                                     </tbody>
                                     <tfoot>
                                         <tr style="text-align: center;">
@@ -231,3 +225,5 @@
     <?php
     include("templates/footer.php");
     ?>
+
+    <script src="js/calcular_porciones.js"></script>
