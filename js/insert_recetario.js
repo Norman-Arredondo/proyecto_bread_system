@@ -9,7 +9,7 @@ function obtener_receta(){
     var pan = document.getElementById("pan").value;
     var piezas = document.getElementById("piezas").value;
     var descripcion = document.getElementById("descripcion").value;
-    let filas = $("#ingredientes").find('tbody tr').length;
+    let filas = $("#table_ingredientes").find('tbody tr').length;
     let errores = [""];
     let datos = "";
 
@@ -70,7 +70,7 @@ function obtener_ingredientes(){
     var pan = document.getElementById("pan").value;
     var array_ingrediente = []; 
 
-    $('#ingredientes tbody tr').each(function (index2) {
+    $('#table_ingredientes tbody tr').each(function (index2) {
         var materia_prima = $(this).find("td").eq(1).html();
         var cantidad = $(this).find("td").eq(2).html();
         var unidad = $(this).find("td").eq(3).html();
