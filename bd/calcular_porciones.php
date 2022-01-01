@@ -24,7 +24,7 @@
             echo "<td align='center' NOWRAP> " . $porcion["ingrediente"] . "</td>";
             echo "<td align='center' NOWRAP>" . round($porcion["cantidad"], 2) . "</td>";
             echo "<td align='center' NOWRAP>" . $porcion["unidad"] . "</td>";
-            echo "<td align='center' NOWRAP>" . round($porcion["costo"]) . "</td>";
+            echo "<td align='center' NOWRAP>" . round($porcion["costo"], 2) . "</td>";
         } 
         echo " </tbody>
             <tfoot>
