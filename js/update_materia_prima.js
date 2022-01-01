@@ -104,10 +104,8 @@ function acciones_cmp(){
         c_fecha_compra = $(this).find('td:nth-child(2)').html();
         c_cantidad = $(this).find('td:nth-child(3)').html();
         c_unidad = $(this).find('td:nth-child(4)').html();
-        c_contenido_neto = $(this).find('td:nth-child(5)').html();
-        c_precio_unitario = $(this).find('td:nth-child(6)').html();
-        c_precio_total = $(this).find('td:nth-child(7)').html();
-        c_estatus = $(this).find('td:nth-child(8)').html();
+        c_precio_total = $(this).find('td:nth-child(5)').html();
+        c_estatus = $(this).find('td:nth-child(6)').html();
 
         $('#table_compras_mp a').on('click',function(){
             var accion = $(this).attr('id');
@@ -122,7 +120,7 @@ function acciones_cmp(){
                 $('#editar_materia').modal("hide");
                 $("#editar_compra").modal("toggle");
                 $('#editar_compra').modal("show");
-                new ver_info_cmp(c_nombre_mp, c_fecha_compra, c_cantidad, c_unidad, c_contenido_neto, c_precio_unitario, c_precio_total);
+                new ver_info_cmp(c_nombre_mp, c_fecha_compra, c_cantidad, c_unidad, c_precio_total);
             }
         });
     });
@@ -168,23 +166,19 @@ function estatus_cmp(e_nombre_mp, e_fecha_compra, e_estatus){
     });
 }
 
-function ver_info_cmp(c_nombre_mp, c_fecha_compra, c_cantidad, c_unidad, c_contenido_neto, c_precio_unitario, c_precio_total){
+function ver_info_cmp(c_nombre_mp, c_fecha_compra, c_cantidad, c_unidad, c_precio_total){
     var icm_nombre_mp = c_nombre_mp;
     var icm_fecha_compra = c_fecha_compra;
         var aux_fecha_compra = icm_fecha_compra.trim();
     var icm_cantidad = c_cantidad;
     var icm_unidad = c_unidad;
-    var icm_contenido_neto = c_contenido_neto;
-    var icm_precio_unitario = c_precio_unitario;
     var icm_precio_total = c_precio_total;
     
     $('#mc_nombre_mp').val(icm_nombre_mp);
     $('#mc_fecha_compra').val(aux_fecha_compra);
     $('#mc_cantidad').val(icm_cantidad);
     $('#mc_unidad').val(icm_unidad);
-    $('#mc_contenido_neto').val(icm_contenido_neto);
-    $('#mc_precio_unitario').val(icm_precio_unitario);
-    $('#mc_precio_total').html(icm_precio_total);
+    $('#mc_precio_total').val(icm_precio_total);
 
     $(document).ready(function () {
         $("#btn_modificar_compra").on('click', function(event){
@@ -208,8 +202,6 @@ function modificar_info_cmp(){
     var icm_fecha_compra = document.getElementById("mc_fecha_compra").value;
     var icm_cantidad = document.getElementById("mc_cantidad").value;
     var icm_unidad = document.getElementById("mc_unidad").value;
-    var icm_contenido_neto = document.getElementById("mc_contenido_neto").value;
-    var icm_precio_unitario = document.getElementById("mc_precio_unitario").value;
     var icm_precio_total = document.getElementById("mc_precio_total").value;
     
     let errores = [""];
@@ -221,11 +213,8 @@ function modificar_info_cmp(){
     if(icm_unidad == ""){ 
         errores.push('◾ Unidad ');
     } 
-    if(icm_contenido_neto == ""){ 
-        errores.push('◾ Contenido neto ');
-    } 
-    if(icm_precio_unitario == ""){ 
-        errores.push('◾ Precio unitario ');
+    if(icm_precio_total == ""){ 
+        errores.push('◾ Precio total ');
     } 
 
     if(errores.length>1){
@@ -241,9 +230,7 @@ function modificar_info_cmp(){
             fecha_compra: $('#mc_fecha_compra').val(),
             cantidad: $('#mc_cantidad').val(),
             unidad: $('#mc_unidad').val(),
-            contenido_neto: $('#mc_contenido_neto').val(),
-            precio_unitario: $('#mc_precio_unitario').val(),
-            precio_total: $('#mc_precio_total').html()
+            precio_total: $('#mc_precio_total').val()
         };
 
         var dato = $("#materia_prima").serialize();

@@ -14,8 +14,6 @@
                     <th>Fecha</th>
                     <th>Cantidad</th>
                     <th>Unidad</th>
-                    <th>Contenido neto</th>
-                    <th>Precio unitario</th>
                     <th>Total</th>
                     <th>Estatus</th>
                 </tr>
@@ -36,8 +34,6 @@
             echo "<td align='center' NOWRAP> " . $compra["fecha_compra"] . "</td>";
             echo "<td align='center' NOWRAP>" . round($compra["cantidad"], 2) . "</td>";
             echo "<td align='center' NOWRAP>" . $compra["unidad"] . "</td>";
-            echo "<td align='center' NOWRAP>" . round($compra["contenido_neto"], 2) . "</td>";
-            echo "<td align='center' NOWRAP>" . round($compra["precio_unitario"], 2) . "</td>";
             echo "<td align='center' NOWRAP>" . round($compra["precio_total"]) . "</td>";
                 if($compra["estatus"] == "1"){
                     echo "<td align='center' NOWRAP>Vigente</td>"; 
@@ -54,8 +50,6 @@
                     <td><strong>Fecha</strong></td>
                     <td><strong>Cantidad</strong></td>
                     <td><strong>Unidad</strong></td>
-                    <td><strong>Contenido neto</strong></td>
-                    <td><strong>Precio unitario</strong></td>
                     <td><strong>Total</strong></td>
                     <td><strong>Estatus</strong></td>
                 </tr>

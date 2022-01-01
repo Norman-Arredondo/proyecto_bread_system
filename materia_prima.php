@@ -25,19 +25,13 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <div class="mb-3"><label class="form-label" for="cantidad"><strong>Cantidad</strong></label><input class="form-control monto" step="any" type="number" id="cantidad" name="cantidad" onkeyup="calcular_total();" min="1"></div>
+                                <div class="mb-3"><label class="form-label" for="cantidad"><strong>Cantidad</strong></label><input class="form-control monto" step="any" type="number" id="cantidad" name="cantidad" min="1"></div>
                             </div>
                             <div class="col">
                                 <div class="mb-3"><label class="form-label" for="unidad"><strong>Unidad</strong></label><input class="form-control" type="text" id="unidad" name="unidad"></div>
                             </div>
                             <div class="col">
-                                <div class="mb-3"><label class="form-label" for="contenido_neto"><strong>Contenido neto</strong></label><input class="form-control" step="any" type="number" id="contenido_neto" name="contenido_neto" min="1"></div>
-                            </div>
-                            <div class="col">
-                                <div class="mb-3"><label class="form-label" for="precio_unitario"><strong>Precio unitario</strong></label><input class="form-control monto" step="any" type="number" id="precio_unitario" name="precio_unitario" onkeyup="calcular_total();" min="1"></div>
-                            </div>
-                            <div class="col">
-                                <div class="mb-3"><label class="form-label" for="pt"><strong>Precio total</strong></label><label class="form-control" id="precio_total" name="precio_total" readonly="readonly"/></div>
+                                <div class="mb-3"><label class="form-label" for="precio_total"><strong>Precio total</strong></label><input class="form-control monto" step="any" type="number" id="precio_total" name="precio_total" min="1"></div>
                             </div>
                         </div>
                         <div class="mb-3 mt-3"><button class="btn btn-dark btn-sm" type="submit" style="float: right" id="btn_guardar_mp" name="btn_guardar_mp">Guardar</button></div>
@@ -141,8 +135,6 @@
                                                 <th>Fecha</th>
                                                 <th>Cantidad</th>
                                                 <th>Unidad</th>
-                                                <th>Contenido neto</th>
-                                                <th>Precio unitario</th>
                                                 <th>Total</th>
                                                 <th>Estatus</th>
                                             </tr>
@@ -155,8 +147,6 @@
                                                 <td><strong>Fecha</strong></td>
                                                 <td><strong>Cantidad</strong></td>
                                                 <td><strong>Unidad</strong></td>
-                                                <td><strong>Contenido neto</strong></td>
-                                                <td><strong>Precio unitario</strong></td>
                                                 <td><strong>Total</strong></td>
                                                 <td><strong>Estatus</strong></td>
                                             </tr>
@@ -196,19 +186,13 @@
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <div class="mb-3"><label class="form-label" for="mc_cantidad"><strong>Cantidad:</strong></label><input class="form-control mc_monto" step="any" type="number" id="mc_cantidad" name="mc_cantidad" onkeyup="modificar_total();" min="1"></div>
+                                    <div class="mb-3"><label class="form-label" for="mc_cantidad"><strong>Cantidad:</strong></label><input class="form-control mc_monto" step="any" type="number" id="mc_cantidad" name="mc_cantidad" min="1"></div>
                                 </div>
                                 <div class="col">
                                     <div class="mb-3"><label class="form-label" for="mc_unidad"><strong>Unidad:</strong></label><input class="form-control" type="text" id="mc_unidad" name="mc_unidad"></div>
                                 </div>
                                 <div class="col">
-                                    <div class="mb-3"><label class="form-label" for="mc_contenido_neto"><strong>Contenido neto:</strong></label><input class="form-control" step="any" type="number" id="mc_contenido_neto" name="mc_contenido_neto" min="1"></div>
-                                </div>
-                                <div class="col">
-                                    <div class="mb-3"><label class="form-label" for="mc_precio_unitario"><strong>Precio unitario:</strong></label><input class="form-control mc_monto" step="any" type="number" id="mc_precio_unitario" name="mc_precio_unitario" onkeyup="modificar_total();" min="1"></div>
-                                </div>
-                                <div class="col">
-                                    <div class="mb-3"><label class="form-label" for="mc_precio_total"><strong>Precio total:</strong></label><label class="form-control" id="mc_precio_total" name="mc_precio_total" readonly="readonly"/></div>
+                                    <div class="mb-3"><label class="form-label" for="mc_precio_total"><strong>Precio total:</strong></label><input class="form-control" type="number" id="mc_precio_total" name="mc_precio_total"></div>
                                 </div>
                             </div>
                         </div>
@@ -225,7 +209,7 @@
 include("templates/footer.php");
 ?>
 
-<script>
+<!--<script>
     function calcular_total(){
         var total = 1;
         var change = false;
@@ -253,7 +237,7 @@ include("templates/footer.php");
         total = (change) ? total : 0;
     	document.getElementById('mc_precio_total').innerHTML = total;
     }
-</script>
+</script> -->
 
 <script src="js/insert_materia_prima.js"></script>
 <script src="js/estatus_materia_prima.js"></script>

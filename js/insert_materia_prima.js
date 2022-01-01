@@ -10,8 +10,6 @@ function registrar_materia_prima(){
     var fecha_compra = document.getElementById("fecha_compra").value;
     var cantidad = document.getElementById("cantidad").value;
     var unidad = document.getElementById("unidad").value;
-    var contenido_neto = document.getElementById("contenido_neto").value;
-    var precio_unitario = document.getElementById("precio_unitario").value;
     var precio_total = document.getElementById("precio_total").value;
     
     let errores = [""];
@@ -29,11 +27,8 @@ function registrar_materia_prima(){
     if(unidad == ""){ 
         errores.push('◾ Unidad ');
     } 
-    if(contenido_neto == ""){ 
-        errores.push('◾ Contenido neto');
-    } 
-    if(precio_unitario == ""){ 
-        errores.push('◾ Precio unitario');
+    if(precio_total == ""){ 
+        errores.push('◾ Precio total');
     } 
 
     if(errores.length>1){
@@ -49,9 +44,7 @@ function registrar_materia_prima(){
             fecha_compra: $('#fecha_compra').val(),
             cantidad: $('#cantidad').val(),
             unidad: $('#unidad').val(),
-            contenido_neto: $('#contenido_neto').val(),
-            precio_unitario: $('#precio_unitario').val(),
-            precio_total: $('#precio_total').html() 
+            precio_total: $('#precio_total').val() 
         };
 
         var dato = $("#materia_prima").serialize();

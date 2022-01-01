@@ -7,8 +7,6 @@
             $icm_fecha_compra = $_POST['fecha_compra'];
             $icm_cantidad = $_POST['cantidad'];
             $icm_unidad = $_POST['unidad'];
-            $icm_contenido_neto = $_POST['contenido_neto'];
-            $icm_precio_unitario = $_POST['precio_unitario'];
             $icm_precio_total = $_POST['precio_total'];
 
             try{
@@ -16,8 +14,6 @@
                                                         $icm_fecha_compra."', ".
                                                         $icm_cantidad.", '".
                                                         $icm_unidad."', ".
-                                                        $icm_contenido_neto.", ".
-                                                        $icm_precio_unitario.",".
                                                         $icm_precio_total.";";
                 $stmt = $conn_sis->prepare($query);
                 $stmt->execute();

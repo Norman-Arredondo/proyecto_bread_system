@@ -224,7 +224,7 @@ BEGIN
 		no_exterior = @no_exterior, 
 		alcaldia = @alcaldia, 
 		codigo_postal = @codigo_postal
-		where rfc_empleado = @rfc_empleado;
+		WHERE rfc_empleado = @rfc_empleado;
 END	
 
 -- Combo TIPO EMPLEADO (Vista empleado)
@@ -256,29 +256,28 @@ END
 -- Registrar
 CREATE PROCEDURE sp_Registro_MateriaPrima 
 	@nombre_mp VARCHAR(50),
-	@existencia INT, 
-	@stock_minimo INT,
-	@stock_maximo INT,
+	@existencia FLOAT, 
+	@stock_minimo FLOAT,
+	@stock_maximo FLOAT,
 	@fecha_compra DATE,
 	@cantidad FLOAT,
-	@unidad VARCHAR(10), 
-	@contenido_neto FLOAT,
-	@precio_unitario FLOAT,
+	@unidad VARCHAR(10),
 	@precio_total FLOAT
 AS
 BEGIN
 	IF EXISTS (SELECT existencia FROM materia_prima WHERE nombre_mp = @nombre_mp)
 	BEGIN
-		INSERT INTO compras_mp VALUES(@nombre_mp, @fecha_compra, @cantidad, @unidad, @contenido_neto, @precio_unitario, @precio_total, 1);
-		SET @existencia = (SELECT SUM(cantidad) FROM compras_mp WHERE nombre_mp = @nombre_mp);
+		INSERT INTO compras_mp VALUES(@nombre_mp, @fecha_compra, @cantidad, @unidad, @precio_total, 1);
+		SET @existencia = (SELECT existencia FROM materia_prima WHERE nombre_mp = @nombre_mp) + @cantidad;
 		UPDATE materia_prima SET existencia = @existencia WHERE nombre_mp = @nombre_mp;
 	END
 	ELSE
 	BEGIN
 		INSERT INTO materia_prima VALUES(@nombre_mp, @existencia, @stock_minimo, @stock_maximo, 1);
-		INSERT INTO compras_mp VALUES(@nombre_mp, @fecha_compra, @cantidad, @unidad, @contenido_neto, @precio_unitario, @precio_total, 1);
+		INSERT INTO compras_mp VALUES(@nombre_mp, @fecha_compra, @cantidad, @unidad, @precio_total, 1);
 	END
 END	
+
 
 -- Cosultar Materia Prima (tabla principal)
 CREATE PROCEDURE sp_Consulta_MP @estatus INT
@@ -317,7 +316,7 @@ AS
 BEGIN
 	IF EXISTS (SELECT existencia FROM materia_prima WHERE nombre_mp = @nombre_mp)
 	BEGIN
-		SELECT fecha_compra, cantidad, unidad, contenido_neto, precio_unitario, precio_total, estatus
+		SELECT fecha_compra, cantidad, unidad, precio_total, estatus
 			FROM compras_mp WHERE nombre_mp = @nombre_mp;
 	END
 	ELSE
@@ -345,8 +344,8 @@ END
 -- Modificar 
 CREATE PROCEDURE sp_Modificar_Materia_Prima
 	@nombre_mp VARCHAR(50),
-	@stock_minimo INT,
-	@stock_maximo INT
+	@stock_minimo FLOAT,
+	@stock_maximo FLOAT
 AS
 BEGIN
 	UPDATE materia_prima SET  
@@ -361,20 +360,25 @@ CREATE PROCEDURE sp_Modificar_CompraMP
 	@fecha_compra DATE,
 	@cantidad FLOAT,
 	@unidad VARCHAR(10), 
-	@contenido_neto FLOAT,
-	@precio_unitario FLOAT,
 	@precio_total FLOAT
 AS
 BEGIN
+	DECLARE @existencia_actual FLOAT,
+			@registro_compra FLOAT,
+			@nueva_existencia FLOAT;
+	SET @existencia_actual = (SELECT existencia FROM materia_prima WHERE nombre_mp = @nombre_mp);
+	SET @registro_compra = (SELECT cantidad FROM compras_mp WHERE nombre_mp = @nombre_mp AND fecha_compra = @fecha_compra);
+	SET @nueva_existencia = (@existencia_actual - @registro_compra) + @cantidad;
+
+
 	UPDATE compras_mp SET  
 		cantidad = @cantidad,
 		unidad = @unidad,
-		contenido_neto = @contenido_neto,
-		precio_unitario = @precio_unitario,
 		precio_total = @precio_total
 		WHERE nombre_mp = @nombre_mp AND fecha_compra = @fecha_compra;
 	
-	UPDATE materia_prima SET existencia = (SELECT SUM(cantidad) FROM compras_mp WHERE nombre_mp = @nombre_mp)
+	UPDATE materia_prima 
+		SET existencia = @nueva_existencia
 		WHERE nombre_mp = @nombre_mp;
 END	
 

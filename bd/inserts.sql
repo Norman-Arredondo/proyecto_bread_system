@@ -47,53 +47,64 @@ select * from Empleado;
 
 
 -- >>> insert materia prima y compras <<<
-EXEC sp_Registro_MateriaPrima 'Azucar', 10, 5, 30, '2021-11-01', 10, 'Kg', 10, 27.04,  270.4;
-EXEC sp_Registro_MateriaPrima 'Azucar Glass', 10, 5, 15,'2021-11-01', 1, 'kg', 5, 24.40, 122;
-EXEC sp_Registro_MateriaPrima 'Anis', 5, 5, 10, '2021-11-01', 5, 'kg', 1, 101, 505;
-EXEC sp_Registro_MateriaPrima 'Chispas de chocolate', 1, 2, 5,'2021-11-01', 5, 'kg', 1, 88, 44;
-EXEC sp_Registro_MateriaPrima 'Cocoa', 5, 5, 10, '2021-11-08', 1, 'kg', 5, 18.80, 94;
-EXEC sp_Registro_MateriaPrima 'Bolsa De Papel #25', 50, 50, 100, '2021-11-08', 1, 'Pieza', 100, 76, 76;;
-EXEC sp_Registro_MateriaPrima 'Maizena', 5, 5, 15, '2021-11-08', 1, 'kg', 5, 76, 76;
-EXEC sp_Registro_MateriaPrima 'Malta Morisca', 5, 5, 15, '2021-11-08', 1, 'kg', 5, 150, 150;
-EXEC sp_Registro_MateriaPrima 'Nuez Pedazo Intermedio', 2, 2, 5, '2021-11-15', 2, 'kg', 1, 240, 480;
-EXEC sp_Registro_MateriaPrima 'Bolsa Vites (ROYAL)', 4, 4, 12, '2021-11-15', 1, 'kg', 4, 82, 82;
-EXEC sp_Registro_MateriaPrima 'Bulto Mix Chocolate', 10, 20, 40, '2021-11-15', 1, 'kg', 20, 636, 636;
-EXEC sp_Registro_MateriaPrima 'Bulto Mix Esponja', 10, 20, 40, '2021-11-15', 1, 'kg', 20, 678, 678;
-EXEC sp_Registro_MateriaPrima 'Bulto Mix Vainilla', 10, 20, 40, '2021-11-15', 1, 'kg', 20, 492, 492;
-EXEC sp_Registro_MateriaPrima 'Bulto Muffin Vainilla', 10, 20, 40, '2021-11-22', 1, 'kg', 20, 392, 392;
-EXEC sp_Registro_MateriaPrima 'Canela molida', 2, 6, 12, '2021-11-22', 1, 'kg', 3, 72, 72;
-EXEC sp_Registro_MateriaPrima 'Capacillo Blanco #72', 300, 500, 1000, '2021-11-22', 1, 'Pieza', 500, 37, 37;
-EXEC sp_Registro_MateriaPrima 'Capacillo Chino Corrufacil', 500, 500, 1000, '2021-11-22', 1, 'Pieza', 1000, 154, 154;
-EXEC sp_Registro_MateriaPrima 'Capacillo Rojo #72', 300, 500, 1000, '2021-11-22', 1, 'Pieza', 500, 37, 37;
-EXEC sp_Registro_MateriaPrima 'Chantilli', 5, 5, 20, '2021-11-29', 10, 'kg', 1, 40, 400;
-EXEC sp_Registro_MateriaPrima 'Cobertura garfias chocolate', 5, 5, 20, '2021-11-29', 5, 'kg', 1, 32.60, 163;
-EXEC sp_Registro_MateriaPrima 'Color amarillo huevo brillapan', 5, 5, 20, '2021-11-29', 5, 'kg', 1, 41, 205;
-EXEC sp_Registro_MateriaPrima 'Fresa econopack mangas', 5, 5, 10, '2021-11-29', 1, 'kg', 10, 206, 206;
-EXEC sp_Registro_MateriaPrima 'Glasse Fresa', 5, 5, 10,'2021-11-29', 1, 'kg', 10, 164, 164;
-EXEC sp_Registro_MateriaPrima 'Glasse Piña', 5, 5, 10,'2021-11-29', 1,'kg', 10, 164, 164;
-EXEC sp_Registro_MateriaPrima 'Granilla colores Granimex', 5, 5, 10,'2021-11-29', 3,'kg', 1, 235, 705;
-EXEC sp_Registro_MateriaPrima 'Harina grano espiga', 3, 30, 60,'2021-11-29', 1,'kg', 10, 352, 352;
-EXEC sp_Registro_MateriaPrima 'Harina Selecta', 440, 880, 1760,'2021-11-29', 10,'kg', 1, 1275, 1275;
-EXEC sp_Registro_MateriaPrima 'Huevo', 5, 5, 20, '2021-11-01', 2, 'Kg', 12, 32, 64;
-EXEC sp_Registro_MateriaPrima 'Levadura', 5, 5, 20, '2021-11-01', 4, 'g', 450, 58,  232;
-EXEC sp_Registro_MateriaPrima 'M Relleno Zarzamora Estrali', 5, 5, 10, '2021-11-01', 5, 'Kg', 1, 95, 475;
-EXEC sp_Registro_MateriaPrima 'M. Crema Past. Vainilla Estrali', 5, 5, 10, '2021-11-01', 5, 'Kg', 1, 95, 475;
-EXEC sp_Registro_MateriaPrima 'Manteca Tolteca (GRASA)', 24, 24, 48, '2021-11-01', 24, 'Kg', 1, 10, 240;
-EXEC sp_Registro_MateriaPrima 'Mantequilla', 5, 5, 20, '2021-11-01', 10, 'Kg', 1, 85, 850;
-EXEC sp_Registro_MateriaPrima 'Mejorante Fortilix', 5, 5, 20, '2021-11-01', 10, 'g', 450, 75, 750;
-EXEC sp_Registro_MateriaPrima 'Nuez Monchis', 4, 4, 24, '2021-11-01', 4, 'Kg', 1, 230, 920;
-EXEC sp_Registro_MateriaPrima 'Pan molido', 5, 10, 40, '2021-11-01', 1, 'Kg', 5, 200, 200;
-EXEC sp_Registro_MateriaPrima 'Piña econopack mangas', 5, 10, 20, '2021-11-01', 5, 'Kg', 1, 95, 475;
-EXEC sp_Registro_MateriaPrima 'S. Rafmex Mant. Naranja', 4, 4, 24, '2021-11-01', 1, 'Lt', 4.5, 669, 669;
-EXEC sp_Registro_MateriaPrima 'Sal Fina', 25, 50, 100, '2021-11-01', 10, 'Kg', 1, 22, 220;
-EXEC sp_Registro_MateriaPrima 'Sunset Glaze CL ND', 120, 240, 360, '2021-11-01', 10, 'Lt', 1, 130, 1300;
-EXEC sp_Registro_MateriaPrima 'Tegral SoftZR Rosca de reyes', 25, 50, 150, '2021-11-01', 1, 'Kg', 60, 2020, 2020;
-EXEC sp_Registro_MateriaPrima 'Toupan', 5, 5, 15, '2021-11-01', 1, 'Kg', 5, 348, 348;
-EXEC sp_Registro_MateriaPrima 'Vainilla Monchis', 4, 4, 12, '2021-11-01', 10, 'Lt', 1, 69, 690;
-EXEC sp_Registro_MateriaPrima 'Requeson', 5, 5, 10, '2021-11-01', 10, 'Kg', 1, 70, 700;
-EXEC sp_Registro_MateriaPrima 'Leche condensada', 5, 5, 10, '2021-11-01', 10, 'Kg', 1, 49, 490;
-EXEC sp_Registro_MateriaPrima 'Nutri Leche', 12, 12, 36, '2021-11-29', 10, 'Lt', 1, 14, 140;
-EXEC sp_Registro_MateriaPrima 'Carbonato', 2, 2, 5, '2021-11-01', 10, 'Kg', 1, 87, 870;
+/*
+	@nombre_mp VARCHAR(50),
+	@existencia FLOAT, 
+	@stock_minimo FLOAT,
+	@stock_maximo FLOAT,
+	@fecha_compra DATE,
+	@cantidad FLOAT,
+	@unidad VARCHAR(10),
+	@precio_total FLOAT
+*/
+
+EXEC sp_Registro_MateriaPrima 'Azucar', 10000, 5000, 30000, '2021-11-01', 10000, 'g', 270.4;
+EXEC sp_Registro_MateriaPrima 'Azucar Glass', 10000, 5000, 15000,'2021-11-01', 1000, 'g', 244.0;
+EXEC sp_Registro_MateriaPrima 'Anis', 5000, 5000, 10000, '2021-11-01', 5000, 'g', 505;
+EXEC sp_Registro_MateriaPrima 'Chispas de chocolate', 1000, 2000, 5000,'2021-11-01', 5000, 'g', 88;
+EXEC sp_Registro_MateriaPrima 'Cocoa', 5000, 5000, 10000, '2021-11-08', 1000, 'g', 94;
+EXEC sp_Registro_MateriaPrima 'Bolsa De Papel #25', 50, 50, 100, '2021-11-08', 10, 'Pieza',10;
+EXEC sp_Registro_MateriaPrima 'Maizena', 5000, 5000, 15000, '2021-11-08', 1000, 'g', 76;
+EXEC sp_Registro_MateriaPrima 'Malta Morisca', 5000, 5000, 15000, '2021-11-08', 1000, 'g', 150;
+EXEC sp_Registro_MateriaPrima 'Nuez Pedazo Intermedio', 2000, 2000, 5000, '2021-11-15', 2000, 'g', 480;
+EXEC sp_Registro_MateriaPrima 'Bolsa Vites (ROYAL)', 4000, 4000, 12000, '2021-11-15', 1000, 'g', 82;
+EXEC sp_Registro_MateriaPrima 'Bulto Mix Chocolate', 10000, 20000, 40000, '2021-11-15', 1000, 'g', 636;
+EXEC sp_Registro_MateriaPrima 'Bulto Mix Esponja', 10000, 20000, 40000, '2021-11-15', 1000, 'g', 678;
+EXEC sp_Registro_MateriaPrima 'Bulto Mix Vainilla', 10000, 20000, 40000, '2021-11-15', 1000, 'g', 492;
+EXEC sp_Registro_MateriaPrima 'Bulto Muffin Vainilla', 10000, 20000, 40000, '2021-11-22', 1000, 'g', 392;
+EXEC sp_Registro_MateriaPrima 'Canela molida', 2000, 6000, 12000, '2021-11-22', 1000, 'g', 72;
+EXEC sp_Registro_MateriaPrima 'Capacillo Blanco #72', 300, 500, 1000, '2021-11-22', 100, 'Pieza', 37;
+EXEC sp_Registro_MateriaPrima 'Capacillo Chino Corrufacil', 500, 500, 1000, '2021-11-22', 1000, 'Pieza',154;
+EXEC sp_Registro_MateriaPrima 'Capacillo Rojo #72', 300, 500, 1000, '2021-11-22', 500, 'Pieza', 37;
+EXEC sp_Registro_MateriaPrima 'Chantilli', 5000, 5000, 20000, '2021-11-29', 4000, 'g', 400;
+EXEC sp_Registro_MateriaPrima 'Cobertura garfias chocolate', 500, 5000, 20000, '2021-11-29', 5000,'g', 163;
+EXEC sp_Registro_MateriaPrima 'Color amarillo huevo brillapan', 5000, 5000, 20000, '2021-11-29', 5000, 'g', 205;
+EXEC sp_Registro_MateriaPrima 'Fresa econopack mangas', 5000, 5000, 20000, '2021-11-29', 10000, 'g', 206;
+EXEC sp_Registro_MateriaPrima 'Glasse Fresa', 5000, 5000, 20000,'2021-11-29', 10000, 'g', 164;
+EXEC sp_Registro_MateriaPrima 'Glasse Piña', 5000, 5000, 20000,'2021-11-29', 10000,'g', 164;
+EXEC sp_Registro_MateriaPrima 'Granilla colores Granimex', 5000, 5000, 10000,'2021-11-29', 3000,'g', 235;
+EXEC sp_Registro_MateriaPrima 'Harina grano espiga', 3000, 30000, 60000,'2021-11-29', 10000, 'g', 352;
+EXEC sp_Registro_MateriaPrima 'Harina Selecta', 44000, 88000, 176000,'2021-11-29', 10000,'g', 1275;
+EXEC sp_Registro_MateriaPrima 'Huevo', 5000, 5000, 20000, '2021-11-01', 2000, 'g', 64;
+EXEC sp_Registro_MateriaPrima 'Levadura', 5000, 5000, 20000, '2021-11-01', 4000, 'g', 232;
+EXEC sp_Registro_MateriaPrima 'M Relleno Zarzamora Estrali', 5000, 5000, 10000, '2021-11-01', 5000, 'g', 475;
+EXEC sp_Registro_MateriaPrima 'M. Crema Past. Vainilla Estrali', 5000, 5000, 10000, '2021-11-01', 5000, 'g',475;
+EXEC sp_Registro_MateriaPrima 'Manteca Tolteca (GRASA)', 2400, 2400, 4800, '2021-11-01', 2400, 'g', 48;
+EXEC sp_Registro_MateriaPrima 'Mantequilla', 5000, 5000, 20000, '2021-11-01', 10000, 'g', 850;
+EXEC sp_Registro_MateriaPrima 'Mejorante Fortilix', 5000, 5000, 20000, '2021-11-01', 450000, 'g', 750;
+EXEC sp_Registro_MateriaPrima 'Nuez Monchis', 4000, 4000, 24000, '2021-11-01', 4000, 'g', 230;
+EXEC sp_Registro_MateriaPrima 'Pan molido', 5000, 10000, 40000, '2021-11-01', 10000, 'g', 200;
+EXEC sp_Registro_MateriaPrima 'Piña econopack mangas', 5000, 10000, 20000, '2021-11-01', 5000, 'g', 475;
+EXEC sp_Registro_MateriaPrima 'S. Rafmex Mant. Naranja', 4000, 4000, 24000, '2021-11-01', 4500, 'ml', 669;
+EXEC sp_Registro_MateriaPrima 'Sal Fina', 25000, 50000, 100000, '2021-11-01', 22000, 'g', 220;
+EXEC sp_Registro_MateriaPrima 'Sunset Glaze CL ND', 120000, 240000, 360000, '2021-11-01', 130000, 'ml', 1300;
+EXEC sp_Registro_MateriaPrima 'Tegral SoftZR Rosca de reyes', 25000, 50000, 150000, '2021-11-01', 60000, 'g', 2020;
+EXEC sp_Registro_MateriaPrima 'Toupan', 5000, 5000, 15000, '2021-11-01', 5000, 'g', 348;
+EXEC sp_Registro_MateriaPrima 'Vainilla Monchis', 4000, 4000, 12000, '2021-11-01', 1000, 'ml', 690;
+EXEC sp_Registro_MateriaPrima 'Requeson', 5000, 5000, 10000, '2021-11-01', 10000, 'g', 700;
+EXEC sp_Registro_MateriaPrima 'Leche condensada', 5000, 5000, 10000, '2021-11-01', 10000, 'g', 490;
+EXEC sp_Registro_MateriaPrima 'Nutri Leche', 12000, 12000, 36000, '2021-11-29', 10000, 'ml', 140;
+EXEC sp_Registro_MateriaPrima 'Carbonato', 2000, 2000, 5000, '2021-11-01', 10000, 'g', 870;
 
 
 -- >>> insert catalogo <<<
