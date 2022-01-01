@@ -491,7 +491,7 @@ END
 -- <<<<<<<<<<<<<<<<<<<< PRODUCCIÓN <<<<<<<<<<<<<<<<<<<< 
 -- Registrar
 -- Calcular porciones
---BEGIN TRANSACTION
+BEGIN TRANSACTION
 CREATE PROCEDURE sp_Calcular_Porciones @pan VARCHAR(50), @porciones INT
 AS
 BEGIN
@@ -501,6 +501,7 @@ BEGIN
 			@costo FLOAT,
 			-- variables auxilliares
 			@existencia FLOAT,
+			@mp_prod FLOAT,
 			@total_mp FLOAT,
 			@porciones_base INT,
 			@registros INT,
@@ -517,13 +518,14 @@ BEGIN
 		FETCH NEXT FROM micursor INTO @ingrediente
 
 		SET @existencia = (SELECT existencia FROM materia_prima WHERE nombre_mp = @ingrediente);
-		SET @total_mp = (SELECT SUM(precio_total)FROM compras_mp WHERE nombre_mp = @ingrediente and estatus = 1);
+		SET @total_mp = (SELECT SUM(precio_total)FROM compras_mp WHERE nombre_mp = @ingrediente);
 
 		WHILE @@FETCH_STATUS = 0
 		BEGIN
 			SET @cantidad = (((SELECT cantidad FROM recetario WHERE pan = @pan AND nombre_mp = @ingrediente) * @porciones) / @porciones_base);
 			SET @unidad = (SELECT unidad FROM recetario WHERE pan = @pan AND nombre_mp = @ingrediente);
-			SET @costo = (((@cantidad/1000) * @total_mp) / @existencia);
+			SET @mp_prod = (SELECT SUM(mp.cantidad) FROM mp_produccion mp JOIN produccion p ON mp.id_produccion = p.id_produccion WHERE p.pan = @pan);
+			SET @costo = ((@cantidad * @total_mp - @mp_prod) / @existencia);
 
 			INSERT INTO #TempTable VALUES (@ingrediente, @cantidad, @unidad, @costo);
 
