@@ -47,17 +47,7 @@ select * from Empleado;
 
 
 -- >>> insert materia prima y compras <<<
-/*
-	@nombre_mp VARCHAR(50),
-	@existencia FLOAT, 
-	@stock_minimo FLOAT,
-	@stock_maximo FLOAT,
-	@fecha_compra DATE,
-	@cantidad FLOAT,
-	@unidad VARCHAR(10),
-	@precio_total FLOAT
-*/
-
+EXEC sp_Registro_MateriaPrima 'Aceite Bidon Bunge', 20000, 50000, 100000, '2021-11-01', 10000, 'ml', 439.0;
 EXEC sp_Registro_MateriaPrima 'Azucar', 10000, 5000, 30000, '2021-11-01', 10000, 'g', 270.4;
 EXEC sp_Registro_MateriaPrima 'Azucar Glass', 10000, 5000, 15000,'2021-11-01', 1000, 'g', 244.0;
 EXEC sp_Registro_MateriaPrima 'Anis', 5000, 5000, 10000, '2021-11-01', 5000, 'g', 505;
@@ -124,7 +114,7 @@ EXEC sp_Registro_receta 'Bisquet', 'Sal Fina', 20, 'g';
 EXEC sp_Registro_receta 'Bisquet', 'Bolsa Vites (ROYAL)', 20, 'g';
 EXEC sp_Registro_receta 'Bisquet', 'Manteca Tolteca (GRASA)', 150, 'g';
 EXEC sp_Registro_receta 'Bisquet', 'Mantequilla', 150, 'g';
-EXEC sp_Registro_receta 'Bisquet', 'Huevo', 4, 'Pieza';
+EXEC sp_Registro_receta 'Bisquet', 'Huevo', 292, 'g';
 EXEC sp_Registro_receta 'Cocol', 'Harina Selecta', 1500,'g';
 EXEC sp_Registro_receta 'Cocol', 'Azucar', 500, 'g';
 EXEC sp_Registro_receta 'Cocol', 'Granilla colores Granimex', 400, 'g';
@@ -139,7 +129,7 @@ EXEC sp_Registro_receta 'Dona', 'Harina Selecta', 2000, 'g';
 EXEC sp_Registro_receta 'Dona', 'Azucar', 300, 'g';
 EXEC sp_Registro_receta 'Dona', 'Levadura', 100, 'g';
 EXEC sp_Registro_receta 'Dona', 'Manteca Tolteca (GRASA)', 200, 'g';
-EXEC sp_Registro_receta 'Dona', 'Aceite Bidon Bunge', 1, 'lt';
+EXEC sp_Registro_receta 'Dona', 'Aceite Bidon Bunge', 1000, 'ml';
 EXEC sp_Registro_receta 'Polvoron amarillo', 'Harina Selecta', 1500, 'g';
 EXEC sp_Registro_receta 'Polvoron amarillo', 'Azucar', 600, 'g';
 EXEC sp_Registro_receta 'Polvoron amarillo', 'Manteca Tolteca (GRASA)', 600, 'g';

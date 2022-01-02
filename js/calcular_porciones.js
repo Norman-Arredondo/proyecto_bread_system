@@ -1,6 +1,7 @@
 $(document).ready(function () {
-    $("#produccion").submit(function (event) {
-        event.preventDefault(); //almacena los datos sin refrescar el sitio
+    $("#btn_calcular_porciones").on('click', function(event){
+        console.log('Ha hecho click sobre el boton calcular porciones'); 
+        event.preventDefault();
         new obtener_porciones();
     });
 });
@@ -39,7 +40,6 @@ function obtener_porciones(){
         }).done(function(data) {
             console.log(data);
             $("#table_porciones_calculadas").html(data);
-
          }).fail(function() {
             console.log("Error al enviar");
         });   

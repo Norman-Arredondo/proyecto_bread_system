@@ -22,7 +22,7 @@
                                 <div class="mb-3"><label class="form-label" for=""><strong>Fecha</strong></label><input class="form-control" type="date" id="fecha_produccion" name="fecha_produccion"></div>
                             </div>
                             <div class="col">
-                                <div class="mb-3"><label class="form-label" for=""><strong>RFC Empleado</strong></label><input class="form-control" type="text" id="rfc_empleado" name="rfc_empleado"></div>
+                                <div class="mb-3"><label class="form-label" for=""><strong>RFC Empleado</strong></label><input class="form-control" type="text" id="rfc_empleado" name="rfc_empleado" maxlength="13"></div>
                             </div>
                             <div class="col">
                                 <div class="mb-3"><label class="form-label" for=""><strong>Pan</strong></label><input class="form-control" type="text" id="pan" name="pan"></div>
@@ -32,7 +32,7 @@
                             </div>
                         </div>
                         <div class="mb- mt-4 d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button class="btn btn-dark btn-sm" type="submit">Calcular</button>
+                            <button class="btn btn-dark btn-sm" type="submit" id="btn_calcular_porciones" name="btn_calcular_porciones">Calcular</button>
                         </div>
 
                         <div class="card-body">
@@ -66,7 +66,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <div class="mb-3"><label class="form-label" for=""><strong>ID insumo</strong></label><input class="form-control" type="text" id="id_insumo" name="id_insumo"></div>
+                                <div class="mb-3"><label class="form-label" for=""><strong>ID insumo (INS-#####)</strong></label><input class="form-control" type="text" id="id_insumo" name="id_insumo"></div>
                             </div>
                             <div class="col">
                                 <div class="mb-3"><label class="form-label" for=""><strong>Importe gas</strong></label><input class="form-control" type="number" id="importe_gas" name="importe_gas" min="1"></div>
@@ -80,22 +80,21 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <div class="mb-3"><label class="form-label" for=""><strong>Total insumos</strong></label><input disabled class="form-control" type="number" id="" name=""></div>
+                                <div class="mb-3"><label class="form-label" for=""><strong>Total insumos</strong></label><input disabled class="form-control" type="number" id="total_insumos" name="total_insumos"></div>
                             </div>
                             <div class="col">
-                                <div class="mb-3"><label class="form-label" for=""><strong>Total materia prima</strong></label><input disabled class="form-control" type="text" id="" name=""></div>
+                                <div class="mb-3"><label class="form-label" for=""><strong>Total materia prima</strong></label><input disabled class="form-control" type="number" id="total_mp" name="total_mp"></div>
                             </div>
                             <div class="col">
-                                <div class="mb-3"><label class="form-label" for=""><strong>% de ganancia</strong></label><input class="form-control" type="number" id="" name=""></div>
+                                <div class="mb-3"><label class="form-label" for=""><strong>% de ganancia</strong></label><input class="form-control" type="number" id="ganancia" name="ganancia"></div>
                             </div>
                             <div class="col">
-                                <div class="mb-3"><label class="form-label" for=""><strong>Precio de venta</strong></label><input disabled class="form-control" type="number" id="" name=""></div>
+                                <div class="mb-3"><label class="form-label" for=""><strong>Precio de venta</strong></label><input disabled class="form-control" type="number" id="precio_venta" name="precio_venta"></div>
                             </div>
                         </div>
 
                         <div class="mb- mt-4 d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button class="btn btn-dark btn-sm" type="submit">Guardar</button>
-                            <!--<button class="btn btn-dark btn-sm" type="submit">Calcular precio de venta</button>-->
+                            <button class="btn btn-dark btn-sm" type="submit" id="btn_guardar_produccion" name="btn_guardar_produccion">Guardar</button>
                         </div>
                     </div>
                 </form>
@@ -227,3 +226,4 @@
     ?>
 
     <script src="js/calcular_porciones.js"></script>
+    <script src="js/insert_produccion.js"></script>

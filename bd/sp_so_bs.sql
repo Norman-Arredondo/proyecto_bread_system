@@ -501,7 +501,6 @@ BEGIN
 			@costo FLOAT,
 			-- variables auxilliares
 			@existencia FLOAT,
-			@mp_prod FLOAT,
 			@total_mp FLOAT,
 			@porciones_base INT,
 			@registros INT,
@@ -524,8 +523,7 @@ BEGIN
 		BEGIN
 			SET @cantidad = (((SELECT cantidad FROM recetario WHERE pan = @pan AND nombre_mp = @ingrediente) * @porciones) / @porciones_base);
 			SET @unidad = (SELECT unidad FROM recetario WHERE pan = @pan AND nombre_mp = @ingrediente);
-			SET @mp_prod = (SELECT SUM(mp.cantidad) FROM mp_produccion mp JOIN produccion p ON mp.id_produccion = p.id_produccion WHERE p.pan = @pan);
-			SET @costo = ((@cantidad * @total_mp - @mp_prod) / @existencia);
+			SET @costo = ((@cantidad * @total_mp) / @existencia);
 
 			INSERT INTO #TempTable VALUES (@ingrediente, @cantidad, @unidad, @costo);
 
