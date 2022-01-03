@@ -77,7 +77,7 @@ function insertar_produccion(){
             importe_gas: $('#importe_gas').val(),
             importe_luz: $('#importe_luz').val(),
             importe_gasolina: $('#importe_gasolina').val(),
-            total_insumos: $('#total_insumos').val(),
+            total_insumos: $('#total_ins').val(),
             precio_venta: $('#precio_venta').val()
         };
         console.log(Datos_produccion);

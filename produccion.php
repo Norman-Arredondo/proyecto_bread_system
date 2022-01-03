@@ -80,13 +80,13 @@ include("templates/menu.php");
                         </div>
                         <div class="row">
                             <div class="col">
-                                <div class="mb-3"><label class="form-label" for="total_ins"><strong>Total insumos</strong></label><input class="form-control" type="number" id="total_ins" name="total_ins" readonly="readonly"></div>
+                                <div class="mb-3"><label class="form-label" for="total_ins"><strong>Total insumos</strong></label><input class="form-control final" type="number" id="total_ins" name="total_ins" readonly="readonly"></div>
                             </div>
                             <div class="col">
-                                <div class="mb-3"><label class="form-label" for=""><strong>Total materia prima</strong></label><input class="form-control" type="number" id="total_mp" name="total_mp" readonly="readonly"></div>
+                                <div class="mb-3"><label class="form-label" for=""><strong>Total materia prima</strong></label><input class="form-control final" type="number" id="total_mp" name="total_mp" readonly="readonly"></div>
                             </div>
                             <div class="col">
-                                <div class="mb-3"><label class="form-label" for=""><strong>% de ganancia</strong></label><input class="form-control" type="number" id="ganancia" name="ganancia"></div>
+                                <div class="mb-3"><label class="form-label" for=""><strong>% de ganancia</strong></label><input class="form-control" type="number" id="ganancia" name="ganancia" onkeyup="precio_final();" min="1"></div>
                             </div>
                             <div class="col">
                                 <div class="mb-3"><label class="form-label" for=""><strong>Precio de venta</strong></label><input class="form-control" type="number" id="precio_venta" name="precio_venta" readonly="readonly"></div>
@@ -300,8 +300,28 @@ include("templates/menu.php");
                 }
             });
             total = (change) ? total : 0;
-            console.log(total);
             $('#total_ins').val(total);
+        }
+
+        function precio_final() {
+            var piezas = $('#no_piezas').val();
+            var tot_ins = $('#total_ins').val();
+            var tot_mp = $('#total_mp').val();
+            var precio_venta = 0;
+            var porcentaje = 0;
+            var change = false;
+
+            $(".final").each(function() {
+                if (!isNaN(parseFloat($(this).val()))) {
+                    change = true; 
+                }
+            });
+
+            porcentaje = $('#ganancia').val();
+            porcentaje = (change) ? porcentaje : 0;
+
+            precio_venta = ((parseFloat(tot_ins) + parseFloat(tot_mp)) * (parseFloat(porcentaje) / 100)) / parseFloat(piezas);
+            $('#precio_venta').val(Number.parseFloat(precio_venta).toFixed(2)); 
         }
     </script>
 
