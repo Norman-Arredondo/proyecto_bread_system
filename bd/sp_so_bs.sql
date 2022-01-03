@@ -604,3 +604,20 @@ BEGIN
 	UPDATE produccion SET estatus = @estatus 
 		WHERE id_produccion = @id_produccion;
 END	
+
+-- Consultar produccion
+CREATE PROCEDURE sp_Consulta_mp_produccion @id_produccion VARCHAR(10)
+AS
+BEGIN
+	SELECT nombre_mp, cantidad, unidad, costo_proporcional
+			FROM mp_produccion WHERE id_produccion = @id_produccion
+			ORDER BY id_produccion;
+END
+
+CREATE PROCEDURE sp_Consulta_insumo @id_insumo VARCHAR(10)
+AS
+BEGIN
+	SELECT importe_gas, importe_luz, importe_gasolina, importe_total
+			FROM insumo WHERE id_insumo = @id_insumo
+			ORDER BY id_insumo;
+END
