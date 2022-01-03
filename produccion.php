@@ -127,6 +127,7 @@
                             <table class="table my-0" id="">
                                 <thead>
                                     <tr style="text-align: center;">
+                                        <th>Acciones</th>
                                         <th>ID Producción</th>
                                         <th>Fecha</th>
                                         <th>RFC del empleado</th>
@@ -146,6 +147,7 @@
                                 </tbody>
                                 <tfoot>
                                     <tr style="text-align: center;">
+                                        <td><strong>Acciones</strong></td>
                                         <td><strong>ID Producción</strong></td>
                                         <td><strong>Fecha</strong></td>
                                         <td><strong>RFC del empleado</strong></td>
