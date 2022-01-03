@@ -1,5 +1,7 @@
 <?php
-include("templates/menu.php");
+    include("templates/menu.php");
+    include("bd/select_produccion.php");
+    error_reporting(E_ALL ^ E_NOTICE);
 ?>
 
 <div class="d-flex flex-column" id="content-wrapper">
@@ -125,6 +127,7 @@ include("templates/menu.php");
                             <table class="table my-0" id="">
                                 <thead>
                                     <tr style="text-align: center;">
+                                        <th>Acciones</th>
                                         <th>ID Producción</th>
                                         <th>Fecha</th>
                                         <th>RFC del empleado</th>
@@ -138,14 +141,13 @@ include("templates/menu.php");
                                 </thead>
                                 <tbody>
                                     <?php
-                                    /*
-                                            $pto_vta = new pto_vta();
-                                            $pto_vta->recuperar();
-                                            */
+                                        $produccion = new produccion();
+                                        $produccion->recuperar_produccion();
                                     ?>
                                 </tbody>
                                 <tfoot>
                                     <tr style="text-align: center;">
+                                        <td><strong>Acciones</strong></td>
                                         <td><strong>ID Producción</strong></td>
                                         <td><strong>Fecha</strong></td>
                                         <td><strong>RFC del empleado</strong></td>
