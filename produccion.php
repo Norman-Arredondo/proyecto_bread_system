@@ -301,8 +301,7 @@ include("templates/menu.php");
             });
             total = (change) ? total : 0;
             console.log(total);
-            $('total_ins').val(total);
-            //document.getElementById('total_ins').innerHTML = total;
+            $('#total_ins').val(total);
         }
     </script>
 
