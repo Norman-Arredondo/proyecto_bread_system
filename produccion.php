@@ -69,13 +69,13 @@
                                 <div class="mb-3"><label class="form-label" for=""><strong>ID insumo (INS-#####)</strong></label><input class="form-control" type="text" id="id_insumo" name="id_insumo"></div>
                             </div>
                             <div class="col">
-                                <div class="mb-3"><label class="form-label" for=""><strong>Importe gas</strong></label><input class="form-control" type="number" id="importe_gas" name="importe_gas" min="1"></div>
+                                <div class="mb-3"><label class="form-label" for=""><strong>Importe gas</strong></label><input class="form-control insumo_prod" type="number" id="importe_gas" name="importe_gas" onkeyup="calcular_total_ins();" min="1"></div>
                             </div>
                             <div class="col">
-                                <div class="mb-3"><label class="form-label" for=""><strong>Importe luz</strong></label><input class="form-control" type="number" id="importe_luz" name="importe_luz" min="1"></div>
+                                <div class="mb-3"><label class="form-label" for=""><strong>Importe luz</strong></label><input class="form-control insumo_prod" type="number" id="importe_luz" name="importe_luz" onkeyup="calcular_total_ins();" min="1"></div>
                             </div>
                             <div class="col">
-                                <div class="mb-3"><label class="form-label" for=""><strong>Importe gasolina</strong></label><input class="form-control" type="number" id="importe_gasolina" name="importe_gasolina" min="0"></div>
+                                <div class="mb-3"><label class="form-label" for=""><strong>Importe gasolina</strong></label><input class="form-control insumo_prod" type="number" id="importe_gasolina" name="importe_gasolina" onkeyup="calcular_total_ins();" min="1"></div>
                             </div>
                         </div>
                         <div class="row">
@@ -224,6 +224,22 @@
     <?php
     include("templates/footer.php");
     ?>
+
+<script>
+    function calcular_total_ins(){
+        var total = 1;
+        var change = false;
+
+		$(".insumo_prod").each(function(){
+			if (!isNaN(parseFloat($(this).val()))){
+                change = true;
+				total += parseFloat($(this).val());
+			}
+	    });
+        total = (change) ? total : 0;
+    	document.getElementById('total_insumos').innerHTML = total;
+    }
+</script>
 
     <script src="js/calcular_porciones.js"></script>
     <script src="js/insert_produccion.js"></script>

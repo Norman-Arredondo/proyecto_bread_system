@@ -31,17 +31,27 @@ function obtener_porciones(){
             pan: $('#pan').val(),
             piezas: $('#no_piezas').val()
         };
-        console.log(Datos_porciones);
 
         $.ajax({
             url: 'bd/calcular_porciones.php',
             type: 'POST',
             data: Datos_porciones,
         }).done(function(data) {
-            console.log(data);
             $("#table_porciones_calculadas").html(data);
+            new calcular_total();
          }).fail(function() {
             console.log("Error al enviar");
         });   
     }
+}
+
+function calcular_total(){
+    
+    var suma = 0;
+
+    $('#table_porciones_calculadas tbody tr').each(function (index2) {
+        suma += parseFloat($(this).find('td').eq(3).text());
+    });
+
+    $('#total_mp').val(Number.parseFloat(suma).toFixed(2));
 }

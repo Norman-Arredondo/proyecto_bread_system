@@ -64,6 +64,7 @@ function insertar_produccion(){
         alert("Ingrese los datos faltantes: " + datos);
     } else{
         let mpp_ingredientes = new mpp_obtener_ingredientes();
+
         const Datos_produccion= {
             id_produccion: $('#id_produccion').val(),
             fecha: $('#fecha_produccion').val(),
@@ -80,8 +81,7 @@ function insertar_produccion(){
             precio_venta: $('#precio_venta').val()
         };
         console.log(Datos_produccion);
-
-          
+        
     }
 }
 
@@ -99,7 +99,7 @@ function mpp_obtener_ingredientes(){
 
         var nombre_mp = materia_prima.trim();
         mpp_id_mp_produccion = "MPP-" + cont;
-        
+
         var fila_porciones_calculadas = {
             mpp_id_produccion,
             mpp_id_mp_produccion,
@@ -110,5 +110,6 @@ function mpp_obtener_ingredientes(){
         };
         array_cantidades.push(fila_porciones_calculadas);
     });
+
     return array_cantidades;
 } 
