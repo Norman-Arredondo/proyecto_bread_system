@@ -78,10 +78,29 @@ function insertar_produccion(){
             importe_luz: $('#importe_luz').val(),
             importe_gasolina: $('#importe_gasolina').val(),
             total_insumos: $('#total_ins').val(),
+            ganancia: $('#ganancia').val(),
             precio_venta: $('#precio_venta').val()
         };
         console.log(Datos_produccion);
         
+        var dato = $("#produccion").serialize();
+        
+        $.ajax({
+            url: 'bd/insert_produccion.php',
+            type: 'POST',
+            data: Datos_produccion,
+        }).done(function(data) {
+
+            if(data === "Orden guardada"){
+                alert("Orden guardada con éxito :D");
+                window.location.reload();
+            }
+            if(data.indexOf("Error") > -1){
+                alert(data);
+            }
+        }).fail(function() {
+            console.log("Error al enviar");
+        });  
     }
 }
 
@@ -92,10 +111,10 @@ function mpp_obtener_ingredientes(){
     var array_cantidades = []; 
 
     $('#table_porciones_calculadas tbody tr').each(function (index2) {
-        var materia_prima = $(this).find("td").eq(1).html();
-        var cantidad = $(this).find("td").eq(2).html();
-        var unidad = $(this).find("td").eq(3).html();
-        var costo = $(this).find("td").eq(4).html();
+        var materia_prima = $(this).find("td").eq(0).html();
+        var cantidad = $(this).find("td").eq(1).html();
+        var unidad = $(this).find("td").eq(2).html();
+        var costo_mp = $(this).find("td").eq(3).html();
 
         var nombre_mp = materia_prima.trim();
         mpp_id_mp_produccion = "MPP-" + cont;
@@ -106,9 +125,10 @@ function mpp_obtener_ingredientes(){
             nombre_mp,
             cantidad,
             unidad,
-            costo
+            costo_mp
         };
         array_cantidades.push(fila_porciones_calculadas);
+        cont += 1;
     });
 
     return array_cantidades;

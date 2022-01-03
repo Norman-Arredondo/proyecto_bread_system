@@ -1,5 +1,7 @@
 <?php
-include("templates/menu.php");
+    include("templates/menu.php");
+    include("bd/select_produccion.php");
+    error_reporting(E_ALL ^ E_NOTICE);
 ?>
 
 <div class="d-flex flex-column" id="content-wrapper">
@@ -138,10 +140,8 @@ include("templates/menu.php");
                                 </thead>
                                 <tbody>
                                     <?php
-                                    /*
-                                            $pto_vta = new pto_vta();
-                                            $pto_vta->recuperar();
-                                            */
+                                        $produccion = new produccion();
+                                        $produccion->recuperar_produccion();
                                     ?>
                                 </tbody>
                                 <tfoot>

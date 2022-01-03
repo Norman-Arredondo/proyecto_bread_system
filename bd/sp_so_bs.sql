@@ -489,7 +489,6 @@ END
 
 
 -- <<<<<<<<<<<<<<<<<<<< PRODUCCIÓN <<<<<<<<<<<<<<<<<<<< 
--- Registrar
 -- Calcular porciones
 BEGIN TRANSACTION
 CREATE PROCEDURE sp_Calcular_Porciones @pan VARCHAR(50), @porciones INT
@@ -538,3 +537,62 @@ END
 --rollback
 --commit
 EXEC sp_Calcular_Porciones 'Multi', 37;
+
+-- Registrar insumos
+CREATE PROCEDURE sp_Registro_insumos
+	@id_insumo VARCHAR(10), /*Ejemplo: INS-00001*/
+	@fecha_insumo DATE,
+	@importe_gas FLOAT,
+	@importe_luz FLOAT,
+	@importe_gasolina FLOAT,
+	@importe_total FLOAT
+AS
+BEGIN
+	INSERT INTO insumo VALUES(@id_insumo, @fecha_insumo, @importe_gas, @importe_luz, @importe_gasolina, @importe_total, 1);
+END	
+
+-- Registrar produccion
+CREATE PROCEDURE sp_Registro_produccion
+	@id_produccion VARCHAR(10), /*Ejemplo: PRD-00001*/
+	@fecha_produccion DATE,
+	@rfc_empleado VARCHAR(13),
+	@pan VARCHAR(50),
+	@no_piezas INT,
+	@id_insumo  VARCHAR(10), /*Ejemplo: INS-00001*/
+	@porcentaje_ganancia FLOAT,
+	@precio_venta FLOAT
+AS
+BEGIN
+	INSERT INTO produccion VALUES(@id_produccion, @fecha_produccion, @rfc_empleado, @pan, @no_piezas, @id_insumo, @porcentaje_ganancia, @precio_venta, 1);
+END	
+
+-- Registrar mp_produccion
+CREATE PROCEDURE sp_Registro_mp_produccion
+	@id_produccion VARCHAR(10), /*Ejemplo: PRD-00001*/
+	@id_mp_produccion VARCHAR(10), /*Ejemplo: MPP-00001*/
+	@nombre_mp VARCHAR(50),
+	@cantidad FLOAT,
+	@unidad VARCHAR(10), 
+	@costo_proporcional FLOAT
+AS
+BEGIN
+	INSERT INTO mp_produccion VALUES(@id_produccion, @id_mp_produccion, @nombre_mp, @cantidad, @unidad, @costo_proporcional, 1);
+END	
+
+-- Consultar produccion
+CREATE PROCEDURE sp_Consulta_produccion @estatus INT
+AS
+BEGIN
+	IF @estatus = 0 or @estatus = 1
+	BEGIN
+		SELECT id_produccion, fecha_produccion, rfc_empleado, pan, no_piezas, id_insumo, porcentaje_ganancia, precio_venta, estatus
+			FROM produccion WHERE estatus = @estatus
+			ORDER BY id_produccion;
+	END
+	ELSE
+	BEGIN
+		SELECT id_produccion, fecha_produccion, rfc_empleado, pan, no_piezas, id_insumo, porcentaje_ganancia, precio_venta, estatus
+			FROM produccion
+			ORDER BY id_produccion;
+	END
+END	
