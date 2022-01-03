@@ -114,6 +114,70 @@ include("templates/menu.php");
 
             <div class="card shadow mb-3">
                 <div class="card-header py-3">
+                    <p class="text-primary m-0 fw-bold">Criterio de búsqueda</p>
+                </div>
+                <form id="" action="" method="POST">
+                    <div class="card-body">
+
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-md-6 text-nowrap ">
+                                    <form id="select_" action="" method="POST">
+                                        <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label class="form-label">Mostrar&nbsp;
+                                                <select class="d-inline-block form-select form-select-sm" id="opc" name="opc">
+                                                    <option value="2" selected="">Todos</option>
+                                                    <option value="1">Vigente</option>
+                                                    <option value="0">No vigente</option>
+                                                </select>&nbsp;</label>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                                <table class="table my-0" id="">
+                                    <thead>
+                                        <tr style="text-align: center;">
+                                            <th>Clave de venta</th>
+                                            <th>Clave punto de venta</th>
+                                            <th>Fecha</th>
+                                            <th>Gastos</th>
+                                            <th>Importe de venta</th>
+                                            <th>RFC del empleado</th>
+                                            <th>Estatus</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        /*
+                                            $pto_vta = new pto_vta();
+                                            $pto_vta->recuperar();
+                                            */
+                                        ?>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr style="text-align: center;">
+                                            <td><strong>Clave de venta</strong></td>
+                                            <td><strong>Clave punto de venta</strong></td>
+                                            <td><strong>Fecha</strong></td>
+                                            <td><strong>Gastos</strong></td>
+                                            <td><strong>Importe de venta</strong></td>
+                                            <td><strong>RFC del empleado</strong></td>
+                                            <td><strong>Estatus</strong></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+                                    <!--
+
+            <div class="card shadow mb-3">
+                <div class="card-header py-3">
                     <p class="text-primary m-0 fw-bold">Ventas Registradas</p>
                 </div>
                 <form id="" action="" method="POST">
@@ -180,7 +244,7 @@ include("templates/menu.php");
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php
+                                    <?php
                                         /*
                                             $pto_vta = new pto_vta();
                                             $pto_vta->recuperar();
@@ -206,6 +270,8 @@ include("templates/menu.php");
                     </div>
                 </form>
             </div>
+
+-->
 
         </div>
     </div>
