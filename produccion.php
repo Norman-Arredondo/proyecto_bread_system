@@ -124,7 +124,7 @@
                         </div>
 
                         <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
-                            <table class="table my-0" id="">
+                            <table class="table my-0" id="table_produccion">
                                 <thead>
                                     <tr style="text-align: center;">
                                         <th>Acciones</th>
@@ -329,3 +329,4 @@
 
     <script src="js/calcular_porciones.js"></script>
     <script src="js/insert_produccion.js"></script>
+    <script src="js/estatus_produccion.js"></script>

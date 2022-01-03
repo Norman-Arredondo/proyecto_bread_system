@@ -596,3 +596,11 @@ BEGIN
 			ORDER BY id_produccion;
 	END
 END	
+
+-- Cambiar estatus catálogo
+CREATE PROCEDURE sp_CamEst_Produccion @id_produccion VARCHAR(10), @estatus INT
+AS
+BEGIN
+	UPDATE produccion SET estatus = @estatus 
+		WHERE id_produccion = @id_produccion;
+END	
