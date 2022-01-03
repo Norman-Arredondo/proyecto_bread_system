@@ -172,9 +172,10 @@ include("templates/menu.php");
                     </div>
                 </form>
             </div>
+        </div>
+    </div>
 
-
-                                    <!--
+    <!--
 
             <div class="card shadow mb-3">
                 <div class="card-header py-3">
@@ -201,19 +202,19 @@ include("templates/menu.php");
                         </div>
                         <div class="row">
                             <div class="col">
-                                <div class="mb-3"><label class="form-label"><strong>Fecha</strong></label><input disabled class="form-control" type="date" id="" name=""></div>
+                                <div class="mb-3"><label class="form-label"><strong>Fecha</strong></label><input class="form-control" type="date" id="" name=""></div>
                             </div>
                             <div class="col">
-                                <div class="mb-3"><label class="form-label"><strong>Gastos</strong></label><input disabled class="form-control" type="number" id="" name=""></div>
+                                <div class="mb-3"><label class="form-label"><strong>Gastos</strong></label><input class="form-control" type="number" id="" name=""></div>
                             </div>
                             <div class="col">
-                                <div class="mb-3"><label class="form-label"><strong>Importe de venta</strong></label><input disabled class="form-control" type="number" id="" name=""></div>
+                                <div class="mb-3"><label class="form-label"><strong>Importe de venta</strong></label><input class="form-control" type="number" id="" name=""></div>
                             </div>
                             <div class="col">
-                                <div class="mb-3"><label class="form-label"><strong>RFC del empleado</strong></label><input disabled class="form-control" type="text" id="" name=""></div>
+                                <div class="mb-3"><label class="form-label"><strong>RFC del empleado</strong></label><input  class="form-control" type="text" id="" name=""></div>
                             </div>
                             <div class="col">
-                                <div class="mb-3"><label class="form-label"><strong>Estatus</strong></label><input disabled class="form-control" type="number" id="" name=""></div>
+                                <div class="mb-3"><label class="form-label"><strong>Estatus</strong></label><input class="form-control" type="number" id="" name=""></div>
                             </div>
                         </div>
 
@@ -245,11 +246,11 @@ include("templates/menu.php");
                                     </thead>
                                     <tbody>
                                     <?php
-                                        /*
+                                    /*
                                             $pto_vta = new pto_vta();
                                             $pto_vta->recuperar();
                                             */
-                                        ?>
+                                    ?>
                                     </tbody>
                                     <tfoot>
                                         <tr style="text-align: center;">
@@ -273,8 +274,7 @@ include("templates/menu.php");
 
 -->
 
-        </div>
-    </div>
+
 
     <?php
     include("templates/footer.php");
