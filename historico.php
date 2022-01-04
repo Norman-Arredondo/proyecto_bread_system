@@ -1,6 +1,6 @@
 <?php
 include("templates/menu.php");
-include("bd/consultas.php");
+include("bd/select_historico.php");
 ?>
 
 <div class="d-flex flex-column" id="content-wrapper">
@@ -32,7 +32,7 @@ include("bd/consultas.php");
                             </thead>
                             <tbody>
                                 <?php
-                                $consultas = new consultas();
+                                $consultas = new historico();
                                 $consultas->recuperar_HechosVentas();
                                 ?> 
                             </tbody>
