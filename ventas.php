@@ -1,6 +1,8 @@
 <?php
     include("templates/menu.php");
     include("bd/select_puntos_venta.php");
+    include("bd/select_venta.php");
+    error_reporting(E_ALL ^ E_NOTICE);
 ?>
 
 <div class="d-flex flex-column" id="content-wrapper">
@@ -9,14 +11,14 @@
             <br>
             <h3 class="text-dark mb-4">Ventas</h3>
             <div class="card shadow mb-3">
-                <form>
+                <form id="venta" action="" method="POST">
                     <div class="card-header py-3">
                         <p class="text-primary m-0 fw-bold">Venta</p>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <div class="mb-3"><label class="form-label"><strong>Clave de venta</strong></label><input class="form-control" type="text" id="cve_vta" name="cve_vta"></div>
+                                <div class="mb-3"><label class="form-label"><strong>Clave venta (VTA-#####)</strong></label><input class="form-control" type="text" id="cve_vta" name="cve_vta"></div>
                             </div>
                             <div class="col">
                                 <div class="mb-3"><label class="form-label" for="pto_vta"><strong>Punto de venta</strong></label>
@@ -38,10 +40,10 @@
                                 <div class="mb-3"><label class="form-label"><strong>Gastos</strong></label><input class="form-control" type="number" id="gastos" name="gastos"></div>
                             </div>
                             <div class="col">
-                                <div class="mb-3"><label class="form-label"><strong>Importe venta</strong></label><input class="form-control" type="number" id="importe_venta" name="importe_venta"></div>
+                                <div class="mb-3"><label class="form-label"><strong>Importe venta</strong></label><input class="form-control" type="number" id="importe_venta" name="importe_venta" min="1" step="any"></div>
                             </div>
                             <div class="col">
-                                <div class="mb-3"><label class="form-label"><strong>RFC del empleado</strong></label><input class="form-control" type="text" id="rfc_empleado" name="rfc_empleado"></div>
+                                <div class="mb-3"><label class="form-label"><strong>RFC del empleado</strong></label><input class="form-control" type="text" id="rfc_empleado" name="rfc_empleado" maxlength="13"></div>
                             </div>
                         </div>
                     </div>
@@ -70,7 +72,7 @@
 
                         <div class="card-body">
                             <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
-                                <table class="table my-0" id="table_pto_vta">
+                                <table class="table my-0" id="table_det_vta">
                                     <thead>
                                         <tr style="text-align: center;">
                                             <th>Acciones</th>
@@ -81,12 +83,6 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php
-                                        /*
-                                            $pto_vta = new pto_vta();
-                                            $pto_vta->recuperar();
-                                            */
-                                        ?>
                                     </tbody>
                                     <tfoot>
                                         <tr style="text-align: center;">
@@ -103,7 +99,6 @@
                         <div class="mb-3"><button class="btn btn-dark btn-sm" type="submit" style="float: right">Guardar</button></div>
                         <br>
                     </div>
-
                 </form>
             </div>
 
@@ -133,31 +128,31 @@
                                 <table class="table my-0" id="">
                                     <thead>
                                         <tr style="text-align: center;">
+                                            <th>Acciones</th>
                                             <th>Clave de venta</th>
-                                            <th>Clave punto de venta</th>
+                                            <th>Punto de venta</th>
                                             <th>Fecha</th>
                                             <th>Gastos</th>
                                             <th>Importe de venta</th>
-                                            <th>RFC del empleado</th>
+                                            <th>RFC empleado</th>
                                             <th>Estatus</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        /*
-                                            $pto_vta = new pto_vta();
-                                            $pto_vta->recuperar();
-                                            */
+                                            $venta = new venta();
+                                            $venta->recuperar_venta();
                                         ?>
                                     </tbody>
                                     <tfoot>
                                         <tr style="text-align: center;">
+                                            <td><strong>Acciones</strong></td>
                                             <td><strong>Clave de venta</strong></td>
-                                            <td><strong>Clave punto de venta</strong></td>
+                                            <td><strong>Punto de venta</strong></td>
                                             <td><strong>Fecha</strong></td>
                                             <td><strong>Gastos</strong></td>
                                             <td><strong>Importe de venta</strong></td>
-                                            <td><strong>RFC del empleado</strong></td>
+                                            <td><strong>RFC empleado</strong></td>
                                             <td><strong>Estatus</strong></td>
                                         </tr>
                                     </tfoot>
@@ -409,7 +404,7 @@
                     "<td>" + ri_piezas_devueltas + "</td>" +
                     "</tr>";
 
-                $('#table_pto_vta tbody').append(fila);
+                $('#table_det_vta tbody').append(fila);
                 $('#id_produccion').val('');
                 $('#pan').val('');
                 $('#piezas_entregadas').val('');
@@ -478,3 +473,5 @@
             }
         }
     </script>
+
+    <script src="js/insert_venta.js"></script>

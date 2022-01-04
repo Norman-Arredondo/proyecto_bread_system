@@ -626,10 +626,57 @@ END
 
 
 
--- <<<<<<<<<<<<<<<<<<<< PRODUCCIÓN <<<<<<<<<<<<<<<<<<<< 
--- Combo TIPO EMPLEADO (Vista empleado)
+-- <<<<<<<<<<<<<<<<<<<< VENTAS <<<<<<<<<<<<<<<<<<<< 
+-- Combo Puntos de venta (Vista ventas)
 CREATE PROCEDURE sp_Combo_Puntos
 AS
 BEGIN
 	SELECT cve_pto, pto_vta FROM puntos_venta;
 END
+
+-- Registrar venta
+CREATE PROCEDURE sp_Registro_venta
+	@cve_vta VARCHAR(10), /*Ejemplo: VTA-00001*/
+	@cve_pto VARCHAR(10), /*Ejemplo: PTO-00001*/
+	@fecha DATE,
+	@gastos FLOAT,
+	@importe_venta FLOAT,
+	@rfc_empleado VARCHAR(13)
+AS
+BEGIN
+	INSERT INTO venta VALUES(@cve_vta, @cve_pto, @fecha, @gastos, @importe_venta, @rfc_empleado, 1);
+END
+
+-- Registrar detalle venta
+CREATE PROCEDURE sp_Registro_detalle_venta
+	@cve_vta VARCHAR(10), /*Ejemplo: VTA-00001*/
+	@cve_pto VARCHAR(10), /*Ejemplo: PTO-00001*/
+	@id_produccion VARCHAR(10), /*Ejemplo: PRD-00001*/
+	@piezas_entregadas INT,
+	@piezas_devueltas INT
+AS
+BEGIN
+	INSERT INTO detalle_venta VALUES(@cve_vta, @cve_pto, @id_produccion, @piezas_entregadas, @piezas_devueltas, 1);
+END
+
+-- Consultar venta
+CREATE PROCEDURE sp_Cosulta_venta @estatus INT
+AS
+BEGIN
+	IF @estatus = 0 or @estatus = 1
+	BEGIN
+		SELECT v.cve_vta, pv.pto_vta, v.fecha, v.gastos, v.importe_venta, v.rfc_empleado, v.estatus
+			FROM venta v JOIN puntos_venta pv ON v.cve_pto = pv.cve_pto
+			WHERE v.estatus = @estatus
+			ORDER BY v.cve_vta;
+	END
+	ELSE
+	BEGIN
+		SELECT v.cve_vta, pv.pto_vta, v.fecha, v.gastos, v.importe_venta, v.rfc_empleado, v.estatus
+			FROM venta v JOIN puntos_venta pv ON v.cve_pto = pv.cve_pto
+			ORDER BY v.cve_vta;
+	END
+END
+
+select * from venta
+select * from detalle_venta

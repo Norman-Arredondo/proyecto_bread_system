@@ -171,9 +171,8 @@ EXEC sp_Registro_insumos 'INS-00005', '2022-01-03', 1000, 70, 1200, 2270;
 
 -- >>> insert produccion <<<
 EXEC sp_Registro_Produccion 'PRD-00002', '2022-01-03', 'RAGF630503EW7', 'Bisquet', 20, 'INS-00002', 10, 11.09;
-EXEC sp_Registro_Produccion 'PRD-00003', '2022-01-03', 'RAGF630503EW7', 'Cocol', 72, 'INS-00003', 0.1, 3.5;
-EXEC sp_Registro_Produccion 'PRD-00004', '2022-01-03', 'RAGF630503EW7', 'Dona', 40, 'INS-00004', 0.1, 8;
-EXEC sp_Registro_Produccion 'PRD-00005', '2022-01-03', 'HUHL7205233T9', 'Multi', 36, 'INS-00005', 0.1, 8;
+EXEC sp_Registro_Produccion 'PRD-00003', '2022-01-03', 'RAGF630503EW7', 'Cocol', 72, 'INS-00003', 10, 3.5;
+EXEC sp_Registro_Produccion 'PRD-00004', '2022-01-03', 'RAGF630503EW7', 'Dona', 40, 'INS-00004', 10, 5.87;
 
 
 
@@ -195,78 +194,12 @@ EXEC sp_Registro_MP_Produccion 'PRD-00003', 'MPP-1', 'Harina Selecta', 1500, 'g'
 EXEC sp_Registro_MP_Produccion 'PRD-00003', 'MPP-2', 'Azucar', 500, 'g', 50.5;
 EXEC sp_Registro_MP_Produccion 'PRD-00003', 'MPP-3', 'Granilla colores Granimex', 400, 'g', 40.4;
 EXEC sp_Registro_MP_Produccion 'PRD-00003', 'MPP-4', 'Anis', 100, 'g', 10.10;
-
-
-
-
-
-
-
-
-
-
-
-
-
---produccion del dia 2021-11-01
---concha
-EXEC sp_Registro_MP_Produccion 'PRD-00001', 'MPP-00001', 'Harina Selecta', 1, 'kg', 9.09;
-EXEC sp_Registro_MP_Produccion 'PRD-00001', 'MPP-00002', 'Azucar', 300, 'g', 4.06;
-EXEC sp_Registro_MP_Produccion 'PRD-00001', 'MPP-00003', 'Sal Fina', 10, 'g', 0.04;
-EXEC sp_Registro_MP_Produccion 'PRD-00001', 'MPP-00004', 'Levadura', 20, 'g', 1.51;
-EXEC sp_Registro_MP_Produccion 'PRD-00001', 'MPP-00005', 'Huevo', 150, 'ml', 3.99;
-EXEC sp_Registro_MP_Produccion 'PRD-00001', 'MPP-00006', 'Mantequilla', 100, 'g', 3.69;
-EXEC sp_Registro_MP_Produccion 'PRD-00001', 'MPP-00007', 'Manteca Tolteca (GRASA)', 100, 'g', 2.23;
---chino
-EXEC sp_Registro_MP_Produccion 'PRD-00002', 'MPP-00008', 'Harina Selecta', 1.5, 'kg', 13.64;
-EXEC sp_Registro_MP_Produccion 'PRD-00002', 'MPP-00009', 'Huevo', 350, 'ml', 9.31;
-EXEC sp_Registro_MP_Produccion 'PRD-00002', 'MPP-00010', 'Aceite Bidon Bunge', 350, 'ml', 6.35;
-EXEC sp_Registro_MP_Produccion 'PRD-00002', 'MPP-00011', 'Capacillo Rojo #72', 20, 'Pieza', 3.08;
-
-
 --Dona
-EXEC sp_Registro_MP_Produccion 'PRD-00005', 'MPP-00024', 'Harina Selecta', 2, 'kg', 18.18;
-EXEC sp_Registro_MP_Produccion 'PRD-00005', 'MPP-00025', 'Azucar', 300, 'g', 4.06;
-EXEC sp_Registro_MP_Produccion 'PRD-00005', 'MPP-00026', 'Levadura', 100, 'g', 7.56;
-EXEC sp_Registro_MP_Produccion 'PRD-00005', 'MPP-00027', 'Manteca Tolteca (GRASA)', 200, 'g', 4.46;
-EXEC sp_Registro_MP_Produccion 'PRD-00005', 'MPP-00028', 'Aceite Bidon Bunge', 1, 'lt', 21.15;
+EXEC sp_Registro_MP_Produccion 'PRD-00004', 'MPP-1', 'Harina Selecta', 2000, 'g', 43.9;
+EXEC sp_Registro_MP_Produccion 'PRD-00004', 'MPP-2', 'Azucar', 300, 'g', 6.58;
+EXEC sp_Registro_MP_Produccion 'PRD-00004', 'MPP-3', 'Levadura', 100, 'g', 2.19;
+EXEC sp_Registro_MP_Produccion 'PRD-00004', 'MPP-4', 'Manteca Tolteca (GRASA)', 200, 'g', 4.39;
+EXEC sp_Registro_MP_Produccion 'PRD-00004', 'MPP-5', 'Aceite Bidon Bunge', 1000, 'ml', 21.95;
 
---produccion del dia 2021-11-02
---concha
-EXEC sp_Registro_MP_Produccion 'PRD-00006', 'MPP-00029', 'Harina Selecta', 1, 'kg', 9.09;
-EXEC sp_Registro_MP_Produccion 'PRD-00006', 'MPP-00030', 'Azucar', 300, 'g', 4.06;
-EXEC sp_Registro_MP_Produccion 'PRD-00006', 'MPP-00031', 'Sal Fina', 10, 'g', 0.04;
-EXEC sp_Registro_MP_Produccion 'PRD-00006', 'MPP-00032', 'Levadura', 20, 'g', 1.51;
-EXEC sp_Registro_MP_Produccion 'PRD-00006', 'MPP-00033', 'Huevo', 150, 'ml', 3.99;
-EXEC sp_Registro_MP_Produccion 'PRD-00006', 'MPP-00034', 'Mantequilla', 100, 'g', 3.69;
-EXEC sp_Registro_MP_Produccion 'PRD-00006', 'MPP-00035', 'Manteca Tolteca (GRASA)', 100, 'g', 2.23;
---Queso
-EXEC sp_Registro_MP_Produccion 'PRD-00007', 'MPP-00036', 'Harina Selecta', 200, 'g', 1.82;
-EXEC sp_Registro_MP_Produccion 'PRD-00007', 'MPP-00037', 'Azucar', 400, 'g', 5.41;
-EXEC sp_Registro_MP_Produccion 'PRD-00007', 'MPP-00038', 'Requeson', 1, 'kg', 16;
-EXEC sp_Registro_MP_Produccion 'PRD-00007', 'MPP-00039', 'Maizena', 150, 'g', 2.28;
-EXEC sp_Registro_MP_Produccion 'PRD-00007', 'MPP-00040', 'Mantequilla', 250, 'g', 9.21;
-EXEC sp_Registro_MP_Produccion 'PRD-00007', 'MPP-00041', 'Huevo', 250, 'ml', 6.65;
-EXEC sp_Registro_MP_Produccion 'PRD-00007', 'MPP-00042', 'Chantilli', 400, 'g', 16.80;
-EXEC sp_Registro_MP_Produccion 'PRD-00007', 'MPP-00043', 'Leche condensada', 500, 'g', 18.25;
---Multi
-EXEC sp_Registro_MP_Produccion 'PRD-00008', 'MPP-00044', 'Harina Selecta', 1, 'kg', 9.09;
-EXEC sp_Registro_MP_Produccion 'PRD-00008', 'MPP-00045', 'Azucar', 700, 'g', 9.46;
-EXEC sp_Registro_MP_Produccion 'PRD-00008', 'MPP-00046', 'Bolsa Vites (ROYAL)', 30, 'g', 0.63;
-EXEC sp_Registro_MP_Produccion 'PRD-00008', 'MPP-00047', 'Aceite Bidon Bunge', 600, 'ml', 8.11;
-EXEC sp_Registro_MP_Produccion 'PRD-00008', 'MPP-00048', 'Huevo', 600, 'ml', 15.96;
---Cacahuate
-EXEC sp_Registro_MP_Produccion 'PRD-00009', 'MPP-00049', 'Harina Selecta', 1, 'kg', 9.09;
-EXEC sp_Registro_MP_Produccion 'PRD-00009', 'MPP-00050', 'Azucar', 400, 'g', 5.41;
-EXEC sp_Registro_MP_Produccion 'PRD-00009', 'MPP-00051', 'Manteca Tolteca (GRASA)', 200, 'g', 4.46;
-EXEC sp_Registro_MP_Produccion 'PRD-00009', 'MPP-00052', 'Bolsa Vites (ROYAL)', 30, 'g', 0.63;
-EXEC sp_Registro_MP_Produccion 'PRD-00009', 'MPP-00053', 'Huevo', 5, 'Pieza', 13.30;
-EXEC sp_Registro_MP_Produccion 'PRD-00009', 'MPP-00054', 'Chantilli', 500, 'g', 21;
---Ojo
-EXEC sp_Registro_MP_Produccion 'PRD-00010', 'MPP-00055', 'Harina Selecta', 500, 'g', 4.55;
-EXEC sp_Registro_MP_Produccion 'PRD-00010', 'MPP-00056', 'Azucar', 400, 'g', 5.41;
-EXEC sp_Registro_MP_Produccion 'PRD-00010', 'MPP-00057', 'Manteca Tolteca (GRASA)', 200, 'g', 4.46;
-EXEC sp_Registro_MP_Produccion 'PRD-00010', 'MPP-00058', 'Aceite Bidon Bunge', 300, 'ml', 6.93;
-EXEC sp_Registro_MP_Produccion 'PRD-00010', 'MPP-00059', 'Huevo', 300, 'ml', 7.98;
 
-select * from mp_produccion;
+
