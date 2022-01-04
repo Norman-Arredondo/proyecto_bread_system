@@ -5,9 +5,10 @@ EXEC sp_Registro_ptovta 'PTO-00001', 'Matriz', 'De los Colegios', 'Los Reyes Aco
 EXEC sp_Registro_ptovta 'PTO-00002', 'Centro', 'De los Colegios', 'Los Reyes Acozac','15', 'N/A', 'Tecamac', 55755;
 EXEC sp_Registro_ptovta 'PTO-00003', 'Xolox', 'San Marcos', 'San Lucas Xolox','5', 'N/A', 'Tecamac', 55750;
 EXEC sp_Registro_ptovta 'PTO-00004', 'Centro Vespertino', 'De los Colegios', 'Los Reyes Acozac','15', 'N/A', 'Tecamac', 55755;
-
 -- >>> cambiar estatus punto_venta <<<
 EXEC sp_CamEst_ptovta 'PTO-00002', 0
+
+
 
 
 
@@ -16,6 +17,9 @@ EXEC sp_Registro_Tipo_Empleado 'ITE-00001', 'Administrador', 'Lu Ma Mi Ju Vi Sa 
 EXEC sp_Registro_Tipo_Empleado 'ITE-00002', 'Panadero', 'Lu Ma Mi Ju Vi', 3000.00;
 EXEC sp_Registro_Tipo_Empleado 'ITE-00003', 'Vendedor', 'Lu Ma Mi Ju Vi', 2500.00;
 select * from Tipo_Empleado;
+
+
+
 
 
 -- >>> insert Empleado <<<
@@ -44,6 +48,9 @@ EXEC sp_Registro_Empleado 'GUAK831206IT1', 'ITE-00003', null, '15:00:00', '21:00
 EXEC sp_Registro_Empleado 'SAAL8206303V5', 'ITE-00003', null, '07:00:00', '15:00:00', 'LUCIA', 'SANCHEZ', 'ARELLANO', 5567894532, 39, 'M', 'La Palma', 'Los Reyes Acozac', 64, 5, 'Tecamac', 55755;
 EXEC sp_Registro_Empleado 'BEBC860114FA6', 'ITE-00003', null, '15:00:00', '21:00:00', 'CINTHYA', 'BERNAL', 'BRAVO', 5567894532, 35, 'M', 'La Palma', 'Los Reyes Acozac', 64, 5, 'Tecamac', 55755;
 select * from Empleado;
+
+
+
 
 
 -- >>> insert materia prima y compras <<<
@@ -97,6 +104,9 @@ EXEC sp_Registro_MateriaPrima 'Nutri Leche', 12000, 12000, 36000, '2021-11-29', 
 EXEC sp_Registro_MateriaPrima 'Carbonato', 2000, 2000, 5000, '2021-11-01', 10000, 'g', 870;
 
 
+
+
+
 -- >>> insert catalogo <<<
 EXEC sp_Registro_pan 'Bisquet', 'Pan dulce', 30;
 EXEC sp_Registro_pan 'Cocol', 'Pan sencillo', 72;
@@ -104,6 +114,9 @@ EXEC sp_Registro_pan 'De manteca', 'Pan sencillo', 39;
 EXEC sp_Registro_pan 'Dona', 'Pan dulce', 40;
 EXEC sp_Registro_pan 'Polvoron amarillo', 'Pan sencillo', 36;
 EXEC sp_Registro_pan 'Multi', 'Pan dulce', 30;
+
+
+
 
 
 -- >>> insert recetario <<<
@@ -135,9 +148,125 @@ EXEC sp_Registro_receta 'Polvoron amarillo', 'Azucar', 600, 'g';
 EXEC sp_Registro_receta 'Polvoron amarillo', 'Manteca Tolteca (GRASA)', 600, 'g';
 EXEC sp_Registro_receta 'Polvoron amarillo', 'Bolsa Vites (ROYAL)', 30, 'g';
 EXEC sp_Registro_receta 'Polvoron amarillo', 'Carbonato', 15, 'g';
-
 EXEC sp_Registro_receta 'Multi', 'Harina Selecta', 1000, 'g';
 EXEC sp_Registro_receta 'Multi', 'Azucar', 700, 'g';
 EXEC sp_Registro_receta 'Multi', 'Bolsa Vites (ROYAL)', 30, 'g';
 EXEC sp_Registro_receta 'Multi', 'Aceite Bidon Bunge', 600, 'ml';
 EXEC sp_Registro_receta 'Multi', 'Huevo', 600, 'ml';
+
+
+
+
+
+-- >>> insert insumos <<<
+EXEC sp_Registro_insumos 'INS-00001', '2022-01-03', 100, 89, 50, 239;
+EXEC sp_Registro_insumos 'INS-00002', '2022-01-03', 900, 80, 1200, 2180;
+EXEC sp_Registro_insumos 'INS-00003', '2022-01-03', 1000, 70, 1200, 2270;
+EXEC sp_Registro_insumos 'INS-00004', '2022-01-03', 900, 75, 1200, 2175;
+EXEC sp_Registro_insumos 'INS-00005', '2022-01-03', 1000, 70, 1200, 2270;
+
+
+
+
+
+-- >>> insert produccion <<<
+EXEC sp_Registro_Produccion 'PRD-00002', '2022-01-03', 'RAGF630503EW7', 'Bisquet', 20, 'INS-00002', 10, 11.09;
+EXEC sp_Registro_Produccion 'PRD-00003', '2022-01-03', 'RAGF630503EW7', 'Cocol', 72, 'INS-00003', 0.1, 3.5;
+EXEC sp_Registro_Produccion 'PRD-00004', '2022-01-03', 'RAGF630503EW7', 'Dona', 40, 'INS-00004', 0.1, 8;
+EXEC sp_Registro_Produccion 'PRD-00005', '2022-01-03', 'HUHL7205233T9', 'Multi', 36, 'INS-00005', 0.1, 8;
+
+
+
+
+
+
+-- >>> insert mp_produccion <<<
+--Bisquet
+EXEC sp_Registro_MP_Produccion 'PRD-00002', 'MPP-1', 'Azucar', 133.33, 'g', 4;
+EXEC sp_Registro_MP_Produccion 'PRD-00002', 'MPP-2', 'Bolsa Vites (ROYAL)', 13.33, 'g', 0.4;
+EXEC sp_Registro_MP_Produccion 'PRD-00002', 'MPP-3', 'Harina Selecta', 666.67, 'g', 20;
+EXEC sp_Registro_MP_Produccion 'PRD-00002', 'MPP-4', 'Huevo', 194.67, 'g', 20;
+EXEC sp_Registro_MP_Produccion 'PRD-00002', 'MPP-5', 'Levadura', 33.33, 'g', 1;
+EXEC sp_Registro_MP_Produccion 'PRD-00002', 'MPP-6', 'Manteca Tolteca (GRASA)', 100, 'g', 3;
+EXEC sp_Registro_MP_Produccion 'PRD-00002', 'MPP-7', 'Mantequilla', 100, 'g', 3;
+EXEC sp_Registro_MP_Produccion 'PRD-00002', 'MPP-8', 'Sal Fina', 13.33, 'g', 0.04;
+--Cocol
+EXEC sp_Registro_MP_Produccion 'PRD-00003', 'MPP-1', 'Harina Selecta', 1500, 'g', 151.5;
+EXEC sp_Registro_MP_Produccion 'PRD-00003', 'MPP-2', 'Azucar', 500, 'g', 50.5;
+EXEC sp_Registro_MP_Produccion 'PRD-00003', 'MPP-3', 'Granilla colores Granimex', 400, 'g', 40.4;
+EXEC sp_Registro_MP_Produccion 'PRD-00003', 'MPP-4', 'Anis', 100, 'g', 10.10;
+
+
+
+
+
+
+
+
+
+
+
+
+
+--produccion del dia 2021-11-01
+--concha
+EXEC sp_Registro_MP_Produccion 'PRD-00001', 'MPP-00001', 'Harina Selecta', 1, 'kg', 9.09;
+EXEC sp_Registro_MP_Produccion 'PRD-00001', 'MPP-00002', 'Azucar', 300, 'g', 4.06;
+EXEC sp_Registro_MP_Produccion 'PRD-00001', 'MPP-00003', 'Sal Fina', 10, 'g', 0.04;
+EXEC sp_Registro_MP_Produccion 'PRD-00001', 'MPP-00004', 'Levadura', 20, 'g', 1.51;
+EXEC sp_Registro_MP_Produccion 'PRD-00001', 'MPP-00005', 'Huevo', 150, 'ml', 3.99;
+EXEC sp_Registro_MP_Produccion 'PRD-00001', 'MPP-00006', 'Mantequilla', 100, 'g', 3.69;
+EXEC sp_Registro_MP_Produccion 'PRD-00001', 'MPP-00007', 'Manteca Tolteca (GRASA)', 100, 'g', 2.23;
+--chino
+EXEC sp_Registro_MP_Produccion 'PRD-00002', 'MPP-00008', 'Harina Selecta', 1.5, 'kg', 13.64;
+EXEC sp_Registro_MP_Produccion 'PRD-00002', 'MPP-00009', 'Huevo', 350, 'ml', 9.31;
+EXEC sp_Registro_MP_Produccion 'PRD-00002', 'MPP-00010', 'Aceite Bidon Bunge', 350, 'ml', 6.35;
+EXEC sp_Registro_MP_Produccion 'PRD-00002', 'MPP-00011', 'Capacillo Rojo #72', 20, 'Pieza', 3.08;
+
+
+--Dona
+EXEC sp_Registro_MP_Produccion 'PRD-00005', 'MPP-00024', 'Harina Selecta', 2, 'kg', 18.18;
+EXEC sp_Registro_MP_Produccion 'PRD-00005', 'MPP-00025', 'Azucar', 300, 'g', 4.06;
+EXEC sp_Registro_MP_Produccion 'PRD-00005', 'MPP-00026', 'Levadura', 100, 'g', 7.56;
+EXEC sp_Registro_MP_Produccion 'PRD-00005', 'MPP-00027', 'Manteca Tolteca (GRASA)', 200, 'g', 4.46;
+EXEC sp_Registro_MP_Produccion 'PRD-00005', 'MPP-00028', 'Aceite Bidon Bunge', 1, 'lt', 21.15;
+
+--produccion del dia 2021-11-02
+--concha
+EXEC sp_Registro_MP_Produccion 'PRD-00006', 'MPP-00029', 'Harina Selecta', 1, 'kg', 9.09;
+EXEC sp_Registro_MP_Produccion 'PRD-00006', 'MPP-00030', 'Azucar', 300, 'g', 4.06;
+EXEC sp_Registro_MP_Produccion 'PRD-00006', 'MPP-00031', 'Sal Fina', 10, 'g', 0.04;
+EXEC sp_Registro_MP_Produccion 'PRD-00006', 'MPP-00032', 'Levadura', 20, 'g', 1.51;
+EXEC sp_Registro_MP_Produccion 'PRD-00006', 'MPP-00033', 'Huevo', 150, 'ml', 3.99;
+EXEC sp_Registro_MP_Produccion 'PRD-00006', 'MPP-00034', 'Mantequilla', 100, 'g', 3.69;
+EXEC sp_Registro_MP_Produccion 'PRD-00006', 'MPP-00035', 'Manteca Tolteca (GRASA)', 100, 'g', 2.23;
+--Queso
+EXEC sp_Registro_MP_Produccion 'PRD-00007', 'MPP-00036', 'Harina Selecta', 200, 'g', 1.82;
+EXEC sp_Registro_MP_Produccion 'PRD-00007', 'MPP-00037', 'Azucar', 400, 'g', 5.41;
+EXEC sp_Registro_MP_Produccion 'PRD-00007', 'MPP-00038', 'Requeson', 1, 'kg', 16;
+EXEC sp_Registro_MP_Produccion 'PRD-00007', 'MPP-00039', 'Maizena', 150, 'g', 2.28;
+EXEC sp_Registro_MP_Produccion 'PRD-00007', 'MPP-00040', 'Mantequilla', 250, 'g', 9.21;
+EXEC sp_Registro_MP_Produccion 'PRD-00007', 'MPP-00041', 'Huevo', 250, 'ml', 6.65;
+EXEC sp_Registro_MP_Produccion 'PRD-00007', 'MPP-00042', 'Chantilli', 400, 'g', 16.80;
+EXEC sp_Registro_MP_Produccion 'PRD-00007', 'MPP-00043', 'Leche condensada', 500, 'g', 18.25;
+--Multi
+EXEC sp_Registro_MP_Produccion 'PRD-00008', 'MPP-00044', 'Harina Selecta', 1, 'kg', 9.09;
+EXEC sp_Registro_MP_Produccion 'PRD-00008', 'MPP-00045', 'Azucar', 700, 'g', 9.46;
+EXEC sp_Registro_MP_Produccion 'PRD-00008', 'MPP-00046', 'Bolsa Vites (ROYAL)', 30, 'g', 0.63;
+EXEC sp_Registro_MP_Produccion 'PRD-00008', 'MPP-00047', 'Aceite Bidon Bunge', 600, 'ml', 8.11;
+EXEC sp_Registro_MP_Produccion 'PRD-00008', 'MPP-00048', 'Huevo', 600, 'ml', 15.96;
+--Cacahuate
+EXEC sp_Registro_MP_Produccion 'PRD-00009', 'MPP-00049', 'Harina Selecta', 1, 'kg', 9.09;
+EXEC sp_Registro_MP_Produccion 'PRD-00009', 'MPP-00050', 'Azucar', 400, 'g', 5.41;
+EXEC sp_Registro_MP_Produccion 'PRD-00009', 'MPP-00051', 'Manteca Tolteca (GRASA)', 200, 'g', 4.46;
+EXEC sp_Registro_MP_Produccion 'PRD-00009', 'MPP-00052', 'Bolsa Vites (ROYAL)', 30, 'g', 0.63;
+EXEC sp_Registro_MP_Produccion 'PRD-00009', 'MPP-00053', 'Huevo', 5, 'Pieza', 13.30;
+EXEC sp_Registro_MP_Produccion 'PRD-00009', 'MPP-00054', 'Chantilli', 500, 'g', 21;
+--Ojo
+EXEC sp_Registro_MP_Produccion 'PRD-00010', 'MPP-00055', 'Harina Selecta', 500, 'g', 4.55;
+EXEC sp_Registro_MP_Produccion 'PRD-00010', 'MPP-00056', 'Azucar', 400, 'g', 5.41;
+EXEC sp_Registro_MP_Produccion 'PRD-00010', 'MPP-00057', 'Manteca Tolteca (GRASA)', 200, 'g', 4.46;
+EXEC sp_Registro_MP_Produccion 'PRD-00010', 'MPP-00058', 'Aceite Bidon Bunge', 300, 'ml', 6.93;
+EXEC sp_Registro_MP_Produccion 'PRD-00010', 'MPP-00059', 'Huevo', 300, 'ml', 7.98;
+
+select * from mp_produccion;
