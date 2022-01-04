@@ -621,3 +621,15 @@ BEGIN
 			FROM insumo WHERE id_insumo = @id_insumo
 			ORDER BY id_insumo;
 END
+
+
+
+
+
+-- <<<<<<<<<<<<<<<<<<<< PRODUCCIÓN <<<<<<<<<<<<<<<<<<<< 
+-- Combo TIPO EMPLEADO (Vista empleado)
+CREATE PROCEDURE sp_Combo_Puntos
+AS
+BEGIN
+	SELECT cve_pto, pto_vta FROM puntos_venta;
+END

@@ -1,5 +1,6 @@
 <?php
-include("templates/menu.php");
+    include("templates/menu.php");
+    include("bd/select_puntos_venta.php");
 ?>
 
 <div class="d-flex flex-column" id="content-wrapper">
@@ -18,7 +19,15 @@ include("templates/menu.php");
                                 <div class="mb-3"><label class="form-label"><strong>Clave de venta</strong></label><input class="form-control" type="text" id="cve_vta" name="cve_vta"></div>
                             </div>
                             <div class="col">
-                                <div class="mb-3"><label class="form-label"><strong>Punto de venta</strong></label><input class="form-control" type="text" id="cve_pto" name="cve_pto"></div>
+                                <div class="mb-3"><label class="form-label" for="pto_vta"><strong>Punto de venta</strong></label>
+                                        <select class="form-select" id="pto_vta" name="pto_vta">
+                                            <option value="Puesto "select>Punto</option>
+                                            <?php
+                                                $pto_vta = new puntos_venta();
+                                                $pto_vta->recuperar_puntos();
+                                            ?>
+                                        </select>
+                                    </div>
                             </div>
                             <div class="col">
                                 <div class="mb-3"><label class="form-label"><strong>Fecha</strong></label><input class="form-control" type="date" id="fecha" name="fecha"></div>
@@ -60,20 +69,6 @@ include("templates/menu.php");
                         </div>
 
                         <div class="card-body">
-                            <div class="row align-items-center">
-                                <div class="col-md-6 text-nowrap ">
-                                    <form id="select_materia_prima" action="" method="POST">
-                                        <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label class="form-label">Mostrar&nbsp;
-                                                <select class="d-inline-block form-select form-select-sm" id="opc" name="opc">
-                                                    <option value="2" selected="">Todos</option>
-                                                    <option value="1">Vigente</option>
-                                                    <option value="0">No vigente</option>
-                                                </select>&nbsp;</label>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-
                             <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                                 <table class="table my-0" id="table_pto_vta">
                                     <thead>

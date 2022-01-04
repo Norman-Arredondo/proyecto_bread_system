@@ -25,7 +25,7 @@ CREATE TABLE dim_empleado(
 	rfc_empleado VARCHAR(13),
 	puesto VARCHAR(30),
 	nombre VARCHAR(80),
-	telefono INT,
+	telefono VARCHAR(10),
 	edad INT,
 	sexo CHAR(1),
 	dias_trabajo VARCHAR(25),
