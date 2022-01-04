@@ -677,7 +677,12 @@ BEGIN
 			ORDER BY v.cve_vta;
 	END
 END
-EXEC sp_Cosulta_venta 2;
 
-delete from venta
-select * from detalle_venta
+CREATE PROCEDURE sp_Consulta_detalle_venta @cve_vta VARCHAR(10)
+AS
+BEGIN
+	SELECT dv.id_produccion, p.pan, p.precio_venta, dv.piezas_entregadas, dv.piezas_devueltas
+		FROM detalle_venta dv JOIN produccion p ON dv.id_produccion = p.id_produccion
+			JOIN venta v ON v.cve_vta = dv.cve_vta
+			WHERE dv.cve_vta = @cve_vta;
+END
