@@ -678,6 +678,7 @@ BEGIN
 	END
 END
 
+-- consultar detalle venta
 CREATE PROCEDURE sp_Consulta_detalle_venta @cve_vta VARCHAR(10)
 AS
 BEGIN
@@ -686,3 +687,11 @@ BEGIN
 			JOIN venta v ON v.cve_vta = dv.cve_vta
 			WHERE dv.cve_vta = @cve_vta;
 END
+
+-- Cambiar estatus venta
+CREATE PROCEDURE sp_CamEst_Venta @cve_vta VARCHAR(10), @estatus INT
+AS
+BEGIN
+	UPDATE venta SET estatus = @estatus 
+		WHERE cve_vta = @cve_vta;
+END	

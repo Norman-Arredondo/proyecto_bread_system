@@ -387,3 +387,4 @@ error_reporting(E_ALL ^ E_NOTICE);
 
     <script src="js/insert_venta.js"></script>
     <script src="js/update_venta.js"></script>
+    <script src="js/estatus_venta.js"></script>

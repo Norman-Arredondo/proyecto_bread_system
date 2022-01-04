@@ -2,7 +2,7 @@
     class produccion{
         function recuperar_produccion(){ 
             include ("conexion_so.php");
-            $query = "EXEC sp_Consulta_produccion 1";
+            $query = "EXEC sp_Consulta_produccion 2";
             //echo $query;
             try{
                 $stm = $conn_sis->prepare($query);
