@@ -660,7 +660,7 @@ BEGIN
 END
 
 -- Consultar venta
-CREATE PROCEDURE sp_Cosulta_venta @estatus INT
+CREATE PROCEDURE sp_Consulta_venta @estatus INT
 AS
 BEGIN
 	IF @estatus = 0 or @estatus = 1
@@ -677,6 +677,7 @@ BEGIN
 			ORDER BY v.cve_vta;
 	END
 END
+EXEC sp_Cosulta_venta 2;
 
-select * from venta
+delete from venta
 select * from detalle_venta
