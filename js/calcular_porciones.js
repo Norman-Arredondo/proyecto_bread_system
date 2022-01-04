@@ -38,15 +38,14 @@ function obtener_porciones(){
             data: Datos_porciones,
         }).done(function(data) {
             $("#table_porciones_calculadas").html(data);
-            new calcular_total();
+            new calcular_total_mp();
          }).fail(function() {
             console.log("Error al enviar");
         });   
     }
 }
 
-function calcular_total(){
-    
+function calcular_total_mp(){
     var suma = 0;
 
     $('#table_porciones_calculadas tbody tr').each(function (index2) {
