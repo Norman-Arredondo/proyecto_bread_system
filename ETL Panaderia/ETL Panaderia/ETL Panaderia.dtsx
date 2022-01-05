@@ -7,12 +7,12 @@
   DTS:CreatorName="hp1\hp"
   DTS:DTSID="{FF7B1D48-7AA9-484C-87A4-BA0588145728}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="12.0.2430.0"
+  DTS:LastModifiedProductVersion="15.0.2000.167"
   DTS:LocaleID="2058"
   DTS:ObjectName="ETL Panaderia"
   DTS:PackageType="5"
-  DTS:VersionBuild="35"
-  DTS:VersionGUID="{ADB34143-4CE6-42BC-B0F7-129D91E15F60}">
+  DTS:VersionBuild="37"
+  DTS:VersionGUID="{47520F18-7439-4905-A4ED-1BBEC4582EAF}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -188,13 +188,14 @@
                     <inputColumn
                       refId="Package\Insertar Empleado\Insertar nuevo Empleado al DW.Inputs[ADO NET Destination Input].Columns[nombre]"
                       cachedDataType="wstr"
-                      cachedLength="50"
+                      cachedLength="152"
                       cachedName="nombre"
                       externalMetadataColumnId="Package\Insertar Empleado\Insertar nuevo Empleado al DW.Inputs[ADO NET Destination Input].ExternalColumns[nombre]"
                       lineageId="Package\Insertar Empleado\Merge Join.Outputs[Merge Join Output].Columns[nombre]" />
                     <inputColumn
                       refId="Package\Insertar Empleado\Insertar nuevo Empleado al DW.Inputs[ADO NET Destination Input].Columns[telefono]"
-                      cachedDataType="i4"
+                      cachedDataType="wstr"
+                      cachedLength="10"
                       cachedName="telefono"
                       externalMetadataColumnId="Package\Insertar Empleado\Insertar nuevo Empleado al DW.Inputs[ADO NET Destination Input].ExternalColumns[telefono]"
                       lineageId="Package\Insertar Empleado\Merge Join.Outputs[Merge Join Output].Columns[telefono]" />
@@ -214,7 +215,7 @@
                     <inputColumn
                       refId="Package\Insertar Empleado\Insertar nuevo Empleado al DW.Inputs[ADO NET Destination Input].Columns[dias_trabajo]"
                       cachedDataType="wstr"
-                      cachedLength="20"
+                      cachedLength="25"
                       cachedName="dias_trabajo"
                       externalMetadataColumnId="Package\Insertar Empleado\Insertar nuevo Empleado al DW.Inputs[ADO NET Destination Input].ExternalColumns[dias_trabajo]"
                       lineageId="Package\Insertar Empleado\Merge Join.Outputs[Merge Join Output].Columns[dias_trabajo]" />
@@ -244,7 +245,8 @@
                       name="nombre" />
                     <externalMetadataColumn
                       refId="Package\Insertar Empleado\Insertar nuevo Empleado al DW.Inputs[ADO NET Destination Input].ExternalColumns[telefono]"
-                      dataType="i4"
+                      dataType="wstr"
+                      length="10"
                       name="telefono" />
                     <externalMetadataColumn
                       refId="Package\Insertar Empleado\Insertar nuevo Empleado al DW.Inputs[ADO NET Destination Input].ExternalColumns[edad]"
@@ -406,7 +408,8 @@ FROM            dim_empleado</property>
                   description="Specifies the SQL statement used by the component to extract data."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        Empleado.rfc_empleado, Tipo_Empleado.puesto, Empleado.nombre, Empleado.telefono, Empleado.edad, Empleado.sexo, Tipo_Empleado.dias_trabajo, Tipo_Empleado.sueldo_quincenal AS sueldo
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        Empleado.rfc_empleado, Tipo_Empleado.puesto, CONCAT(Empleado.nombre, ' ', Empleado.apellido_p, ' ', Empleado.apellido_m) AS nombre, Empleado.telefono, Empleado.edad, Empleado.sexo, 
+                         Tipo_Empleado.dias_trabajo, Tipo_Empleado.sueldo_quincenal AS sueldo
 FROM            Empleado INNER JOIN
                          Tipo_Empleado ON Empleado.id_tipo_empleado = Tipo_Empleado.id_tipo_empleado</property>
                 <property
@@ -448,7 +451,7 @@ FROM            Empleado INNER JOIN
                     <outputColumn
                       refId="Package\Insertar Empleado\Leer Empleado.Outputs[ADO NET Source Output].Columns[rfc_empleado]"
                       dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
+                      errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Insertar Empleado\Leer Empleado.Outputs[ADO NET Source Output].ExternalColumns[rfc_empleado]"
                       length="13"
@@ -458,7 +461,7 @@ FROM            Empleado INNER JOIN
                     <outputColumn
                       refId="Package\Insertar Empleado\Leer Empleado.Outputs[ADO NET Source Output].Columns[puesto]"
                       dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
+                      errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Insertar Empleado\Leer Empleado.Outputs[ADO NET Source Output].ExternalColumns[puesto]"
                       length="30"
@@ -468,26 +471,27 @@ FROM            Empleado INNER JOIN
                     <outputColumn
                       refId="Package\Insertar Empleado\Leer Empleado.Outputs[ADO NET Source Output].Columns[nombre]"
                       dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
+                      errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Insertar Empleado\Leer Empleado.Outputs[ADO NET Source Output].ExternalColumns[nombre]"
-                      length="50"
+                      length="152"
                       lineageId="Package\Insertar Empleado\Leer Empleado.Outputs[ADO NET Source Output].Columns[nombre]"
                       name="nombre"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Insertar Empleado\Leer Empleado.Outputs[ADO NET Source Output].Columns[telefono]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Insertar Empleado\Leer Empleado.Outputs[ADO NET Source Output].ExternalColumns[telefono]"
+                      length="10"
                       lineageId="Package\Insertar Empleado\Leer Empleado.Outputs[ADO NET Source Output].Columns[telefono]"
                       name="telefono"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Insertar Empleado\Leer Empleado.Outputs[ADO NET Source Output].Columns[edad]"
                       dataType="i4"
-                      errorOrTruncationOperation="Conversion"
+                      errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Insertar Empleado\Leer Empleado.Outputs[ADO NET Source Output].ExternalColumns[edad]"
                       lineageId="Package\Insertar Empleado\Leer Empleado.Outputs[ADO NET Source Output].Columns[edad]"
@@ -496,7 +500,7 @@ FROM            Empleado INNER JOIN
                     <outputColumn
                       refId="Package\Insertar Empleado\Leer Empleado.Outputs[ADO NET Source Output].Columns[sexo]"
                       dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
+                      errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Insertar Empleado\Leer Empleado.Outputs[ADO NET Source Output].ExternalColumns[sexo]"
                       length="1"
@@ -506,17 +510,17 @@ FROM            Empleado INNER JOIN
                     <outputColumn
                       refId="Package\Insertar Empleado\Leer Empleado.Outputs[ADO NET Source Output].Columns[dias_trabajo]"
                       dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
+                      errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Insertar Empleado\Leer Empleado.Outputs[ADO NET Source Output].ExternalColumns[dias_trabajo]"
-                      length="20"
+                      length="25"
                       lineageId="Package\Insertar Empleado\Leer Empleado.Outputs[ADO NET Source Output].Columns[dias_trabajo]"
                       name="dias_trabajo"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Insertar Empleado\Leer Empleado.Outputs[ADO NET Source Output].Columns[sueldo]"
                       dataType="r8"
-                      errorOrTruncationOperation="Conversion"
+                      errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Insertar Empleado\Leer Empleado.Outputs[ADO NET Source Output].ExternalColumns[sueldo]"
                       lineageId="Package\Insertar Empleado\Leer Empleado.Outputs[ADO NET Source Output].Columns[sueldo]"
@@ -538,11 +542,12 @@ FROM            Empleado INNER JOIN
                     <externalMetadataColumn
                       refId="Package\Insertar Empleado\Leer Empleado.Outputs[ADO NET Source Output].ExternalColumns[nombre]"
                       dataType="wstr"
-                      length="50"
+                      length="152"
                       name="nombre" />
                     <externalMetadataColumn
                       refId="Package\Insertar Empleado\Leer Empleado.Outputs[ADO NET Source Output].ExternalColumns[telefono]"
-                      dataType="i4"
+                      dataType="wstr"
+                      length="10"
                       name="telefono" />
                     <externalMetadataColumn
                       refId="Package\Insertar Empleado\Leer Empleado.Outputs[ADO NET Source Output].ExternalColumns[edad]"
@@ -556,7 +561,7 @@ FROM            Empleado INNER JOIN
                     <externalMetadataColumn
                       refId="Package\Insertar Empleado\Leer Empleado.Outputs[ADO NET Source Output].ExternalColumns[dias_trabajo]"
                       dataType="wstr"
-                      length="20"
+                      length="25"
                       name="dias_trabajo" />
                     <externalMetadataColumn
                       refId="Package\Insertar Empleado\Leer Empleado.Outputs[ADO NET Source Output].ExternalColumns[sueldo]"
@@ -584,12 +589,13 @@ FROM            Empleado INNER JOIN
                     <outputColumn
                       refId="Package\Insertar Empleado\Leer Empleado.Outputs[ADO NET Source Error Output].Columns[nombre]"
                       dataType="wstr"
-                      length="50"
+                      length="152"
                       lineageId="Package\Insertar Empleado\Leer Empleado.Outputs[ADO NET Source Error Output].Columns[nombre]"
                       name="nombre" />
                     <outputColumn
                       refId="Package\Insertar Empleado\Leer Empleado.Outputs[ADO NET Source Error Output].Columns[telefono]"
-                      dataType="i4"
+                      dataType="wstr"
+                      length="10"
                       lineageId="Package\Insertar Empleado\Leer Empleado.Outputs[ADO NET Source Error Output].Columns[telefono]"
                       name="telefono" />
                     <outputColumn
@@ -606,7 +612,7 @@ FROM            Empleado INNER JOIN
                     <outputColumn
                       refId="Package\Insertar Empleado\Leer Empleado.Outputs[ADO NET Source Error Output].Columns[dias_trabajo]"
                       dataType="wstr"
-                      length="20"
+                      length="25"
                       lineageId="Package\Insertar Empleado\Leer Empleado.Outputs[ADO NET Source Error Output].Columns[dias_trabajo]"
                       name="dias_trabajo" />
                     <outputColumn
@@ -679,12 +685,13 @@ FROM            Empleado INNER JOIN
                     <inputColumn
                       refId="Package\Insertar Empleado\Merge Join.Inputs[Merge Join Left Input].Columns[nombre]"
                       cachedDataType="wstr"
-                      cachedLength="50"
+                      cachedLength="152"
                       cachedName="nombre"
                       lineageId="Package\Insertar Empleado\Ordenar 1.Outputs[Sort Output].Columns[nombre]" />
                     <inputColumn
                       refId="Package\Insertar Empleado\Merge Join.Inputs[Merge Join Left Input].Columns[telefono]"
-                      cachedDataType="i4"
+                      cachedDataType="wstr"
+                      cachedLength="10"
                       cachedName="telefono"
                       lineageId="Package\Insertar Empleado\Ordenar 1.Outputs[Sort Output].Columns[telefono]" />
                     <inputColumn
@@ -701,7 +708,7 @@ FROM            Empleado INNER JOIN
                     <inputColumn
                       refId="Package\Insertar Empleado\Merge Join.Inputs[Merge Join Left Input].Columns[dias_trabajo]"
                       cachedDataType="wstr"
-                      cachedLength="20"
+                      cachedLength="25"
                       cachedName="dias_trabajo"
                       lineageId="Package\Insertar Empleado\Ordenar 1.Outputs[Sort Output].Columns[dias_trabajo]" />
                     <inputColumn
@@ -766,7 +773,7 @@ FROM            Empleado INNER JOIN
                     <outputColumn
                       refId="Package\Insertar Empleado\Merge Join.Outputs[Merge Join Output].Columns[nombre]"
                       dataType="wstr"
-                      length="50"
+                      length="152"
                       lineageId="Package\Insertar Empleado\Merge Join.Outputs[Merge Join Output].Columns[nombre]"
                       name="nombre">
                       <properties>
@@ -779,7 +786,8 @@ FROM            Empleado INNER JOIN
                     </outputColumn>
                     <outputColumn
                       refId="Package\Insertar Empleado\Merge Join.Outputs[Merge Join Output].Columns[telefono]"
-                      dataType="i4"
+                      dataType="wstr"
+                      length="10"
                       lineageId="Package\Insertar Empleado\Merge Join.Outputs[Merge Join Output].Columns[telefono]"
                       name="telefono">
                       <properties>
@@ -820,7 +828,7 @@ FROM            Empleado INNER JOIN
                     <outputColumn
                       refId="Package\Insertar Empleado\Merge Join.Outputs[Merge Join Output].Columns[dias_trabajo]"
                       dataType="wstr"
-                      length="20"
+                      length="25"
                       lineageId="Package\Insertar Empleado\Merge Join.Outputs[Merge Join Output].Columns[dias_trabajo]"
                       name="dias_trabajo">
                       <properties>
@@ -923,7 +931,7 @@ FROM            Empleado INNER JOIN
                     <inputColumn
                       refId="Package\Insertar Empleado\Ordenar 1.Inputs[Sort Input].Columns[nombre]"
                       cachedDataType="wstr"
-                      cachedLength="50"
+                      cachedLength="152"
                       cachedName="nombre"
                       lineageId="Package\Insertar Empleado\Leer Empleado.Outputs[ADO NET Source Output].Columns[nombre]">
                       <properties>
@@ -939,7 +947,8 @@ FROM            Empleado INNER JOIN
                     </inputColumn>
                     <inputColumn
                       refId="Package\Insertar Empleado\Ordenar 1.Inputs[Sort Input].Columns[telefono]"
-                      cachedDataType="i4"
+                      cachedDataType="wstr"
+                      cachedLength="10"
                       cachedName="telefono"
                       lineageId="Package\Insertar Empleado\Leer Empleado.Outputs[ADO NET Source Output].Columns[telefono]">
                       <properties>
@@ -989,7 +998,7 @@ FROM            Empleado INNER JOIN
                     <inputColumn
                       refId="Package\Insertar Empleado\Ordenar 1.Inputs[Sort Input].Columns[dias_trabajo]"
                       cachedDataType="wstr"
-                      cachedLength="20"
+                      cachedLength="25"
                       cachedName="dias_trabajo"
                       lineageId="Package\Insertar Empleado\Leer Empleado.Outputs[ADO NET Source Output].Columns[dias_trabajo]">
                       <properties>
@@ -1061,7 +1070,7 @@ FROM            Empleado INNER JOIN
                     <outputColumn
                       refId="Package\Insertar Empleado\Ordenar 1.Outputs[Sort Output].Columns[nombre]"
                       dataType="wstr"
-                      length="50"
+                      length="152"
                       lineageId="Package\Insertar Empleado\Ordenar 1.Outputs[Sort Output].Columns[nombre]"
                       name="nombre">
                       <properties>
@@ -1074,7 +1083,8 @@ FROM            Empleado INNER JOIN
                     </outputColumn>
                     <outputColumn
                       refId="Package\Insertar Empleado\Ordenar 1.Outputs[Sort Output].Columns[telefono]"
-                      dataType="i4"
+                      dataType="wstr"
+                      length="10"
                       lineageId="Package\Insertar Empleado\Ordenar 1.Outputs[Sort Output].Columns[telefono]"
                       name="telefono">
                       <properties>
@@ -1115,7 +1125,7 @@ FROM            Empleado INNER JOIN
                     <outputColumn
                       refId="Package\Insertar Empleado\Ordenar 1.Outputs[Sort Output].Columns[dias_trabajo]"
                       dataType="wstr"
-                      length="20"
+                      length="25"
                       lineageId="Package\Insertar Empleado\Ordenar 1.Outputs[Sort Output].Columns[dias_trabajo]"
                       name="dias_trabajo">
                       <properties>
@@ -6103,12 +6113,12 @@ FROM            puntos_venta</property>
       DTS:To="Package\Insertar Hechos ventas" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
-<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
-<!--If you manually edit this section and make a mistake, you can delete it. -->
-<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
 <Objects
   Version="sql12">
-  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
   <Package
     design-time-name="Package">
     <LayoutInfo>
@@ -6247,7 +6257,7 @@ FROM            puntos_venta</property>
           Id="Package\Insertar Empleado\Merge Join"
           TopLeft="290,236" />
         <NodeLayout
-          Size="149,42"
+          Size="154,42"
           Id="Package\Insertar Empleado\Leer Empleado"
           TopLeft="75,39" />
         <NodeLayout
@@ -6340,7 +6350,7 @@ FROM            puntos_venta</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Insertar Empleado.Paths[ADO NET Source Output1]"
-          TopLeft="148.75,81">
+          TopLeft="150,81">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -6449,57 +6459,59 @@ FROM            puntos_venta</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="166,42"
-          Id="Package\Insertar Fechas\Leer Fecha Ventas"
-          TopLeft="47,21" />
-        <NodeLayout
           Size="160,42"
           Id="Package\Insertar Fechas\Leer Dim Tiempo"
           TopLeft="431,22" />
         <NodeLayout
+          Size="166,42"
+          Id="Package\Insertar Fechas\Leer Fecha Ventas"
+          TopLeft="47,21" />
+        <NodeLayout
+          Size="210,42"
+          Id="Package\Insertar Fechas\Insertar nueva Fecha al DW"
+          TopLeft="227,374" />
+        <NodeLayout
           Size="126,42"
           Id="Package\Insertar Fechas\Ordenar 1"
           TopLeft="65,106" />
-        <EdgeLayout
-          Id="Package\Insertar Fechas.Paths[ADO NET Source Output]"
-          TopLeft="129,63">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,43"
-              Start="0,0"
-              End="0,35.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,35.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Insertar Fechas\Merge Join"
+          TopLeft="257,200" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Insertar Fechas\Conditional Split"
+          TopLeft="248,290" />
         <NodeLayout
           Size="126,42"
           Id="Package\Insertar Fechas\Ordenar 2"
           TopLeft="451,109" />
         <EdgeLayout
-          Id="Package\Insertar Fechas.Paths[ADO NET Source Output1]"
-          TopLeft="512.5,64">
+          Id="Package\Insertar Fechas.Paths[Sort Output1]"
+          TopLeft="514,151">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,45"
+              EndConnector="-171.666666666667,49"
               Start="0,0"
-              End="0,37.5">
+              End="-171.666666666667,41.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,37.5" />
+                    End="0,25.0425531914894" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.0425531914894"
+                    Point2="0,29.0425531914894"
+                    Point3="-4,29.0425531914894" />
+                  <mssgle:LineSegment
+                    End="-167.666666666667,29.0425531914894" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-167.666666666667,29.0425531914894"
+                    Point2="-171.666666666667,29.0425531914894"
+                    Point3="-171.666666666667,33.0425531914894" />
+                  <mssgle:LineSegment
+                    End="-171.666666666667,41.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6508,10 +6520,6 @@ FROM            puntos_venta</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="130,42"
-          Id="Package\Insertar Fechas\Merge Join"
-          TopLeft="257,200" />
         <EdgeLayout
           Id="Package\Insertar Fechas.Paths[Sort Output]"
           TopLeft="128,148">
@@ -6547,70 +6555,6 @@ FROM            puntos_venta</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Insertar Fechas.Paths[Sort Output1]"
-          TopLeft="514,151">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-171.666666666667,49"
-              Start="0,0"
-              End="-171.666666666667,41.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,25.0425531914894" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,25.0425531914894"
-                    Point2="0,29.0425531914894"
-                    Point3="-4,29.0425531914894" />
-                  <mssgle:LineSegment
-                    End="-167.666666666667,29.0425531914894" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-167.666666666667,29.0425531914894"
-                    Point2="-171.666666666667,29.0425531914894"
-                    Point3="-171.666666666667,33.0425531914894" />
-                  <mssgle:LineSegment
-                    End="-171.666666666667,41.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="155,42"
-          Id="Package\Insertar Fechas\Conditional Split"
-          TopLeft="248,290" />
-        <EdgeLayout
-          Id="Package\Insertar Fechas.Paths[Merge Join Output]"
-          TopLeft="323.75,242">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,48"
-              Start="0,0"
-              End="0,40.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,40.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="210,42"
-          Id="Package\Insertar Fechas\Insertar nueva Fecha al DW"
-          TopLeft="227,374" />
-        <EdgeLayout
           Id="Package\Insertar Fechas.Paths[Nuevo registro]"
           TopLeft="328.75,332">
           <EdgeLayout.Curve>
@@ -6634,40 +6578,20 @@ FROM            puntos_venta</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <TaskHost
-    design-time-name="Package\Insertar Hechos ventas">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="135,42"
-          Id="Package\Insertar Hechos ventas\Leer Ventas"
-          TopLeft="70,32" />
-        <NodeLayout
-          Size="171,42"
-          Id="Package\Insertar Hechos ventas\Leer Hechos ventas"
-          TopLeft="428,37" />
-        <NodeLayout
-          Size="126,42"
-          Id="Package\Insertar Hechos ventas\Ordenar 1"
-          TopLeft="74,115" />
         <EdgeLayout
-          Id="Package\Insertar Hechos ventas.Paths[ADO NET Source Output]"
-          TopLeft="137.25,74">
+          Id="Package\Insertar Fechas.Paths[Merge Join Output]"
+          TopLeft="323.75,242">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,41"
+              EndConnector="0,48"
               Start="0,0"
-              End="0,33.5">
+              End="0,40.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,33.5" />
+                    End="0,40.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6676,10 +6600,110 @@ FROM            puntos_venta</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insertar Fechas.Paths[ADO NET Source Output1]"
+          TopLeft="512.5,64">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45"
+              Start="0,0"
+              End="0,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insertar Fechas.Paths[ADO NET Source Output]"
+          TopLeft="129,63">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43"
+              Start="0,0"
+              End="0,35.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Insertar Fechas\Leer Dim Tiempo">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Insertar Fechas\Leer Fecha Ventas">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Insertar Fechas\Insertar nueva Fecha al DW">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Insertar Hechos ventas">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="188,42"
+          Id="Package\Insertar Hechos ventas\Insertar Hechos ventas"
+          TopLeft="243,376" />
+        <NodeLayout
+          Size="135,42"
+          Id="Package\Insertar Hechos ventas\Leer Ventas"
+          TopLeft="70,32" />
+        <NodeLayout
+          Size="126,42"
+          Id="Package\Insertar Hechos ventas\Ordenar 1"
+          TopLeft="74,115" />
         <NodeLayout
           Size="126,42"
           Id="Package\Insertar Hechos ventas\Ordenar 2"
           TopLeft="453,118" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Insertar Hechos ventas\Leer Hechos ventas"
+          TopLeft="428,37" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Insertar Hechos ventas\Merge Join"
+          TopLeft="263,207" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Insertar Hechos ventas\Conditional Split"
+          TopLeft="255,293" />
         <EdgeLayout
           Id="Package\Insertar Hechos ventas.Paths[ADO NET Source Output1]"
           TopLeft="514.75,79">
@@ -6699,45 +6723,33 @@ FROM            puntos_venta</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="130,42"
-          Id="Package\Insertar Hechos ventas\Merge Join"
-          TopLeft="263,207" />
         <EdgeLayout
-          Id="Package\Insertar Hechos ventas.Paths[Sort Output]"
-          TopLeft="137,157">
+          Id="Package\Insertar Hechos ventas.Paths[ADO NET Source Output]"
+          TopLeft="137.25,74">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="191,50"
+              EndConnector="0,41"
               Start="0,0"
-              End="191,42.5">
+              End="0,33.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,21"
-                    Point2="0,25"
-                    Point3="4,25" />
-                  <mssgle:LineSegment
-                    End="187,25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="187,25"
-                    Point2="191,25"
-                    Point3="191,29" />
-                  <mssgle:LineSegment
-                    End="191,42.5" />
+                    End="0,33.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6771,39 +6783,47 @@ FROM            puntos_venta</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="155,42"
-          Id="Package\Insertar Hechos ventas\Conditional Split"
-          TopLeft="255,293" />
         <EdgeLayout
-          Id="Package\Insertar Hechos ventas.Paths[Merge Join Output]"
-          TopLeft="330.25,249">
+          Id="Package\Insertar Hechos ventas.Paths[Sort Output]"
+          TopLeft="137,157">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,44"
+              EndConnector="191,50"
               Start="0,0"
-              End="0,36.5">
+              End="191,42.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,36.5" />
+                    End="0,21" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21"
+                    Point2="0,25"
+                    Point3="4,25" />
+                  <mssgle:LineSegment
+                    End="187,25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="187,25"
+                    Point2="191,25"
+                    Point3="191,29" />
+                  <mssgle:LineSegment
+                    End="191,42.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="188,42"
-          Id="Package\Insertar Hechos ventas\Insertar Hechos ventas"
-          TopLeft="243,376" />
         <EdgeLayout
           Id="Package\Insertar Hechos ventas.Paths[Nuevo registro]"
           TopLeft="334.75,335">
@@ -6828,55 +6848,9 @@ FROM            puntos_venta</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <TaskHost
-    design-time-name="Package\Insertar Productos">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="149,42"
-          Id="Package\Insertar Productos\Leer Productos"
-          TopLeft="38,31" />
-        <NodeLayout
-          Size="171,42"
-          Id="Package\Insertar Productos\Leer Dim Productos"
-          TopLeft="393,37" />
-        <NodeLayout
-          Size="126,42"
-          Id="Package\Insertar Productos\Ordenar 1"
-          TopLeft="49,121" />
         <EdgeLayout
-          Id="Package\Insertar Productos.Paths[ADO NET Source Output]"
-          TopLeft="112.25,73">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,48"
-              Start="0,0"
-              End="0,40.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,40.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="126,42"
-          Id="Package\Insertar Productos\Ordenar 2"
-          TopLeft="419,123" />
-        <EdgeLayout
-          Id="Package\Insertar Productos.Paths[ADO NET Source Output1]"
-          TopLeft="480.25,79">
+          Id="Package\Insertar Hechos ventas.Paths[Merge Join Output]"
+          TopLeft="330.25,249">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -6893,47 +6867,71 @@ FROM            puntos_venta</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Insertar Hechos ventas\Insertar Hechos ventas">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Insertar Hechos ventas\Leer Ventas">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Insertar Hechos ventas\Leer Hechos ventas">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Insertar Productos">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Insertar Productos\Leer Dim Productos"
+          TopLeft="393,37" />
+        <NodeLayout
+          Size="225,42"
+          Id="Package\Insertar Productos\Insertar nuevo Producto al DW"
+          TopLeft="187,391" />
+        <NodeLayout
+          Size="126,42"
+          Id="Package\Insertar Productos\Ordenar 1"
+          TopLeft="49,121" />
+        <NodeLayout
+          Size="126,42"
+          Id="Package\Insertar Productos\Ordenar 2"
+          TopLeft="419,123" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\Insertar Productos\Leer Productos"
+          TopLeft="38,31" />
         <NodeLayout
           Size="130,42"
           Id="Package\Insertar Productos\Merge Join"
           TopLeft="235,207" />
-        <EdgeLayout
-          Id="Package\Insertar Productos.Paths[Sort Output]"
-          TopLeft="112,163">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="188,44"
-              Start="0,0"
-              End="188,36.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,18" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,18"
-                    Point2="0,22"
-                    Point3="4,22" />
-                  <mssgle:LineSegment
-                    End="184,22" />
-                  <mssgle:CubicBezierSegment
-                    Point1="184,22"
-                    Point2="188,22"
-                    Point3="188,26" />
-                  <mssgle:LineSegment
-                    End="188,36.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Insertar Productos\Conditional Split"
+          TopLeft="221,296" />
         <EdgeLayout
           Id="Package\Insertar Productos.Paths[Sort Output1]"
           TopLeft="482,165">
@@ -6965,39 +6963,47 @@ FROM            puntos_venta</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="155,42"
-          Id="Package\Insertar Productos\Conditional Split"
-          TopLeft="221,296" />
         <EdgeLayout
-          Id="Package\Insertar Productos.Paths[Merge Join Output]"
-          TopLeft="299.25,249">
+          Id="Package\Insertar Productos.Paths[Sort Output]"
+          TopLeft="112,163">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,47"
+              EndConnector="188,44"
               Start="0,0"
-              End="0,39.5">
+              End="188,36.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,39.5" />
+                    End="0,18" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18"
+                    Point2="0,22"
+                    Point3="4,22" />
+                  <mssgle:LineSegment
+                    End="184,22" />
+                  <mssgle:CubicBezierSegment
+                    Point1="184,22"
+                    Point2="188,22"
+                    Point3="188,26" />
+                  <mssgle:LineSegment
+                    End="188,36.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="225,42"
-          Id="Package\Insertar Productos\Insertar nuevo Producto al DW"
-          TopLeft="187,391" />
         <EdgeLayout
           Id="Package\Insertar Productos.Paths[Nuevo registro]"
           TopLeft="299,338">
@@ -7022,9 +7028,105 @@ FROM            puntos_venta</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insertar Productos.Paths[Merge Join Output]"
+          TopLeft="299.25,249">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47"
+              Start="0,0"
+              End="0,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insertar Productos.Paths[ADO NET Source Output1]"
+          TopLeft="480.25,79">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44"
+              Start="0,0"
+              End="0,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insertar Productos.Paths[ADO NET Source Output]"
+          TopLeft="112.25,73">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48"
+              Start="0,0"
+              End="0,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Insertar Productos\Leer Dim Productos">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Insertar Productos\Insertar nuevo Producto al DW">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Insertar Productos\Leer Productos">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Insertar Punto de venta">
     <LayoutInfo>
@@ -7237,78 +7339,6 @@ FROM            puntos_venta</property>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Insertar Punto de venta\Leer Dim Punto de venta">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Insertar Productos\Leer Productos">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Insertar Productos\Leer Dim Productos">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Insertar Productos\Insertar nuevo Producto al DW">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Insertar Fechas\Leer Fecha Ventas">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Insertar Fechas\Leer Dim Tiempo">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Insertar Fechas\Insertar nueva Fecha al DW">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Insertar Hechos ventas\Leer Ventas">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Insertar Hechos ventas\Leer Hechos ventas">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Insertar Hechos ventas\Insertar Hechos ventas">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

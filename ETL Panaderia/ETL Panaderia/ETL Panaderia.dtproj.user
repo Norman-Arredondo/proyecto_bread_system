@@ -4,7 +4,10 @@
     <Configuration>
       <Name>Development</Name>
       <Options>
-        <Run64BitRuntime>true</Run64BitRuntime>
+        <AssessmentRuleSuppressionSetting />
+        <UseWinAuth>false</UseWinAuth>
+        <WinAuthUserName />
+        <WinAuthDomain />
         <UserIDs />
         <UserPasswords />
         <OfflineMode>false</OfflineMode>
