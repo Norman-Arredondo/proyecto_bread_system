@@ -16,8 +16,8 @@ class historico {
 			echo "<td align='center' NOWRAP>" . $dato["fecha"] . "</td>";
 			echo "<td align='center' NOWRAP>" . $dato["rfc_empleado"] . "</td>";
 			echo "<td align='center' NOWRAP>" . $dato["piezas_vendidas"] . "</td>";
-			echo "<td align='center' NOWRAP>" . $dato["precio_unitario"] . "</td>";
-			echo "<td align='center' NOWRAP>" . $dato["importe_vta"] . "</td>";
+			echo "<td align='center' NOWRAP>" . round($dato["precio_unitario"], 2) . "</td>";
+			echo "<td align='center' NOWRAP>" . round($dato["importe_vta"], 2) . "</td>";
 			echo "</tr>";
 		}
 
