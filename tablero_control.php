@@ -91,7 +91,7 @@ include("bd/select_tablero_control.php");
                         <div class="card-header d-flex justify-content-between align-items-center">
                             <h6 class="text-primary fw-bold m-0">INGRESOS <?php echo date('Y'); ?></h6>
                         </div>
-                        <div class="card-body" style="margin:auto; width:90%; heigth:100%">
+                        <div class="card-body" style="margin:auto; width:90%; height:100%">
                             <!-- style="margin:auto; width:50%; heigth:100%"-->
                             <?php
                                 $tablero = new tablero();
@@ -109,7 +109,7 @@ include("bd/select_tablero_control.php");
                         <div class="card-header d-flex justify-content-between align-items-center">
                             <h6 class="text-primary fw-bold m-0">INGRESOS POR PUNTO DE VENTA</h6>
                         </div>
-                        <div class="card-body" style="margin:auto; width:90%; heigth:100%">
+                        <div class="card-body" style="margin:auto; width:90%; height:100%">
 
                             <div class="row justify-content-center">
                                 <div class="col-lg-6 col-xl-6">
