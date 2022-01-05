@@ -42,7 +42,7 @@
                     <li class="nav-item has-submenu">
                         <a class="nav-link" href="#"> Rendimiento </a>
                         <ul class="submenu collapse">
-                            <li><a class="nav-link" href="tablero.php"><i class="fas fa-table fa-2x text-gray-300"></i>Tablero de control </a></li>
+                            <li><a class="nav-link" href="tablero_control.php"><i class="fas fa-table fa-2x text-gray-300"></i>Tablero de control </a></li>
                             <li><a class="nav-link" href="historico.php"><i class="fas fa-table fa-2x text-gray-300"></i>Histórico </a></li>
                             <li><a class="nav-link" href="des_empleados.php"><i class="fas fa-chart-line fa-2x text-gray-300"></i>Desempeño empleados <i class="fas fa-clipboard-list fa-2x text-gray-300"></i></a></li>
                             <li><a class="nav-link" href="des_produccion.php"><i class="fas fa-chart-line fa-2x text-gray-300"></i>Desempeño producción <i class="fas fa-truck-moving fa-2x text-gray-300"></i></a></li>
